@@ -35,14 +35,15 @@ export function WorkCard({ work, index }: { work: (typeof WORKS)[0]; index: numb
         offset: ["start end", "end start"],
     });
 
-    const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1.05, 1.1]);
-    const x = useTransform(scrollYProgress, [0, 0.4], [index % 2 === 0 ? -50 : 50, 0]);
-    const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
+    const scale = useTransform(scrollYProgress, [0, 0.5], [0.95, 1]);
+    const x = useTransform(scrollYProgress, [0, 0.4], [index % 2 === 0 ? -30 : 30, 0]);
+    const opacity = useTransform(scrollYProgress, [0, 0.4], [0, 1]);
+    const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
 
     return (
         <motion.div
             className="group relative"
-            style={{ x, opacity }}
+            style={{ x, opacity, y }}
         >
             <div ref={cardRef} className="relative aspect-video w-full overflow-hidden rounded-lg border border-white/5 bg-white/5 mb-6 group-hover:border-white/20 transition-colors">
                 {/* Rainbow hover border highlight */}

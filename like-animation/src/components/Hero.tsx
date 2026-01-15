@@ -22,14 +22,19 @@ export default function Hero() {
         offset: ["start start", "end start"],
     });
 
-    const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
-    const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
-    const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+    const y = useTransform(scrollYProgress, [0, 1], [0, 300]);
+    const textY = useTransform(scrollYProgress, [0, 1], [0, 150]);
+    const scale = useTransform(scrollYProgress, [0, 1], [1, 1.2]);
+    const opacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
+    const bgY = useTransform(scrollYProgress, [0, 1], [0, 400]);
 
     return (
         <section ref={containerRef} className="relative min-h-[120vh] flex flex-col items-center justify-start overflow-hidden pt-40 pb-32">
-            {/* Background Gradient */}
-            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-blue-900/10 via-transparent to-transparent -z-10" />
+            {/* Background Gradient with Parallax */}
+            <motion.div
+                className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-blue-900/20 via-transparent to-transparent -z-10"
+                style={{ y: bgY }}
+            />
 
             <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
                 {/* Tagline */}
@@ -65,7 +70,7 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 3.4 }}
-                    style={{ y: useTransform(scrollYProgress, [0, 1], [0, 100]) }}
+                    style={{ y: textY, opacity }}
                 >
                     {HERO_CONTENT.description}
                 </motion.p>
