@@ -1,0 +1,158 @@
+@import "tailwindcss";
+
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+  --accent: #3b82f6;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --border: rgba(255, 255, 255, 0.1);
+  --rainbow: linear-gradient(90deg, #3b82f6, #ec4899, #facc15, #3b82f6);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-card-bg: var(--card-bg);
+  --color-border: var(--border);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
+  /* Managed by Lenis */
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-outfit), Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Minimalist Glass Card */
+.glass-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+
+.glass-card:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Minimalist Button */
+.minimal-button {
+  background: var(--foreground);
+  color: var(--background);
+  padding: 12px 32px;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+
+.minimal-button:hover {
+  opacity: 0.9;
+}
+
+.minimal-button-outline {
+  background: transparent;
+  color: var(--foreground);
+  border: 1px solid var(--foreground);
+  padding: 12px 32px;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.minimal-button-outline:hover {
+  background: var(--foreground);
+  color: var(--background);
+}
+
+/* Noise Texture Overlay */
+.bg-texture {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Section Spacing */
+section {
+  position: relative;
+  z-index: 10;
+}
+
+/* Rainbow Text */
+.rainbow-text {
+  background: var(--rainbow);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbow-flow 4s linear infinite;
+}
+
+@keyframes rainbow-flow {
+  from {
+    background-position: 0% center;
+  }
+
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Rainbow Glow Background */
+.rainbow-glow {
+  background: var(--rainbow);
+  background-size: 200% auto;
+  filter: blur(100px);
+  opacity: 0.15;
+  animation: rainbow-flow 8s linear infinite;
+  border-radius: 50%;
+}
+
+/* Vignette Overlay (Viewport Frame) */
+.vignette-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  box-shadow: inset 0 0 100px rgba(59, 130, 246, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* Float Animation for Mascot */
+.float-mascot {
+  animation: mascot-float 6s ease-in-out infinite;
+}
+
+@keyframes mascot-float {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+
+  33% {
+    transform: translateY(-15px) rotate(5deg);
+  }
+
+  66% {
+    transform: translateY(5px) rotate(-5deg);
+  }
+}
