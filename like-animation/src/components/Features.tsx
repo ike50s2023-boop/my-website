@@ -1,98 +1,82 @@
 "use client";
 
-import { Sparkles, Target, Zap, Heart, BarChart3, Palette } from "lucide-react";
+import { motion } from "framer-motion";
+import { Layers, RefreshCw, Briefcase, CheckCircle2 } from "lucide-react";
 
 const FEATURES = [
     {
-        icon: Sparkles,
-        title: "想像を超える提案",
-        description: "クライアントの要望を少し\"はみ出す\"プラスアルファの価値。確かな技術と遊び心で期待を超えます。",
+        icon: Layers,
+        title: "「見えないもの」を可視化",
+        description: "システム構造、抽象的な概念、膨大なデータ。言葉だけでは伝わりにくい情報を、直感的なアニメーションと図解で「一目でわかる」形に変換します。",
+        points: ["SaaS/クラウドアニメーション", "ビジネスモデル図解", "データビジュアライゼーション"]
     },
     {
-        icon: Target,
-        title: "目的に最適化",
-        description: "「なんとなくカッコいい」ではなく、ビジネスゴールから逆算した戦略的な映像設計。",
+        icon: RefreshCw,
+        title: "ビジネスの変化に対応する「資産性」",
+        description: "実写動画と異なり、撮影し直す必要がありません。UIの変更やサービスのアップデートに合わせて、部分的な修正だけで長く使い続けられる「資産」としての動画を制作します。",
+        points: ["UI変更時の低コスト修正", "タレント契約リスクなし", "多言語展開が容易"]
     },
     {
-        icon: Zap,
-        title: "スピード対応",
-        description: "短納期でも品質は妥協しません。効率的なワークフローで迅速にお届け。",
-    },
-    {
-        icon: Heart,
-        title: "感情を動かす表現",
-        description: "見る人の心に直接届く映像体験。記憶に残り、行動を促すアニメーション。",
-    },
-    {
-        icon: BarChart3,
-        title: "成果にコミット",
-        description: "制作して終わりではなく、視聴データ分析や改善提案まで伴走します。",
-    },
-    {
-        icon: Palette,
-        title: "柔軟なスタイル",
-        description: "POPからクール、シンプルからリッチまで。ブランドに合わせた最適な表現。",
+        icon: Briefcase,
+        title: "営業・教育をワンストップで",
+        description: "制作したアセット（イラストやキャラクター）は、営業資料やWebサイト、社内マニュアルにも流用可能。ブランドイメージを統一しながら、トータルコストを抑えます。",
+        points: ["Web/資料への素材流用", "ブランドトーンの統一", "営業×採用の横断活用"]
     },
 ];
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
-
-function FeatureCard({ feature, index }: { feature: (typeof FEATURES)[0]; index: number }) {
-    const Icon = feature.icon;
-    const cardRef = useRef<HTMLDivElement>(null);
-    const { scrollYProgress } = useScroll({
-        target: cardRef,
-        offset: ["start end", "center center"],
-    });
-
-    const x = useTransform(scrollYProgress, [0, 1], [index % 2 === 0 ? -100 : 100, 0]);
-    const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
-    const scale = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
-
-    return (
-        <motion.div
-            ref={cardRef}
-            style={{ x, opacity, scale }}
-            className="glass-card p-10 border border-white/5 bg-white/[0.02] relative group overflow-hidden"
-        >
-            {/* Rainbow hover glow */}
-            <div className="absolute inset-0 rainbow-glow opacity-0 group-hover:opacity-10 transition-opacity" />
-
-            <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-8 border border-white/10 bg-white/5 relative group-hover:scale-110 transition-transform">
-                <div className="absolute inset-0 rainbow-glow opacity-20 blur-md group-hover:opacity-40" />
-                <Icon className="w-6 h-6 text-white/80 relative z-10" />
-            </div>
-            <h3 className="text-xl font-bold text-white mb-4 tracking-tight group-hover:rainbow-text transition-colors">{feature.title}</h3>
-            <p className="text-white/40 text-sm leading-relaxed font-light">{feature.description}</p>
-        </motion.div>
-    );
-}
-
 export default function Features() {
     return (
-        <section id="features" className="py-40 relative overflow-hidden bg-black">
-            <div className="max-w-7xl mx-auto px-6">
-                {/* Section header */}
-                <motion.div
-                    className="mb-28"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                >
-                    <span className="text-white/30 text-xs font-medium tracking-[0.3em] uppercase block mb-4">
-                        Why Us
-                    </span>
-                    <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight">
-                        選ばれる理由
-                    </h2>
-                </motion.div>
+        <section id="features" className="pro-section bg-slate-50 relative overflow-hidden">
+            {/* Background Decor */}
+            <div className="absolute top-0 right-0 w-1/3 h-full bg-slate-100/50 skew-x-12 translate-x-1/2 pointer-events-none" />
 
-                {/* Features grid */}
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {FEATURES.map((feature, index) => (
-                        <FeatureCard key={feature.title} feature={feature} index={index} />
-                    ))}
+            <div className="pro-container relative z-10">
+                <div className="text-center max-w-3xl mx-auto mb-20">
+                    <span className="pro-badge mb-4">Our Strengths</span>
+                    <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
+                        「伝わらない」損失をゼロにする、<br className="md:hidden" />ビジネス直結型アニメーション。
+                    </h2>
+                    <p className="text-slate-500 leading-relaxed">
+                        なぜ、多くのBtoB企業が私たちを選ぶのか。<br className="hidden md:inline" />
+                        それは「表現の美しさ」以上に「情報の整理力」を大切にしているからです。
+                    </p>
+                </div>
+
+                <div className="grid lg:grid-cols-3 gap-8">
+                    {FEATURES.map((feature, index) => {
+                        const Icon = feature.icon;
+                        return (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.2 }}
+                                className="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-slate-100 hover:shadow-xl transition-shadow duration-300"
+                            >
+                                <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center mb-8 text-accent">
+                                    <Icon size={32} />
+                                </div>
+
+                                <h3 className="text-xl font-bold text-slate-900 mb-4 h-14 flex items-center">
+                                    {feature.title}
+                                </h3>
+
+                                <p className="text-slate-600 text-sm leading-relaxed mb-8">
+                                    {feature.description}
+                                </p>
+
+                                <ul className="space-y-3 pt-6 border-t border-slate-100">
+                                    {feature.points.map((point) => (
+                                        <li key={point} className="flex items-start gap-3 text-sm text-slate-500 font-medium">
+                                            <CheckCircle2 size={16} className="text-accent flex-shrink-0 mt-0.5" />
+                                            {point}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </motion.div>
+                        );
+                    })}
                 </div>
             </div>
         </section>

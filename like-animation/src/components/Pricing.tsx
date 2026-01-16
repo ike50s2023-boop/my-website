@@ -1,132 +1,93 @@
 "use client";
 
-import ScrollReveal from "@/components/ui/ScrollReveal";
+import { motion } from "framer-motion";
 import { Check, ArrowRight } from "lucide-react";
 
-const PRICING_PLANS = [
+const PLANS = [
     {
-        name: "ライト",
-        description: "SNSやYouTubeショート向け",
-        price: "¥50,000",
-        priceNote: "〜",
-        duration: "15-30秒",
-        features: [
-            "シンプルモーショングラフィックス",
-            "テンプレートベース",
-            "1回の修正対応",
-            "納期：約5営業日",
-        ],
-        popular: false,
+        name: "ライトプラン",
+        desc: "SNS・Youtubeショート向け",
+        price: "¥50,000~",
+        features: ["テンプレートベース", "15-30秒尺", "修正1回まで", "素材支給必須"],
+        color: "border-slate-200",
+        btnColor: "bg-slate-100 text-slate-600 hover:bg-slate-200"
     },
     {
-        name: "スタンダード",
-        description: "プロモーション・広告向け",
-        price: "¥150,000",
-        priceNote: "〜",
-        duration: "30-60秒",
-        features: [
-            "オリジナルアニメーション",
-            "ストーリーボード作成",
-            "3回の修正対応",
-            "BGM・SE込み",
-            "納期：約2週間",
-        ],
+        name: "スタンダードプラン",
+        desc: "プロモーション・製品紹介向け",
+        price: "¥150,000~",
+        features: ["完全オリジナル演出", "30-60秒尺", "修正3回まで", "ナレーション/BGM込", "構成案作成"],
         popular: true,
+        color: "border-accent ring-4 ring-accent/10",
+        btnColor: "bg-accent text-white hover:bg-accent/90"
     },
     {
-        name: "プレミアム",
-        description: "ブランドムービー・VP向け",
-        price: "¥300,000",
-        priceNote: "〜",
-        duration: "60秒以上",
-        features: [
-            "フルカスタム制作",
-            "企画・コンセプト設計",
-            "複数カット・シーン構成",
-            "無制限修正対応",
-            "納品後サポート",
-            "納期：要相談",
-        ],
-        popular: false,
-    },
+        name: "プレミアムプラン",
+        desc: "展示会・リブランディング向け",
+        price: "¥300,000~",
+        features: ["ハイエンド演出", "60秒以上", "修正回数無制限", "コンサルティング定例", "二次利用権付与"],
+        color: "border-slate-200",
+        btnColor: "bg-slate-900 text-white hover:bg-slate-800"
+    }
 ];
-
-function PricingCard({ plan, index }: { plan: (typeof PRICING_PLANS)[0]; index: number }) {
-    return (
-        <ScrollReveal
-            className={`glass-card p-10 flex flex-col border-white/5 relative ${plan.popular ? "border-accent/40 bg-white/[0.05]" : "bg-white/[0.02]"
-                }`}
-            delay={index * 0.1}
-        >
-            {/* Popular badge */}
-            {plan.popular && (
-                <div className="absolute -top-3 left-6 px-3 py-1 bg-accent rounded-sm text-[10px] font-bold text-white uppercase tracking-widest">
-                    Best Value
-                </div>
-            )}
-
-            {/* Header */}
-            <div className="mb-10">
-                <h3 className="text-xl font-bold text-white mb-2">{plan.name}</h3>
-                <p className="text-white/40 text-xs font-medium mb-8">{plan.description}</p>
-                <div className="flex items-end gap-1">
-                    <span className="text-4xl font-bold tracking-tight text-white">{plan.price}</span>
-                    <span className="text-white/30 text-sm font-medium mb-1">{plan.priceNote}</span>
-                </div>
-            </div>
-
-            {/* Features */}
-            <ul className="space-y-4 mb-12 flex-grow">
-                {plan.features.map((feature, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                        <Check className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
-                        <span className="text-white/60 text-xs font-light">{feature}</span>
-                    </li>
-                ))}
-            </ul>
-
-            {/* CTA */}
-            <a
-                href="#contact"
-                className={`w-full flex items-center justify-center gap-2 py-4 rounded-sm font-bold text-xs uppercase tracking-widest transition-all ${plan.popular
-                    ? "bg-white text-black hover:bg-white/90"
-                    : "border border-white/10 text-white hover:bg-white/5"
-                    }`}
-            >
-                Get Started
-                <ArrowRight className="w-4 h-4" />
-            </a>
-        </ScrollReveal>
-    );
-}
 
 export default function Pricing() {
     return (
-        <section id="pricing" className="py-40 bg-black relative">
-            <div className="max-w-7xl mx-auto px-6">
-                {/* Section header */}
-                <ScrollReveal className="mb-24">
-                    <span className="text-white/30 text-xs font-medium tracking-[0.3em] uppercase block mb-4">
-                        Pricing
-                    </span>
-                    <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight">
-                        料金プラン
+        <section id="pricing" className="pro-section bg-slate-50 relative">
+            <div className="pro-container">
+                <div className="text-center max-w-3xl mx-auto mb-20">
+                    <span className="pro-badge mb-4">Pricing</span>
+                    <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
+                        明確な料金体系。<br className="md:hidden" />安心のコミットメント。
                     </h2>
-                </ScrollReveal>
-
-                {/* Pricing cards */}
-                <div className="grid md:grid-cols-3 gap-8">
-                    {PRICING_PLANS.map((plan, index) => (
-                        <PricingCard key={plan.name} plan={plan} index={index} />
-                    ))}
+                    <p className="text-slate-500 leading-relaxed">
+                        「要見積もり」で時間を無駄にしません。<br className="hidden md:inline" />
+                        ご予算に合わせた最適なプランを提案します。
+                    </p>
                 </div>
 
-                {/* Note */}
-                <ScrollReveal className="text-left text-white/20 text-[10px] mt-16 uppercase tracking-widest">
-                    <p>
-                        * すべてのプランは制作内容により変動します。詳しくはお問い合わせください。
-                    </p>
-                </ScrollReveal>
+                <div className="grid lg:grid-cols-3 gap-8 items-start">
+                    {PLANS.map((plan, index) => (
+                        <motion.div
+                            key={plan.name}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.1 }}
+                            className={`bg-white rounded-2xl p-8 border ${plan.color} relative shadow-xl shadow-slate-200/50`}
+                        >
+                            {plan.popular && (
+                                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-accent text-white text-xs font-bold px-4 py-1.5 rounded-full tracking-wider uppercase">
+                                    Most Popular
+                                </div>
+                            )}
+
+                            <h3 className="text-lg font-bold text-slate-900 mb-2">{plan.name}</h3>
+                            <p className="text-slate-500 text-xs mb-6">{plan.desc}</p>
+
+                            <div className="text-3xl font-bold text-slate-900 mb-8 tracking-tight">
+                                {plan.price}
+                            </div>
+
+                            <ul className="space-y-4 mb-8">
+                                {plan.features.map((feature) => (
+                                    <li key={feature} className="flex items-center gap-3 text-sm text-slate-600 font-medium">
+                                        <Check size={16} className="text-accent flex-shrink-0" />
+                                        {feature}
+                                    </li>
+                                ))}
+                            </ul>
+
+                            <a
+                                href="#contact"
+                                className={`flex items-center justify-center w-full py-4 rounded-lg font-bold text-sm transition-all ${plan.btnColor}`}
+                            >
+                                まずは相談する
+                                <ArrowRight size={16} className="ml-2" />
+                            </a>
+                        </motion.div>
+                    ))}
+                </div>
             </div>
         </section>
     );

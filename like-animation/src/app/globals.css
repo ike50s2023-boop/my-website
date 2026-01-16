@@ -54,76 +54,102 @@ body {
   background: var(--foreground);
   color: var(--background);
   padding: 12px 32px;
-  border-radius: 4px;
-  font-weight: 600;
-  transition: opacity 0.2s;
 }
 
-.minimal-button:hover {
-  opacity: 0.9;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+
+  /* Modern Pop Palette */
+  --pop-primary: #FF2E63;
+  /* Vivid Pink */
+  --pop-secondary: #08D9D6;
+  /* Cyan */
+  --pop-accent: #EAEAEA;
+  /* Off White */
+  --pop-dark: #252A34;
+  /* Gunmetal */
+
+  --rainbow: linear-gradient(to right, #FF2E63, #08D9D6, #FF9A00, #FF2E63);
 }
 
-.minimal-button-outline {
-  background: transparent;
-  color: var(--foreground);
-  border: 1px solid var(--foreground);
-  padding: 12px 32px;
-  border-radius: 4px;
-  font-weight: 600;
-  transition: background-color 0.2s, color 0.2s;
+@layer base {
+  body {
+    @apply bg-background text-foreground overflow-x-hidden;
+  }
 }
 
-.minimal-button-outline:hover {
-  background: var(--foreground);
-  color: var(--background);
+/* Custom Utilities */
+.text-stroke {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
 }
 
-/* Noise Texture Overlay */
-.bg-texture {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.03;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+.glass-card {
+  @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl;
 }
 
-/* Section Spacing */
-section {
-  position: relative;
-  z-index: 10;
-}
-
-/* Rainbow Text */
 .rainbow-text {
-  background: var(--rainbow);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: rainbow-flow 4s linear infinite;
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-pop-primary via-purple-500 to-pop-secondary bg-[length:200%_auto] animate-[rainbow-flow_4s_linear_infinite];
+}
+
+.rainbow-glow {
+  @apply bg-gradient-to-r from-pop-primary via-purple-500 to-pop-secondary blur-xl;
+}
+
+/* Animation Utilities */
+.bg-texture {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+  @apply fixed inset-0 pointer-events-none z-50 opacity-20 mix-blend-overlay;
+}
+
+.vignette-overlay {
+  background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
+  @apply fixed inset-0 pointer-events-none z-40;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
 }
 
 @keyframes rainbow-flow {
-  from {
+  0% {
     background-position: 0% center;
   }
 
-  to {
+  100% {
     background-position: 200% center;
   }
 }
 
-/* Rainbow Glow Background */
-.rainbow-glow {
-  background: var(--rainbow);
-  background-size: 200% auto;
-  filter: blur(100px);
-  opacity: 0.15;
-  animation: rainbow-flow 8s linear infinite;
-  border-radius: 50%;
+/* Minimal/Pop Button Styles */
+.pop-button {
+  @apply px-8 py-4 bg-white text-black font-black text-lg rounded-full hover:bg-pop-secondary hover:text-white transition-all duration-300 hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255, 255, 255, 0.3)] hover:shadow-[0_0_30px_rgba(8, 217, 214, 0.6)];
+}
+
+.pop-card {
+  @apply bg-white text-black rounded-[32px] shadow-2xl overflow-hidden;
+}
+
+.minimal-button-outline {
+  @apply px-6 py-2 border border-white/20 rounded-full text-sm font-bold tracking-widest uppercase hover:bg-white hover:text-black transition-all;
 }
 
 /* Vignette Overlay (Viewport Frame) */

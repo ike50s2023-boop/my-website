@@ -1,59 +1,46 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, MessageCircle } from "lucide-react";
-import ScrollReveal from "@/components/ui/ScrollReveal";
+import { ArrowRight } from "lucide-react";
 
 export default function CTA() {
     return (
-        <section id="contact" className="py-60 bg-black relative overflow-hidden">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[600px] bg-blue-900/5 blur-[120px] rounded-full -z-0" />
+        <section className="py-24 md:py-32 bg-slate-900 text-white relative overflow-hidden">
+            {/* Background Accents */}
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/20 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
+            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-600/20 rounded-full blur-3xl -translate-x-1/3 translate-y-1/3" />
 
-            <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
-                <ScrollReveal>
-                    <h2 className="text-5xl md:text-8xl font-bold mb-12 text-white tracking-tight leading-[1.1]">
-                        アイデアを<br />
-                        カタチにしませんか？
+            <div className="pro-container relative z-10 text-center">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="max-w-3xl mx-auto"
+                >
+                    <h2 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight">
+                        映像活用で、ビジネスを加速させる。
                     </h2>
-
-                    <p className="text-white/40 text-xl md:text-2xl font-light mb-20 max-w-2xl mx-auto leading-relaxed">
-                        「まだ具体的に決まっていない」でも大丈夫。
-                        まずはお気軽にご相談ください。
+                    <p className="text-slate-400 text-lg md:text-xl mb-12 leading-relaxed">
+                        まずは現状の課題をお聞かせください。<br />
+                        具体的な動画のイメージがなくても大丈夫です。<br className="hidden md:inline" />
+                        貴社の目標達成に最適なプランをご提案します。
                     </p>
 
-                    <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                    <div className="flex flex-col sm:flex-row gap-6 justify-center">
                         <a
-                            href="mailto:contact@like-animation.com"
-                            className="minimal-button flex items-center justify-center gap-4 text-sm px-12 py-5 uppercase tracking-widest"
+                            href="#contact"
+                            className="inline-flex items-center justify-center px-10 py-5 bg-white text-slate-900 font-bold text-lg rounded-xl hover:bg-slate-100 transition-all hover:scale-105 shadow-2xl shadow-white/10"
                         >
-                            <MessageCircle className="w-5 h-5" />
-                            Free Consultation
-                            <ArrowRight className="w-5 h-5" />
-                        </a>
-                        <a
-                            href="#"
-                            className="text-white/40 hover:text-white text-xs font-bold uppercase tracking-widest transition-colors"
-                        >
-                            Contact us directly
+                            無料相談・お見積もりはこちら
+                            <ArrowRight className="ml-2" />
                         </a>
                     </div>
 
-                    {/* Trust signals */}
-                    <div className="mt-32 pt-12 border-t border-white/5 flex flex-wrap justify-center gap-12 text-[10px] font-bold uppercase tracking-[0.2em] text-white/20">
-                        <div className="flex items-center gap-3">
-                            <div className="w-1.5 h-1.5 rounded-full bg-white/20" />
-                            Free Estimates
-                        </div>
-                        <div className="flex items-center gap-3">
-                            <div className="w-1.5 h-1.5 rounded-full bg-white/20" />
-                            Fast Response
-                        </div>
-                        <div className="flex items-center gap-3">
-                            <div className="w-1.5 h-1.5 rounded-full bg-white/20" />
-                            Full Support
-                        </div>
-                    </div>
-                </ScrollReveal>
+                    <p className="mt-8 text-sm text-slate-500">
+                        ※ オンラインMTG（Zoom/Meet）も可能です。<br />
+                        ※ 営業目的のお問い合わせはお断りしております。
+                    </p>
+                </motion.div>
             </div>
         </section>
     );
