@@ -1,88 +1,77 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { MessageSquare, LayoutTemplate, Film, FileCheck } from "lucide-react";
+import ScrollReveal from "@/components/ui/ScrollReveal";
+import { MessageSquare, Layout, Film, Share2 } from "lucide-react";
 
 const STEPS = [
     {
         icon: MessageSquare,
-        step: "STEP 01",
-        title: "ヒアリング・要件定義",
-        description: "「誰に」「何を」「どう」伝えるかを言語化。予算・納期に合わせた最適なプランを策定します。",
+        step: "01",
+        title: "Hearing",
+        description: "クリエイティブの方向性を決定するヒアリング。",
+        color: "text-blue-400"
     },
     {
-        icon: LayoutTemplate,
-        step: "STEP 02",
-        title: "構成・ビジュアル設計",
-        description: "構成案から絵コンテを作成。イラストのタッチやトーン＆マナーをここで確定させます。",
+        icon: Layout,
+        step: "02",
+        title: "Planning",
+        description: "絵コンテとビデオコンテで完成形を共有。",
+        color: "text-amber-400"
     },
     {
         icon: Film,
-        step: "STEP 03",
-        title: "Vコンテ（動画設計図）の作成",
-        description: "本制作前に「動く設計図」をご確認いただきます。タイミングやテンポを事前にチェックし、手戻りを防ぐ品質保証プロセスです。",
-        highlight: true, // Special emphasis
+        step: "03",
+        title: "Animation",
+        description: "細部までこだわり抜いたモーション制作。",
+        color: "text-pop-primary"
     },
     {
-        icon: FileCheck,
-        step: "STEP 04",
-        title: "本制作・納品",
-        description: "アニメーション付け、BGM・ナレーション追加を行い、最終データを納品します。",
-    },
+        icon: Share2,
+        step: "04",
+        title: "Delivery",
+        description: "ご希望のフォーマットで納品。",
+        color: "text-green-400"
+    }
 ];
 
 export default function Process() {
     return (
-        <section id="process" className="pro-section bg-white border-t border-slate-100">
-            <div className="pro-container">
-                <div className="text-center max-w-3xl mx-auto mb-20">
-                    <span className="pro-badge mb-4">Flow</span>
-                    <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
-                        「思っていたのと違う」をゼロにする、<br className="md:hidden" />徹底した確認プロセス。
+        <section id="process" className="py-40 bg-black relative">
+            <div className="max-w-7xl mx-auto px-6">
+                <ScrollReveal className="text-center mb-24">
+                    {/* Fix 4: Rainbow Header */}
+                    <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight rainbow-text inline-block mb-6">
+                        制作の流れ
                     </h2>
-                </div>
+                    <p className="text-white/50">最短2週間での納品が可能です。</p>
+                </ScrollReveal>
 
-                <div className="relative">
-                    {/* Connector Line (Desktop) */}
-                    <div className="hidden lg:block absolute top-12 left-0 w-full h-0.5 bg-slate-100 z-0" />
-
-                    <div className="grid lg:grid-cols-4 gap-8">
-                        {STEPS.map((step, index) => {
-                            const Icon = step.icon;
-                            return (
-                                <motion.div
-                                    key={index}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.2 }}
-                                    className="relative z-10"
-                                >
-                                    <div className={`w-24 h-24 rounded-full border-8 mx-auto mb-8 flex items-center justify-center bg-white ${step.highlight ? "border-accent text-accent shadow-lg shadow-accent/20" : "border-slate-50 text-slate-400"}`}>
-                                        <Icon size={32} />
-                                    </div>
-
-                                    <div className="text-center px-4">
-                                        <span className={`block text-xs font-bold tracking-widest mb-2 ${step.highlight ? "text-accent" : "text-slate-400"}`}>
-                                            {step.step}
-                                        </span>
-                                        <h3 className="text-lg font-bold text-slate-900 mb-4 h-12 flex items-center justify-center">
-                                            {step.title}
-                                        </h3>
-                                        <p className="text-sm text-slate-500 leading-relaxed">
-                                            {step.description}
-                                        </p>
-                                    </div>
-
-                                    {step.highlight && (
-                                        <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-accent text-white text-[10px] font-bold px-3 py-1 rounded-full whitespace-nowrap">
-                                            重要プロセス
-                                        </div>
+                <div className="grid md:grid-cols-4 gap-8">
+                    {STEPS.map((step, index) => {
+                        const Icon = step.icon;
+                        return (
+                            <ScrollReveal key={step.step} delay={index * 0.1}>
+                                <div className="relative group">
+                                    {/* Connector Line (except last) */}
+                                    {index < STEPS.length - 1 && (
+                                        <div className="hidden md:block absolute top-12 left-1/2 w-full h-[2px] bg-gradient-to-r from-white/20 to-transparent z-0" />
                                     )}
-                                </motion.div>
-                            );
-                        })}
-                    </div>
+
+                                    <div className="relative z-10 bg-black p-6 rounded-2xl border border-white/10 hover:border-pop-secondary/50 transition-colors">
+                                        <div className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
+                                            {/* Fix 6: Colored Icons */}
+                                            <Icon className={`w-6 h-6 ${step.color}`} />
+                                        </div>
+                                        <div className="text-center">
+                                            <div className="text-pop-secondary font-black text-xl mb-2">{step.step}</div>
+                                            <h3 className="text-lg font-bold text-white mb-2">{step.title}</h3>
+                                            <p className="text-white/40 text-xs leading-relaxed">{step.description}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ScrollReveal>
+                        );
+                    })}
                 </div>
             </div>
         </section>

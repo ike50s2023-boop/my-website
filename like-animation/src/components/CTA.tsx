@@ -1,46 +1,33 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import ScrollReveal from "@/components/ui/ScrollReveal";
+import { ArrowRight, Mail } from "lucide-react";
 
 export default function CTA() {
     return (
-        <section className="py-24 md:py-32 bg-slate-900 text-white relative overflow-hidden">
-            {/* Background Accents */}
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/20 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
-            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-600/20 rounded-full blur-3xl -translate-x-1/3 translate-y-1/3" />
+        <section id="contact" className="py-40 relative overflow-hidden bg-black">
+            {/* Background gradient */}
+            <div className="absolute inset-0 bg-gradient-to-t from-pop-primary/10 via-transparent to-transparent opacity-50" />
 
-            <div className="pro-container relative z-10 text-center">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="max-w-3xl mx-auto"
-                >
-                    <h2 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight">
-                        映像活用で、ビジネスを加速させる。
+            <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
+                <ScrollReveal>
+                    {/* Fix 4: Rainbow Header */}
+                    <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tighter mb-8 leading-tight">
+                        Ready to <br />
+                        <span className="rainbow-text">Make Waves?</span>
                     </h2>
-                    <p className="text-slate-400 text-lg md:text-xl mb-12 leading-relaxed">
-                        まずは現状の課題をお聞かせください。<br />
-                        具体的な動画のイメージがなくても大丈夫です。<br className="hidden md:inline" />
-                        貴社の目標達成に最適なプランをご提案します。
+                    <p className="text-white/40 text-lg md:text-xl font-light mb-12 max-w-2xl mx-auto">
+                        あなたのアイデアを、最高のアニメーションで形にします。<br />
+                        まずはお気軽にご相談ください。
                     </p>
 
-                    <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                        <a
-                            href="#contact"
-                            className="inline-flex items-center justify-center px-10 py-5 bg-white text-slate-900 font-bold text-lg rounded-xl hover:bg-slate-100 transition-all hover:scale-105 shadow-2xl shadow-white/10"
-                        >
-                            無料相談・お見積もりはこちら
-                            <ArrowRight className="ml-2" />
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                        <a href="#contact" className="pop-button w-full sm:w-auto flex items-center justify-center gap-2 group">
+                            Start Project
+                            <ArrowRight className="transition-transform group-hover:translate-x-1" />
                         </a>
                     </div>
-
-                    <p className="mt-8 text-sm text-slate-500">
-                        ※ オンラインMTG（Zoom/Meet）も可能です。<br />
-                        ※ 営業目的のお問い合わせはお断りしております。
-                    </p>
-                </motion.div>
+                </ScrollReveal>
             </div>
         </section>
     );

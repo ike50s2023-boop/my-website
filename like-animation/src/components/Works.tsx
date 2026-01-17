@@ -1,93 +1,110 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowUpRight, PlayCircle } from "lucide-react";
-import Image from "next/image";
+import ScrollReveal from "@/components/ui/ScrollReveal";
+import { Play, ExternalLink } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
-const PORTFOLIO_ITEMS = [
+export const WORKS = [
     {
-        title: "Skill Connect",
-        subtitle: "CtoC プラットフォーム紹介動画",
-        description: "複雑なアプリの利用フローを、60秒で「疑似体験」させる。ユーザー同士をつなぐマッチングサービスの仕組みを、UIアニメーションで直感的に表現。言葉だけでは伝わりにくい「手軽さ」や「カレンダー連携の利便性」を視覚化し、LPでのアプリ登録率（CVR）向上に貢献しました。",
-        tags: ["Service Introduction", "UI Animation", "CVR Up"],
-        color: "bg-blue-50",
-        image: "/images/work-1.jpg" // Note: Build placeholders if needed or use divs
+        title: "商品プロモーション動画",
+        category: "モーショングラフィックス",
+        description: "テクノロジー企業の新製品ローンチ用アニメーション",
     },
     {
-        title: "ロジカルシンキング研修",
-        subtitle: "社内研修・eラーニング教材",
-        description: "「やらされる研修」を「見たくなるコンテンツ」へ。抽象的なビジネススキルを、共感を生むストーリーと図解で解説。テキスト教材では定着しづらかった思考法をアニメーション化し、受講者の理解度テスト平均点が20点アップ。現場で「使える」研修へと変革しました。",
-        tags: ["Internal Training", "Educational", "Understanding Up"],
-        color: "bg-slate-50",
-        image: "/images/work-2.jpg"
-    }
+        title: "企業ブランドムービー",
+        category: "2Dアニメーション",
+        description: "スタートアップのビジョンを伝えるストーリー映像",
+    },
+    {
+        title: "サービス解説動画",
+        category: "インフォグラフィック",
+        description: "複雑なSaaSサービスをわかりやすく可視化",
+    },
+    {
+        title: "SNSキャンペーン動画",
+        category: "ショートアニメ",
+        description: "TikTok・Reels向けバイラルコンテンツ",
+    },
 ];
+
+export function WorkCard({ work, index }: { work: (typeof WORKS)[0]; index: number }) {
+    const cardRef = useRef<HTMLDivElement>(null);
+    const { scrollYProgress } = useScroll({
+        target: cardRef,
+        offset: ["start end", "end start"],
+    });
+
+    const scale = useTransform(scrollYProgress, [0, 0.5], [0.95, 1]);
+    const x = useTransform(scrollYProgress, [0, 0.4], [index % 2 === 0 ? -30 : 30, 0]);
+    const opacity = useTransform(scrollYProgress, [0, 0.4], [0, 1]);
+    const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
+
+    return (
+        <motion.div
+            className="group relative"
+            style={{ x, opacity, y }}
+        >
+            <div ref={cardRef} className="relative aspect-video w-full overflow-hidden rounded-lg mb-6 transition-colors border border-white/5 bg-white/5 group-hover:border-white/20">
+                {/* Rainbow hover border highlight */}
+                <div className="absolute inset-0 rainbow-glow opacity-0 group-hover:opacity-10 transition-opacity pointer-events-none" />
+
+                <motion.div style={{ scale }} className="w-full h-full flex items-center justify-center bg-gradient-to-br from-white/10 to-transparent">
+                    <Play className="w-12 h-12 transition-colors text-white/20 group-hover:text-amber-400" />
+                </motion.div>
+
+                {/* Overlay */}
+                <div className="absolute inset-0 transition-colors duration-500 bg-black/20 group-hover:bg-black/0" />
+
+                {/* Badge */}
+                <div className="absolute top-4 left-4 px-3 py-1 backdrop-blur-md rounded-sm text-[10px] font-bold uppercase tracking-widest bg-black/50 border border-white/10 text-white">
+                    {work.category}
+                </div>
+            </div>
+
+            {/* Content */}
+            <div className="space-y-2">
+                <h3 className="text-lg font-bold transition-colors text-white group-hover:rainbow-text">
+                    {work.title}
+                </h3>
+                <p className="text-sm font-light leading-relaxed text-white/40">{work.description}</p>
+            </div>
+        </motion.div>
+    );
+}
 
 export default function Works() {
     return (
-        <section id="works" className="pro-section bg-white relative">
-            <div className="pro-container">
-                {/* Section Header */}
-                <div className="text-center max-w-3xl mx-auto mb-20">
-                    <span className="pro-badge mb-4">Portfolio</span>
-                    <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
-                        ビジネス課題を解決した、<br className="md:hidden" />確かな実績。
+        <section id="works" className="py-40 bg-black relative">
+            <div className="max-w-7xl mx-auto px-6">
+                {/* Section header */}
+                <ScrollReveal className="mb-24">
+                    <span className="text-white/30 text-xs font-medium tracking-[0.3em] uppercase block mb-4">
+                        Featured Works
+                    </span>
+                    {/* Fix 4: Rainbow Header */}
+                    <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight rainbow-text inline-block">
+                        制作事例
                     </h2>
-                    <p className="text-slate-500 leading-relaxed">
-                        単なる映像制作にとどまらず、クライアントのKPI達成にコミットした制作事例の一部をご紹介します。
-                    </p>
-                </div>
+                </ScrollReveal>
 
-                {/* Portfolio Grid */}
-                <div className="grid lg:grid-cols-2 gap-12">
-                    {PORTFOLIO_ITEMS.map((item, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.2 }}
-                            className="group cursor-pointer"
-                        >
-                            {/* Thumbnail Area */}
-                            <div className={`relative aspect-video rounded-xl overflow-hidden mb-8 border border-slate-100 shadow-sm transition-all duration-500 group-hover:shadow-xl ${item.color} flex items-center justify-center`}>
-                                <div className="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/5 transition-colors z-10" />
-
-                                {/* Play Button Overlay */}
-                                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-20 transform scale-90 group-hover:scale-100 duration-300">
-                                    <div className="w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center text-accent">
-                                        <PlayCircle size={32} fill="currentColor" className="text-white fill-accent" />
-                                    </div>
-                                </div>
-
-                                {/* Placeholder Visual (Replace with Image when available) */}
-                                <div className="text-center p-8 opacity-40 group-hover:opacity-50 transition-opacity">
-                                    <div className="text-4xl font-bold text-slate-300 tracking-widest uppercase">{item.title}</div>
-                                </div>
-                            </div>
-
-                            {/* Content Area */}
-                            <div className="pr-4">
-                                <div className="flex flex-wrap gap-2 mb-4">
-                                    {item.tags.map((tag) => (
-                                        <span key={tag} className="text-[10px] font-bold uppercase tracking-wider text-slate-400 border border-slate-200 px-2 py-1 rounded-sm">
-                                            {tag}
-                                        </span>
-                                    ))}
-                                </div>
-
-                                <h3 className="text-2xl font-bold text-slate-900 mb-2 group-hover:text-accent transition-colors flex items-center gap-2">
-                                    {item.title}
-                                    <ArrowUpRight className="w-5 h-5 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-accent" />
-                                </h3>
-                                <div className="text-sm font-bold text-slate-500 mb-4">{item.subtitle}</div>
-                                <p className="text-slate-600 leading-relaxed text-sm">
-                                    {item.description}
-                                </p>
-                            </div>
-                        </motion.div>
+                {/* Works grid */}
+                <div className="grid md:grid-cols-2 gap-x-12 gap-y-16 mb-20">
+                    {WORKS.map((work, index) => (
+                        <WorkCard key={work.title} work={work} index={index} />
                     ))}
                 </div>
+
+                {/* View more CTA */}
+                <ScrollReveal className="text-center">
+                    <a
+                        href="/works"
+                        className="minimal-button-outline inline-flex items-center gap-3 group text-white border-white/20 hover:bg-white hover:text-black"
+                    >
+                        すべての制作事例を見る
+                        <ExternalLink className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                    </a>
+                </ScrollReveal>
             </div>
         </section>
     );
