@@ -1,9 +1,9 @@
 "use client";
 
 import ScrollReveal from "@/components/ui/ScrollReveal";
-import { Play, ExternalLink } from "lucide-react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { Play, ExternalLink, X } from "lucide-react";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { useRef, useState } from "react";
 
 export const WORKS = [
     {
@@ -20,7 +20,7 @@ export const WORKS = [
     },
 ];
 
-export function WorkCard({ work, index }: { work: (typeof WORKS)[0]; index: number }) {
+export function WorkCard({ work, index, onOpen }: { work: (typeof WORKS)[0]; index: number; onOpen: () => void }) {
     const cardRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
         target: cardRef,
@@ -34,8 +34,9 @@ export function WorkCard({ work, index }: { work: (typeof WORKS)[0]; index: numb
 
     return (
         <motion.div
-            className="group relative"
+            className="group relative cursor-pointer"
             style={{ x, opacity, y }}
+            onClick={onOpen}
         >
             <div ref={cardRef} className="relative aspect-video w-full overflow-hidden rounded-lg mb-6 transition-colors border border-white/5 bg-white/5 group-hover:border-white/20">
                 {/* Rainbow hover border highlight */}
@@ -76,6 +77,8 @@ export function WorkCard({ work, index }: { work: (typeof WORKS)[0]; index: numb
 }
 
 export default function Works() {
+    const [activeVideo, setActiveVideo] = useState<string | null>(null);
+
     return (
         <section id="works" className="py-40 bg-black relative">
             <div className="max-w-7xl mx-auto px-6">
@@ -93,7 +96,12 @@ export default function Works() {
                 {/* Works grid */}
                 <div className="grid md:grid-cols-2 gap-x-12 gap-y-16 mb-20">
                     {WORKS.map((work, index) => (
-                        <WorkCard key={work.title} work={work} index={index} />
+                        <WorkCard
+                            key={work.title}
+                            work={work}
+                            index={index}
+                            onOpen={() => setActiveVideo(work.videoSrc)}
+                        />
                     ))}
                 </div>
 
@@ -108,6 +116,42 @@ export default function Works() {
                     </a>
                 </ScrollReveal>
             </div>
+
+            {/* Video Modal */}
+            <AnimatePresence>
+                {activeVideo && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-10 bg-black/95 backdrop-blur-xl"
+                        onClick={() => setActiveVideo(null)}
+                    >
+                        <motion.div
+                            initial={{ scale: 0.9, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.9, opacity: 0 }}
+                            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                            className="relative w-full max-w-5xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl border border-white/10"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <button
+                                className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/50 text-white hover:bg-white hover:text-black transition-colors"
+                                onClick={() => setActiveVideo(null)}
+                            >
+                                <X className="w-6 h-6" />
+                            </button>
+                            <video
+                                src={activeVideo}
+                                className="w-full h-full"
+                                controls
+                                autoPlay
+                                playsInline
+                            />
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </section>
     );
 }
