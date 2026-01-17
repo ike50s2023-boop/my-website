@@ -51,8 +51,8 @@ export default function Process() {
 
                     <div className="space-y-12">
                         {steps.map((step, index) => (
-                            <ScrollReveal key={step.number} delay={index * 0.1}>
-                                <div className={`relative flex gap-8 p-6 rounded-2xl transition-all ${step.highlight ? 'bg-white/5 border border-pop-primary/30 shadow-[0_0_30px_rgba(255,46,99,0.1)]' : 'hover:bg-white/5 border border-transparent'}`}>
+                            <ScrollReveal key={step.number} delay={index * 0.1} yOffset={100}>
+                                <div className={`relative flex gap-8 p-6 rounded-2xl transition-all border ${step.highlight ? 'bg-white/[0.08] border-pop-primary/40 shadow-[0_0_30px_rgba(255,46,99,0.1)]' : 'bg-white/[0.03] border-white/10 hover:bg-white/[0.06] hover:border-white/20'}`}>
                                     {/* Number/Icon Column */}
                                     <div className="flex-shrink-0 relative z-10">
                                         <div className={`w-14 h-14 rounded-full bg-black border border-white/10 flex items-center justify-center text-xl font-bold ${step.color} shadow-lg shadow-black/50`}>

@@ -6,21 +6,21 @@ import { Check } from "lucide-react";
 const plans = [
     {
         name: "Light",
-        price: "50-80",
+        price: "5",
         description: "素材支給でコストを抑えたい方へ。",
         features: ["ヒアリング", "構成作成(簡易)", "アニメーション編集", "修正1回"],
         popular: false
     },
     {
         name: "Standard",
-        price: "80-150",
+        price: "15",
         description: "標準的なアニメーション制作。",
         features: ["詳細ヒアリング", "企画・構成・絵コンテ", "オリジナルイラスト", "ナレーション・BGM", "修正2回"],
         popular: true
     },
     {
         name: "Premium",
-        price: "150~",
+        price: "25",
         description: "リッチな演出と長期運用。",
         features: ["戦略的企画・コンサル", "ハイエンドアニメーション", "複数パターン制作", "広告運用サポート", "修正無制限"],
         popular: false
