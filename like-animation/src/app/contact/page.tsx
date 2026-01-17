@@ -20,7 +20,7 @@ export default function ContactPage() {
     };
 
     return (
-        <main className="min-h-screen bg-white">
+        <main className="min-h-screen bg-black">
             <Header />
 
             <section className="pt-40 pb-24 px-6 max-w-2xl mx-auto">
@@ -28,22 +28,22 @@ export default function ContactPage() {
                     <span className="inline-block px-4 py-1 rounded-full bg-pop-primary/10 text-pop-primary text-sm font-black uppercase tracking-widest mb-4">
                         Contact
                     </span>
-                    <h1 className="text-4xl md:text-6xl font-black text-gray-900 tracking-tighter mt-4">
+                    <h1 className="text-4xl md:text-6xl font-black text-white tracking-tighter mt-4">
                         お問い合わせ
                     </h1>
-                    <p className="text-gray-500 font-bold mt-6">
+                    <p className="text-white/60 font-medium mt-6">
                         制作のご依頼、お見積もり、ご相談など、<br />
                         お気軽にお問い合わせください。
                     </p>
                 </ScrollReveal>
 
                 {formStatus === "success" ? (
-                    <ScrollReveal className="pop-card p-12 text-center border-4 border-green-100">
-                        <div className="w-20 h-20 bg-green-100 rounded-[24px] flex items-center justify-center mx-auto mb-8">
-                            <CheckCircle2 className="w-10 h-10 text-green-600" />
+                    <ScrollReveal className="pop-card p-12 text-center border-4 border-green-100/20 bg-white/5">
+                        <div className="w-20 h-20 bg-green-100/10 rounded-[24px] flex items-center justify-center mx-auto mb-8">
+                            <CheckCircle2 className="w-10 h-10 text-green-400" />
                         </div>
-                        <h3 className="text-3xl font-black text-gray-900 mb-4">送信完了しました</h3>
-                        <p className="text-gray-600 font-bold mb-10">
+                        <h3 className="text-3xl font-black text-white mb-4">送信完了しました</h3>
+                        <p className="text-white/60 font-medium mb-10">
                             お問い合わせありがとうございます。<br />
                             内容を確認次第、担当者よりご連絡させていただきます。
                         </p>
@@ -55,58 +55,58 @@ export default function ContactPage() {
                         </button>
                     </ScrollReveal>
                 ) : (
-                    <ScrollReveal delay={0.2} className="pop-card p-8 md:p-12">
+                    <ScrollReveal delay={0.2} className="relative p-8 md:p-12 bg-white/5 rounded-[32px] border border-white/10">
                         <form onSubmit={handleSubmit} className="space-y-8">
                             {/* Name */}
                             <div className="space-y-3">
-                                <label htmlFor="name" className="text-sm font-black text-gray-900 uppercase tracking-widest">
+                                <label htmlFor="name" className="text-sm font-black text-white/40 uppercase tracking-widest">
                                     お名前 <span className="text-pop-secondary">*</span>
                                 </label>
                                 <input
                                     type="text"
                                     id="name"
                                     required
-                                    className="w-full px-6 py-4 bg-gray-50 border-2 border-transparent focus:border-pop-primary focus:bg-white rounded-2xl text-gray-900 focus:outline-none transition-all font-bold"
+                                    className="w-full px-6 py-4 bg-white/5 border-2 border-white/5 focus:border-pop-primary focus:bg-white/10 rounded-2xl text-white focus:outline-none transition-all font-bold"
                                     placeholder="山田 太郎"
                                 />
                             </div>
 
                             {/* Email */}
                             <div className="space-y-3">
-                                <label htmlFor="email" className="text-sm font-black text-gray-900 uppercase tracking-widest">
+                                <label htmlFor="email" className="text-sm font-black text-white/40 uppercase tracking-widest">
                                     メールアドレス <span className="text-pop-secondary">*</span>
                                 </label>
                                 <input
                                     type="email"
                                     id="email"
                                     required
-                                    className="w-full px-6 py-4 bg-gray-50 border-2 border-transparent focus:border-pop-primary focus:bg-white rounded-2xl text-gray-900 focus:outline-none transition-all font-bold"
+                                    className="w-full px-6 py-4 bg-white/5 border-2 border-white/5 focus:border-pop-primary focus:bg-white/10 rounded-2xl text-white focus:outline-none transition-all font-bold"
                                     placeholder="info@example.com"
                                 />
                             </div>
 
                             {/* Company */}
                             <div className="space-y-3">
-                                <label htmlFor="company" className="text-sm font-black text-gray-900 uppercase tracking-widest">
+                                <label htmlFor="company" className="text-sm font-black text-white/40 uppercase tracking-widest">
                                     会社名
                                 </label>
                                 <input
                                     type="text"
                                     id="company"
-                                    className="w-full px-6 py-4 bg-gray-50 border-2 border-transparent focus:border-pop-primary focus:bg-white rounded-2xl text-gray-900 focus:outline-none transition-all font-bold"
+                                    className="w-full px-6 py-4 bg-white/5 border-2 border-white/5 focus:border-pop-primary focus:bg-white/10 rounded-2xl text-white focus:outline-none transition-all font-bold"
                                     placeholder="株式会社〇〇"
                                 />
                             </div>
 
                             {/* Type */}
                             <div className="space-y-3">
-                                <label htmlFor="type" className="text-sm font-black text-gray-900 uppercase tracking-widest">
+                                <label htmlFor="type" className="text-sm font-black text-white/40 uppercase tracking-widest">
                                     お問い合わせ種別
                                 </label>
                                 <div className="relative">
                                     <select
                                         id="type"
-                                        className="w-full px-6 py-4 bg-gray-50 border-2 border-transparent focus:border-pop-primary focus:bg-white rounded-2xl text-gray-900 focus:outline-none transition-all font-bold appearance-none cursor-pointer"
+                                        className="w-full px-6 py-4 bg-white/5 border-2 border-white/5 focus:border-pop-primary focus:bg-white/10 rounded-2xl text-white focus:outline-none transition-all font-bold appearance-none cursor-pointer"
                                         defaultValue="consultation"
                                     >
                                         <option value="consultation">制作のご相談</option>
@@ -123,13 +123,13 @@ export default function ContactPage() {
 
                             {/* Message */}
                             <div className="space-y-3">
-                                <label htmlFor="message" className="text-sm font-black text-gray-900 uppercase tracking-widest">
+                                <label htmlFor="message" className="text-sm font-black text-white/40 uppercase tracking-widest">
                                     詳細・ご相談内容
                                 </label>
                                 <textarea
                                     id="message"
                                     rows={6}
-                                    className="w-full px-6 py-4 bg-gray-50 border-2 border-transparent focus:border-pop-primary focus:bg-white rounded-2xl text-gray-900 focus:outline-none transition-all font-bold resize-none"
+                                    className="w-full px-6 py-4 bg-white/5 border-2 border-white/5 focus:border-pop-primary focus:bg-white/10 rounded-2xl text-white focus:outline-none transition-all font-bold resize-none"
                                     placeholder="制作したい動画のイメージや、参考にしたい動画のURLなどございましたらご記入ください。"
                                 ></textarea>
                             </div>
@@ -158,6 +158,6 @@ export default function ContactPage() {
             </section>
 
             <Footer />
-        </main>
+        </main >
     );
 }

@@ -86,7 +86,7 @@ html {
 }
 
 .rainbow-text {
-  background: linear-gradient(to right, #3B82F6 0%, #08D9D6 15%, #FACC15 35%, #FF9A00 55%, #FF2E63 75%, #EC4899 90%, #3B82F6 100%);
+  background: linear-gradient(to right, #93C5FD 0%, #5EEAD4 15%, #BEF264 30%, #FEF08A 45%, #FCD34D 60%, #FCA5A5 80%, #93C5FD 100%);
   background-size: 200% auto;
   @apply bg-clip-text text-transparent animate-rainbow-flow;
   animation-duration: 12s;
@@ -97,7 +97,7 @@ html {
 }
 
 .rainbow-glow {
-  background: linear-gradient(to right, #3B82F6 0%, #08D9D6 20%, #FACC15 40%, #FF9A00 60%, #FF2E63 80%, #EC4899 100%);
+  background: linear-gradient(to right, #93C5FD 0%, #5EEAD4 15%, #BEF264 30%, #FEF08A 45%, #FCD34D 60%, #FCA5A5 80%, #93C5FD 100%);
   @apply blur-xl;
 }
 

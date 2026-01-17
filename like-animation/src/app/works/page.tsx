@@ -54,17 +54,17 @@ const ALL_WORKS = [
 
 export default function WorksPage() {
     return (
-        <main className="min-h-screen bg-white">
+        <main className="min-h-screen bg-black">
             <Header />
 
             <section className="pt-40 pb-24 px-6 max-w-7xl mx-auto">
                 {/* Page Header */}
                 <div className="text-center mb-16">
                     <span className="pro-badge mb-4">Portfolio</span>
-                    <h1 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6">
+                    <h1 className="text-3xl md:text-5xl font-bold text-white mb-6">
                         制作事例一覧
                     </h1>
-                    <p className="text-slate-500 leading-relaxed max-w-2xl mx-auto">
+                    <p className="text-white/60 leading-relaxed max-w-2xl mx-auto">
                         多種多様な業界・ジャンルの制作実績がございます。<br className="hidden md:inline" />
                         クライアントのビジネスゴール達成に貢献した事例をご覧ください。
                     </p>
@@ -97,8 +97,8 @@ export default function WorksPage() {
                             className="group cursor-pointer flex flex-col h-full"
                         >
                             {/* Thumbnail Area */}
-                            <div className={`relative aspect-video rounded-xl overflow-hidden mb-6 border border-slate-100 shadow-sm transition-all duration-300 group-hover:shadow-lg ${work.color} flex items-center justify-center`}>
-                                <div className="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/5 transition-colors z-10" />
+                            <div className={`relative aspect-video rounded-xl overflow-hidden mb-6 border border-white/10 shadow-sm transition-all duration-300 group-hover:shadow-lg ${work.color} flex items-center justify-center`}>
+                                <div className="absolute inset-0 bg-white/0 group-hover:bg-white/5 transition-colors z-10" />
 
                                 {/* Play Button Overlay */}
                                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-20 transform scale-90 group-hover:scale-100 duration-300">
@@ -123,12 +123,12 @@ export default function WorksPage() {
                                     ))}
                                 </div>
 
-                                <h3 className="text-lg font-bold text-slate-900 mb-1 group-hover:text-accent transition-colors flex items-center gap-2">
+                                <h3 className="text-lg font-bold text-white mb-1 group-hover:rainbow-text transition-colors flex items-center gap-2">
                                     {work.title}
-                                    <ArrowUpRight className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-accent" />
+                                    <ArrowUpRight className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-white" />
                                 </h3>
-                                <div className="text-xs font-bold text-slate-500 mb-3">{work.subtitle}</div>
-                                <p className="text-slate-600 leading-relaxed text-sm flex-grow">
+                                <div className="text-xs font-bold text-white/40 mb-3">{work.subtitle}</div>
+                                <p className="text-white/60 leading-relaxed text-sm flex-grow">
                                     {work.description}
                                 </p>
                             </div>
