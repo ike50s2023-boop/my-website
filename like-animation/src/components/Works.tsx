@@ -7,24 +7,14 @@ import { useRef } from "react";
 
 export const WORKS = [
     {
-        title: "商品プロモーション動画",
-        category: "モーショングラフィックス",
-        description: "テクノロジー企業の新製品ローンチ用アニメーション",
+        title: "Skill Connect",
+        category: "サービス紹介動画",
+        description: "複雑なアプリ利用フローを60秒で「疑似体験」。UIアニメーションで手軽さを可視化し、CVR向上に貢献。",
     },
     {
-        title: "企業ブランドムービー",
-        category: "2Dアニメーション",
-        description: "スタートアップのビジョンを伝えるストーリー映像",
-    },
-    {
-        title: "サービス解説動画",
-        category: "インフォグラフィック",
-        description: "複雑なSaaSサービスをわかりやすく可視化",
-    },
-    {
-        title: "SNSキャンペーン動画",
-        category: "ショートアニメ",
-        description: "TikTok・Reels向けバイラルコンテンツ",
+        title: "ロジカルシンキング研修",
+        category: "研修・eラーニング",
+        description: "「やらされる研修」を「見たくなる」へ。抽象的な思考法をストーリーで図解し、理解度テスト平均20点アップ。",
     },
 ];
 
@@ -64,10 +54,10 @@ export function WorkCard({ work, index }: { work: (typeof WORKS)[0]; index: numb
 
             {/* Content */}
             <div className="space-y-2">
-                <h3 className="text-lg font-bold transition-colors text-white group-hover:rainbow-text">
+                <h3 className="text-xl font-bold transition-colors text-white group-hover:rainbow-text">
                     {work.title}
                 </h3>
-                <p className="text-sm font-light leading-relaxed text-white/40">{work.description}</p>
+                <p className="text-sm font-light leading-relaxed text-white/60">{work.description}</p>
             </div>
         </motion.div>
     );
@@ -80,11 +70,11 @@ export default function Works() {
                 {/* Section header */}
                 <ScrollReveal className="mb-24">
                     <span className="text-white/30 text-xs font-medium tracking-[0.3em] uppercase block mb-4">
-                        Featured Works
+                        Portfolio
                     </span>
                     {/* Fix 4: Rainbow Header */}
                     <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight rainbow-text inline-block">
-                        制作事例
+                        導入実績
                     </h2>
                 </ScrollReveal>
 

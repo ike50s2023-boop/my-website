@@ -14,13 +14,15 @@
   /* Off White */
   --color-pop-dark: #252A34;
   /* Gunmetal */
+  --color-pop-orange: #FF9A00;
+  /* Orange */
 
   /* Define font family - matching layout font variable if needed, or fallback */
   --font-outfit: "Outfit", sans-serif;
 
   /* Animations */
   --animate-float: float 6s ease-in-out infinite;
-  --animate-rainbow-flow: rainbow-flow 4s linear infinite;
+  --animate-rainbow-flow: rainbow-flow 8s linear infinite;
 
   @keyframes float {
 
@@ -36,11 +38,11 @@
 
   @keyframes rainbow-flow {
     0% {
-      background-position: 0% center;
+      background-position: 0% 50%;
     }
 
     100% {
-      background-position: 200% center;
+      background-position: 100% 50%;
     }
   }
 }
@@ -60,7 +62,7 @@ html {
 
 /* Custom Utilities */
 .glass-card {
-  @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl transition-all duration-300;
+  @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl transition-all duration-300;
 }
 
 .glass-card:hover {
@@ -68,11 +70,11 @@ html {
 }
 
 .rainbow-text {
-  @apply bg-clip-text text-transparent bg-linear-to-r from-pop-primary via-purple-500 to-pop-secondary bg-[length:200%_auto] animate-rainbow-flow;
+  @apply bg-clip-text text-transparent bg-linear-to-r from-[#3b82f6] via-[#ec4899] via-[#facc15] to-[#8b5cf6] bg-[length:300%_auto] animate-rainbow-flow;
 }
 
 .rainbow-glow {
-  @apply bg-linear-to-r from-pop-primary via-purple-500 to-pop-secondary blur-xl;
+  @apply bg-linear-to-r from-[#3b82f6] via-[#ec4899] via-[#facc15] to-[#8b5cf6] blur-xl;
 }
 
 .pop-button {

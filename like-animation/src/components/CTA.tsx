@@ -12,21 +12,21 @@ export default function CTA() {
             <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
                 <ScrollReveal>
                     {/* Fix 4: Rainbow Header */}
-                    <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tighter mb-8 leading-tight">
-                        Ready to <br />
-                        <span className="rainbow-text">Make Waves?</span>
+                    <h2 className="text-4xl md:text-7xl font-black text-white tracking-tighter mb-8 rainbow-text">
+                        動画活用で、<br /><span className="inline-block whitespace-nowrap">ビジネスを加速させる。</span>
                     </h2>
-                    <p className="text-white/40 text-lg md:text-xl font-light mb-12 max-w-2xl mx-auto">
-                        あなたのアイデアを、最高のアニメーションで形にします。<br />
-                        まずはお気軽にご相談ください。
+                    <p className="text-xl text-white/60 mb-12 max-w-2xl mx-auto leading-relaxed">
+                        まずは「現状の課題」をお聞かせください。<br />
+                        具体的な映像イメージがなくても構いません。<br />
+                        目的達成のための最適なプランをご提案します。
                     </p>
-
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                        <a href="#contact" className="pop-button w-full sm:w-auto flex items-center justify-center gap-2 group">
-                            Start Project
-                            <ArrowRight className="transition-transform group-hover:translate-x-1" />
-                        </a>
-                    </div>
+                    <a
+                        href="/contact"
+                        className="pop-button inline-flex items-center gap-3 group"
+                    >
+                        無料相談を予約する
+                        <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                    </a>
                 </ScrollReveal>
             </div>
         </section>

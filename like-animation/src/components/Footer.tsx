@@ -38,8 +38,8 @@ export default function Footer() {
                     {/* Brand column */}
                     <div className="space-y-6">
                         <div className="flex items-center gap-3">
-                            <Image src="/logo.png" alt="Like Animation" width={32} height={32} className="w-8 h-8 grayscale invert opacity-50" />
-                            <h3 className="text-sm font-bold text-white/50 tracking-widest uppercase">Like Animation</h3>
+                            <Image src="/logo.png" alt="Like Animation" width={40} height={40} className="w-10 h-10 object-contain" />
+                            <h3 className="text-sm font-bold text-white tracking-widest uppercase">Like Animation</h3>
                         </div>
                         <p className="text-white/30 text-xs font-light leading-relaxed">
                             スクリーンの枠を飛び出し、<br />見る人の心に直接届く映像を。

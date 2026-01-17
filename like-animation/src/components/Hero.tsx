@@ -7,10 +7,10 @@ import { useRef } from "react";
 
 const HERO_CONTENT = {
     tagline: "Motion & Creativity Unframed",
-    headline: "アイデアを動かす。",
-    headlineAccent: "心を動かす。", // Applying rainbow here
-    description: "スクリーンの枠を飛び出し、見る人の心に直接届く映像体験。\n確かな技術と遊び心で、想像を超えるアニメーションを。",
-    ctaPrimary: "Start Project",
+    headline: "「ただ作るだけ」の動画はもう終わり。",
+    headlineAccent: "”伝わる”動画制作。",
+    description: "売上アップ・業務効率化に特化。\n企画・制作から運用まで丸投げOK。\n御社の営業・採用課題を「伝わる動画」で解決します。",
+    ctaPrimary: "無料相談・戦略相談はこちら",
     ctaSecondary: "View Works"
 };
 
@@ -37,53 +37,67 @@ export default function Hero() {
             </div>
 
             <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-                {/* Fix 2 & 7: Badge with Logo Entrance */}
+                {/* Floating Elements removed per user request */}
+                {/* Logo & Badge Area - Stacked Vertically */}
                 <motion.div
-                    className="flex items-center justify-center gap-4 mb-10"
+                    className="flex flex-col items-center justify-center gap-6 mb-8"
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.8, delay: 2.8 }}
                 >
-                    {/* Tiny Logo Animation */}
+                    {/* Logo - Larger, Vertical Placement */}
                     <motion.div
-                        initial={{ opacity: 0, x: 20, rotate: -90 }}
-                        animate={{ opacity: 1, x: 0, rotate: 0 }}
-                        transition={{ duration: 0.6, delay: 3.2 }}
-                        className="w-10 h-10 relative"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 3.0 }}
+                        className="w-40 h-40 relative"
                     >
-                        <Image src="/logo.png" width={40} height={40} alt="Logo" className="grayscale invert w-full h-full object-contain" />
+                        <Image
+                            src="/logo-new.png"
+                            width={160}
+                            height={160}
+                            alt="Logo"
+                            className="w-full h-full object-contain"
+                        />
                     </motion.div>
 
-                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md">
-                        <Sparkles className="w-3.5 h-3.5 text-pop-secondary" />
-                        <span className="text-white/80 text-xs font-bold tracking-[0.2em] uppercase">
+                    {/* Text Badge - No Frame, Just Text */}
+                    <motion.div
+                        className="flex items-center gap-3"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.8, delay: 3.4 }}
+                    >
+                        <Sparkles className="w-5 h-5 text-pop-secondary" />
+                        <span className="text-white text-base md:text-lg font-bold tracking-[0.2em] uppercase">
                             {HERO_CONTENT.tagline}
                         </span>
-                    </div>
+                    </motion.div>
                 </motion.div>
 
-                {/* Headline */}
-                <div className="mb-12 relative">
-                    <motion.h1
-                        className="text-5xl md:text-8xl lg:text-9xl font-black text-white leading-[1.1] tracking-tighter"
-                        initial={{ opacity: 0, y: 50 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1, delay: 3.0, ease: [0.2, 0.65, 0.3, 0.9] }}
-                        style={{ y }}
-                    >
-                        {/* Fix 1: No wrap */}
-                        <div className="whitespace-nowrap inline-block">{HERO_CONTENT.headline}</div>
-                        <br />
-                        {/* Fix 3: Slide out effect instead of mask */}
-                        <motion.div
-                            style={{ x: textX, opacity: textOpacity }}
-                            className="inline-block rainbow-text"
+                {/* Main Headline - Resized to fit, PALT for kerning */}
+                <h1
+                    className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-8 leading-tight"
+                    style={{ fontFeatureSettings: '"palt"' }}
+                >
+                    <span className="inline-block overflow-hidden">
+                        <motion.span
+                            initial={{ y: "100%" }}
+                            animate={{ y: 0 }}
+                            transition={{ duration: 0.8, delay: 3.0, ease: [0.16, 1, 0.3, 1] }}
+                            className="block"
                         >
-                            {HERO_CONTENT.headlineAccent}
-                        </motion.div>
-                    </motion.h1>
-                </div>
-
+                            {HERO_CONTENT.headline}
+                        </motion.span>
+                    </span>
+                    <br />
+                    <motion.div
+                        style={{ x: textX, opacity: textOpacity }}
+                        className="inline-block rainbow-text mt-2 md:mt-4"
+                    >
+                        {HERO_CONTENT.headlineAccent}
+                    </motion.div>
+                </h1>
                 {/* Description */}
                 <motion.p
                     className="text-white/60 text-lg md:text-xl font-medium mb-16 max-w-2xl mx-auto leading-relaxed"
@@ -111,16 +125,7 @@ export default function Hero() {
                 </motion.div>
             </div>
 
-            {/* Floating Elements for "POP" feel */}
-            <motion.div
-                className="absolute bottom-20 right-10 md:right-20 hidden lg:block"
-                animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            >
-                <div className="glass-card p-6 rotate-12 border-pop-secondary/30">
-                    <Image src="/logo.png" width={80} height={80} alt="Badge" className="grayscale invert opacity-80" />
-                </div>
-            </motion.div>
+            {/* Floating Elements removed */}
         </section>
     );
 }

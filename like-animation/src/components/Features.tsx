@@ -7,27 +7,21 @@ export default function Features() {
     const features = [
         {
             icon: Zap,
-            title: "Impact First",
-            description: "最初の3秒で心を掴む。視聴継続率を高めるための演出設計。",
+            title: "「見えないもの」を可視化",
+            description: "システム構造、抽象的な概念、膨大なデータ。言葉だけでは伝わりにくい情報を、直感的なアニメーションと図解で「一目でわかる」形に変換します。",
             color: "text-amber-400"
         },
         {
             icon: Heart,
-            title: "Emotional Design",
-            description: "機能説明だけじゃない。ブランドの「想い」を乗せたストーリーテリング。",
+            title: "ビジネスの変化に対応する「資産性」",
+            description: "実写動画と異なり、撮影し直す必要がありません。UIの変更やサービスのアップデートに合わせて、部分的な修正だけで長く使い続けられる「資産」としての動画を制作します。",
             color: "text-pop-primary"
         },
         {
             icon: Layout,
-            title: "Cross Device",
-            description: "スマホ、PC、サイネージ。あらゆるスクリーンで最適化された視聴体験。",
+            title: "営業・教育をワンストップで",
+            description: "制作したアセット（イラストやキャラクター）は、営業資料やWebサイト、社内マニュアルにも流用可能。ブランドイメージを統一しながら、トータルコストを抑えます。",
             color: "text-pop-secondary"
-        },
-        {
-            icon: Sparkles,
-            title: "Trend & Pop",
-            description: "今の時代の空気感を取り入れた、「シェアしたくなる」映像表現。",
-            color: "text-purple-400"
         }
     ];
 
@@ -41,15 +35,14 @@ export default function Features() {
                 <ScrollReveal className="text-center mb-20">
                     {/* Fix 4: Rainbow Header */}
                     <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight rainbow-text inline-block mb-6">
-                        選ばれる理由
+                        独自の強み
                     </h2>
                     <p className="text-white/50 text-lg font-light max-w-2xl mx-auto">
-                        Logic <span className="text-pop-secondary">&times;</span> Magic<br />
-                        ロジカルな構成とエモーショナルな演出の融合。
+                        「伝わらない」損失をゼロにする、<br />ビジネス直結型アニメーション。
                     </p>
                 </ScrollReveal>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid md:grid-cols-3 gap-8">
                     {features.map((feature, index) => {
                         const Icon = feature.icon;
                         return (
