@@ -20,6 +20,7 @@ export const metadata: Metadata = {
 
 import SmoothScroll from "@/components/ui/SmoothScroll";
 import IntroLoader from "@/components/ui/IntroLoader";
+import FloatingDecor from "@/components/ui/FloatingDecor";
 
 export default function RootLayout({
   children,
@@ -33,6 +34,7 @@ export default function RootLayout({
       >
         <div className="bg-texture" />
         <div className="vignette-overlay" />
+        <FloatingDecor />
         <IntroLoader />
         <SmoothScroll>
           {children}

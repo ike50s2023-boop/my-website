@@ -10,7 +10,7 @@ export default function CTA() {
             <div className="absolute inset-0 bg-gradient-to-t from-pop-primary/10 via-transparent to-transparent opacity-50" />
 
             <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
-                <ScrollReveal>
+                <ScrollReveal yOffset={60} duration={1.2}>
                     {/* Fix 4: Rainbow Header */}
                     <h2 className="text-4xl md:text-7xl font-black text-white tracking-tighter mb-8 rainbow-text">
                         動画活用で、<br /><span className="inline-block whitespace-nowrap">ビジネスを加速させる。</span>

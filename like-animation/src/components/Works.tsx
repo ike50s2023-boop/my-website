@@ -10,11 +10,13 @@ export const WORKS = [
         title: "Skill Connect",
         category: "サービス紹介動画",
         description: "複雑なアプリ利用フローを60秒で「疑似体験」。UIアニメーションで手軽さを可視化し、CVR向上に貢献。",
+        videoSrc: "/videos/skill-connect.mp4"
     },
     {
         title: "ロジカルシンキング研修",
         category: "研修・eラーニング",
         description: "「やらされる研修」を「見たくなる」へ。抽象的な思考法をストーリーで図解し、理解度テスト平均20点アップ。",
+        videoSrc: "/videos/logical-thinking.mp4"
     },
 ];
 
@@ -39,8 +41,18 @@ export function WorkCard({ work, index }: { work: (typeof WORKS)[0]; index: numb
                 {/* Rainbow hover border highlight */}
                 <div className="absolute inset-0 rainbow-glow opacity-0 group-hover:opacity-10 transition-opacity pointer-events-none" />
 
-                <motion.div style={{ scale }} className="w-full h-full flex items-center justify-center bg-gradient-to-br from-white/10 to-transparent">
-                    <Play className="w-12 h-12 transition-colors text-white/20 group-hover:text-amber-400" />
+                <motion.div style={{ scale }} className="w-full h-full relative">
+                    <video
+                        src={work.videoSrc}
+                        className="w-full h-full object-cover"
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-transparent transition-colors duration-500">
+                        <Play className="w-12 h-12 transition-all text-white/40 group-hover:scale-125 group-hover:opacity-0" />
+                    </div>
                 </motion.div>
 
                 {/* Overlay */}
@@ -68,7 +80,7 @@ export default function Works() {
         <section id="works" className="py-40 bg-black relative">
             <div className="max-w-7xl mx-auto px-6">
                 {/* Section header */}
-                <ScrollReveal className="mb-24">
+                <ScrollReveal className="mb-24" yOffset={60} duration={1.2}>
                     <span className="text-white/30 text-xs font-medium tracking-[0.3em] uppercase block mb-4">
                         Portfolio
                     </span>

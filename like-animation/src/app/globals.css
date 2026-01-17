@@ -42,7 +42,23 @@
     }
 
     100% {
-      background-position: 100% 50%;
+      background-position: 200% 50%;
+    }
+  }
+
+  @keyframes float-slow {
+
+    0%,
+    100% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+
+    33% {
+      transform: translate(30px, -50px) rotate(5deg);
+    }
+
+    66% {
+      transform: translate(-20px, 20px) rotate(-5deg);
     }
   }
 }
@@ -70,7 +86,12 @@ html {
 }
 
 .rainbow-text {
-  @apply bg-clip-text text-transparent bg-linear-to-r from-[#3b82f6] via-[#ec4899] via-[#facc15] to-[#8b5cf6] bg-[length:300%_auto] animate-rainbow-flow;
+  @apply bg-clip-text text-transparent bg-linear-to-r from-[#3b82f6] via-[#ec4899] via-[#facc15] via-[#8b5cf6] to-[#3b82f6] bg-[length:200%_auto] animate-rainbow-flow;
+  animation-duration: 8s;
+}
+
+.animate-float-slow {
+  animation: float-slow 20s ease-in-out infinite;
 }
 
 .rainbow-glow {

@@ -39,7 +39,7 @@ export default function Footer() {
                     <div className="space-y-6">
                         <div className="flex items-center gap-3">
                             <Image src="/logo.png" alt="Like Animation" width={40} height={40} className="w-10 h-10 object-contain" />
-                            <h3 className="text-sm font-bold text-white tracking-widest uppercase">Like Animation</h3>
+                            <h3 className="text-sm font-bold text-white tracking-widest">Like Animation</h3>
                         </div>
                         <p className="text-white/30 text-xs font-light leading-relaxed">
                             スクリーンの枠を飛び出し、<br />見る人の心に直接届く映像を。
@@ -93,7 +93,7 @@ export default function Footer() {
                 </div>
 
                 <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6">
-                    <p className="text-white/10 text-[10px] font-medium uppercase tracking-widest">
+                    <p className="text-white/10 text-[10px] font-medium tracking-widest">
                         © 2026 Like Animation.
                     </p>
                     <div className="flex gap-8">

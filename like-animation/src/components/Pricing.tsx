@@ -30,7 +30,7 @@ const plans = [
 export default function Pricing() {
     return (
         <section id="pricing" className="py-40 bg-black relative">
-            <ScrollReveal className="text-center mb-24">
+            <ScrollReveal className="text-center mb-24" yOffset={60} duration={1.2}>
                 {/* Fix 4: Rainbow Header */}
                 <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight rainbow-text inline-block mb-6">
                     料金プラン

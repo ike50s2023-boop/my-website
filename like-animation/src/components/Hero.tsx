@@ -11,7 +11,8 @@ const HERO_CONTENT = {
     headlineAccent: "”伝わる”動画制作。",
     description: "売上アップ・業務効率化に特化。\n企画・制作から運用まで丸投げOK。\n御社の営業・採用課題を「伝わる動画」で解決します。",
     ctaPrimary: "無料相談・戦略相談はこちら",
-    ctaSecondary: "View Works"
+    ctaSecondary: "View Works",
+    unframedText: ["MOTION", "CREATIVITY", "VISION", "STRATEGY"]
 };
 
 export default function Hero() {
@@ -32,8 +33,12 @@ export default function Hero() {
 
             {/* Background Elements */}
             <div className="absolute inset-0 z-0">
-                <div className="absolute top-[20%] left-[10%] w-[500px] h-[500px] bg-pop-primary/20 rounded-full blur-[100px] animate-pulse" />
+                <div className="absolute top-[20%] left-[10%] w-[500px] h-[500px] bg-pop-primary/20 rounded-full blur-[120px] animate-pulse" />
                 <div className="absolute bottom-[20%] right-[10%] w-[600px] h-[600px] bg-pop-secondary/20 rounded-full blur-[100px] animate-[pulse_6s_ease-in-out_infinite]" />
+
+                {/* Unframed accent lines in Hero background */}
+                <div className="absolute top-1/4 -left-20 w-[120%] h-px bg-white/5 -rotate-6" />
+                <div className="absolute top-1/2 -left-20 w-[120%] h-px bg-white/5 rotate-3" />
             </div>
 
             <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
@@ -49,26 +54,37 @@ export default function Hero() {
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 3.0 }}
+                        transition={{
+                            duration: 0.8,
+                            delay: 3.0,
+                            type: "spring",
+                            stiffness: 100
+                        }}
                         className="w-40 h-40 relative"
                     >
                         <Image
                             src="/logo-new.png"
                             width={160}
                             height={160}
-                            alt="Logo"
-                            className="w-full h-full object-contain"
+                            alt="Like Animation"
+                            className="w-full h-full object-contain drop-shadow-[0_0_20px_rgba(255,255,255,0.2)]"
                         />
                     </motion.div>
 
                     {/* Text Badge - No Frame, Just Text */}
                     <motion.div
                         className="flex items-center gap-3"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.8, delay: 3.4 }}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{
+                            opacity: 1,
+                            x: 0,
+                        }}
+                        transition={{
+                            duration: 0.8,
+                            delay: 3.4
+                        }}
                     >
-                        <Sparkles className="w-5 h-5 text-pop-secondary" />
+                        <Sparkles className="w-5 h-5 text-pop-secondary animate-pulse" />
                         <span className="text-white text-base md:text-lg font-bold tracking-[0.2em] uppercase">
                             {HERO_CONTENT.tagline}
                         </span>
@@ -125,7 +141,19 @@ export default function Hero() {
                 </motion.div>
             </div>
 
-            {/* Floating Elements removed */}
+            {/* Unframed Background Text */}
+            <div className="absolute inset-0 z-0 flex items-center justify-center opacity-[0.02] pointer-events-none select-none">
+                <div className="text-[20vw] font-black tracking-tighter flex flex-col items-center">
+                    {HERO_CONTENT.unframedText.map((text, i) => (
+                        <motion.span
+                            key={text}
+                            style={{ x: i % 2 === 0 ? textX : useTransform(scrollYProgress, [0, 1], [0, -200]) }}
+                        >
+                            {text}
+                        </motion.span>
+                    ))}
+                </div>
+            </div>
         </section>
     );
 }
