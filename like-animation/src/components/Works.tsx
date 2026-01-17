@@ -50,6 +50,7 @@ export function WorkCard({ work, index, onOpen }: { work: (typeof WORKS)[0]; ind
                         muted
                         loop
                         playsInline
+                        onContextMenu={(e) => e.preventDefault()}
                     />
                     <div className="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-transparent transition-colors duration-500">
                         <Play className="w-12 h-12 transition-all text-white/40 group-hover:scale-125 group-hover:opacity-0" />
@@ -83,7 +84,7 @@ export default function Works() {
         <section id="works" className="py-40 bg-black relative">
             <div className="max-w-7xl mx-auto px-6">
                 {/* Section header */}
-                <ScrollReveal className="mb-24" yOffset={60} duration={1.2}>
+                <ScrollReveal className="mb-24" xOffset={-100} duration={1.2}>
                     <span className="text-white/30 text-xs font-medium tracking-[0.3em] uppercase block mb-4">
                         Portfolio
                     </span>
@@ -147,6 +148,9 @@ export default function Works() {
                                 controls
                                 autoPlay
                                 playsInline
+                                controlsList="nodownload"
+                                onContextMenu={(e) => e.preventDefault()}
+                                disablePictureInPicture
                             />
                         </motion.div>
                     </motion.div>

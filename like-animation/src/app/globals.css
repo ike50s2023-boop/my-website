@@ -86,8 +86,10 @@ html {
 }
 
 .rainbow-text {
-  @apply bg-clip-text text-transparent bg-linear-to-r from-[#3b82f6] via-[#ec4899] via-[#facc15] via-[#8b5cf6] to-[#3b82f6] bg-[length:200%_auto] animate-rainbow-flow;
-  animation-duration: 8s;
+  background: linear-gradient(to right, #3B82F6 0%, #08D9D6 15%, #FACC15 35%, #FF9A00 55%, #FF2E63 75%, #EC4899 90%, #3B82F6 100%);
+  background-size: 200% auto;
+  @apply bg-clip-text text-transparent animate-rainbow-flow;
+  animation-duration: 12s;
 }
 
 .animate-float-slow {
@@ -95,7 +97,8 @@ html {
 }
 
 .rainbow-glow {
-  @apply bg-linear-to-r from-[#3b82f6] via-[#ec4899] via-[#facc15] to-[#8b5cf6] blur-xl;
+  background: linear-gradient(to right, #3B82F6 0%, #08D9D6 20%, #FACC15 40%, #FF9A00 60%, #FF2E63 80%, #EC4899 100%);
+  @apply blur-xl;
 }
 
 .pop-button {

@@ -9,6 +9,7 @@ interface ScrollRevealProps {
     delay?: number;
     duration?: number;
     yOffset?: number;
+    xOffset?: number;
     threshold?: number;
     once?: boolean;
     style?: React.CSSProperties;
@@ -20,6 +21,7 @@ export default function ScrollReveal({
     delay = 0,
     duration = 0.8,
     yOffset = 40,
+    xOffset = 0,
     threshold = 0.1,
     once = true,
     style,
@@ -34,8 +36,8 @@ export default function ScrollReveal({
             ref={ref}
             className={className}
             style={style}
-            initial={{ opacity: 0, y: yOffset }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: yOffset }}
+            initial={{ opacity: 0, y: yOffset, x: xOffset }}
+            animate={isInView ? { opacity: 1, y: 0, x: 0 } : { opacity: 0, y: yOffset, x: xOffset }}
             transition={{
                 duration,
                 delay,

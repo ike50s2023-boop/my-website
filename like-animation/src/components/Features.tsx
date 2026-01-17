@@ -32,7 +32,7 @@ export default function Features() {
             <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-pop-secondary/10 rounded-full blur-[100px] mix-blend-screen opacity-50" />
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
-                <ScrollReveal className="text-center mb-20" yOffset={60} duration={1.2}>
+                <ScrollReveal className="text-center mb-20" yOffset={100} duration={1.2}>
                     {/* Fix 4: Rainbow Header */}
                     <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight rainbow-text inline-block mb-6">
                         独自の強み

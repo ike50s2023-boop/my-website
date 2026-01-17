@@ -7,10 +7,10 @@ import { useRef } from "react";
 
 const HERO_CONTENT = {
     tagline: "Motion & Creativity Unframed",
-    headline: "「ただ作るだけ」の動画はもう終わり。",
-    headlineAccent: "”伝わる”動画制作。",
+    headline: "「ただ作るだけ」の動画はもう終わり",
+    headlineAccent: "”伝わる”動画制作",
     description: "売上アップ・業務効率化に特化。\n企画・制作から運用まで丸投げOK。\n御社の営業・採用課題を「伝わる動画」で解決します。",
-    ctaPrimary: "無料相談・戦略相談はこちら",
+    ctaPrimary: "無料相談はこちら",
     ctaSecondary: "View Works",
     unframedText: ["MOTION", "CREATIVITY", "VISION", "STRATEGY"]
 };

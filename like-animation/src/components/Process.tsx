@@ -35,7 +35,7 @@ export default function Process() {
     return (
         <section id="process" className="py-20 md:py-40 bg-black relative">
             <div className="max-w-4xl mx-auto px-6">
-                <ScrollReveal className="text-center mb-24" yOffset={60} duration={1.2}>
+                <ScrollReveal className="text-center mb-24" yOffset={100} duration={1.2}>
                     {/* Fix 4: Rainbow Header */}
                     <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight rainbow-text inline-block mb-6">
                         制作の流れ
