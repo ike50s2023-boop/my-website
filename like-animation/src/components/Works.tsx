@@ -4,23 +4,9 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 import { Play, ExternalLink, X } from "lucide-react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
+import { FEATURED_WORKS, WorkData } from "@/data/works-data";
 
-export const WORKS = [
-    {
-        title: "Skill Connect",
-        category: "サービス紹介動画",
-        description: "複雑なアプリ利用フローを60秒で「疑似体験」。UIアニメーションで手軽さを可視化し、CVR向上に貢献。",
-        videoSrc: "/videos/skill-connect.mp4"
-    },
-    {
-        title: "ロジカルシンキング研修",
-        category: "研修・eラーニング",
-        description: "「やらされる研修」を「見たくなる」へ。抽象的な思考法をストーリーで図解し、理解度テスト平均20点アップ。",
-        videoSrc: "/videos/logical-thinking.mp4"
-    },
-];
-
-export function WorkCard({ work, index, onOpen }: { work: (typeof WORKS)[0]; index: number; onOpen: () => void }) {
+export function WorkCard({ work, index, onOpen }: { work: WorkData; index: number; onOpen: () => void }) {
     const cardRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
         target: cardRef,
@@ -96,7 +82,7 @@ export default function Works() {
 
                 {/* Works grid */}
                 <div className="grid md:grid-cols-2 gap-x-12 gap-y-16 mb-20">
-                    {WORKS.map((work, index) => (
+                    {FEATURED_WORKS.map((work, index) => (
                         <WorkCard
                             key={work.title}
                             work={work}
