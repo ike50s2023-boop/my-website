@@ -75,6 +75,65 @@ export default function Pricing() {
                         </ScrollReveal>
                     ))}
                 </div>
+
+                {/* Additional Information */}
+                <ScrollReveal delay={0.4}>
+                    <div className="max-w-4xl mx-auto mt-20 space-y-6">
+                        {/* Divider */}
+                        <div className="relative mb-12">
+                            <div className="absolute inset-0 flex items-center">
+                                <div className="w-full border-t border-white/20"></div>
+                            </div>
+                            <div className="relative flex justify-center">
+                                <span className="bg-black px-6 text-white/40 text-sm font-bold uppercase tracking-wider">料金に関する注意事項</span>
+                            </div>
+                        </div>
+
+                        <div className="grid md:grid-cols-2 gap-6">
+                            <div className="p-6 bg-white/5 rounded-xl border border-white/10">
+                                <h4 className="text-lg font-bold text-white mb-3 flex items-center gap-2">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-pop-primary"></span>
+                                    ディレクション費について
+                                </h4>
+                                <p className="text-white/60 text-sm leading-relaxed">
+                                    企画・構成、打ち合わせ、映像全体の演出・監修など、制作全般のディレクション費用を含みます。
+                                </p>
+                            </div>
+
+                            <div className="p-6 bg-white/5 rounded-xl border border-white/10">
+                                <h4 className="text-lg font-bold text-white mb-3 flex items-center gap-2">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-pop-secondary"></span>
+                                    BGMについて
+                                </h4>
+                                <p className="text-white/60 text-sm leading-relaxed">
+                                    商用利用および編集が可能なフリー音楽素材サイトから、映像の雰囲気や構成に合わせて選定・編集いたします。<br />
+                                    <span className="text-white/40 text-xs">※特定の楽曲をご希望の場合は、ライセンス取得など別途ご対応が必要です。</span>
+                                </p>
+                            </div>
+
+                            <div className="p-6 bg-white/5 rounded-xl border border-white/10 md:col-span-2">
+                                <h4 className="text-lg font-bold text-white mb-3 flex items-center gap-2">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-pop-accent"></span>
+                                    実写映像・写真とアニメーションの融合制作について
+                                </h4>
+                                <p className="text-white/60 text-sm leading-relaxed">
+                                    実写映像・写真とアニメーションを組み合わせた制作は可能ですが、当方では撮影業務は承っておりません。<br />
+                                    お客様にて事前にご用意いただいた映像・写真データをもとに制作いたします。データ形式・解像度等については別途ご相談ください。
+                                </p>
+                            </div>
+
+                            <div className="p-6 bg-white/5 rounded-xl border border-white/10 md:col-span-2">
+                                <h4 className="text-lg font-bold text-white mb-3 flex items-center gap-2">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-white/40"></span>
+                                    料金について
+                                </h4>
+                                <p className="text-white/60 text-sm leading-relaxed">
+                                    本料金は、諸事情により予告なく変更される場合があります。あらかじめご了承ください。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </ScrollReveal>
             </div>
         </section>
     );

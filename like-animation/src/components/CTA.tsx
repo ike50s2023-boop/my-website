@@ -13,7 +13,7 @@ export default function CTA() {
                 <ScrollReveal yOffset={100} duration={1.2}>
                     {/* Fix 4: Rainbow Header */}
                     <h2 className="text-4xl md:text-7xl font-black text-white tracking-tighter mb-8 rainbow-text">
-                        動画活用で、<br /><span className="inline-block whitespace-nowrap">ビジネスを加速させる</span>
+                        動画活用で<br /><span className="inline-block whitespace-nowrap">ビジネスを加速させる</span>
                     </h2>
                     <p className="text-xl text-white/60 mb-12 max-w-2xl mx-auto leading-relaxed">
                         まずは「現状の課題」をお聞かせください。<br />

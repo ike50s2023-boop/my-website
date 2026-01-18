@@ -17,7 +17,7 @@ export default function WorksPage() {
                 {/* Page Header */}
                 <div className="text-center mb-16">
                     <span className="pro-badge mb-4">Portfolio</span>
-                    <h1 className="text-3xl md:text-5xl font-bold text-white mb-6">
+                    <h1 className="text-3xl md:text-5xl font-bold text-white mb-6 rainbow-text">
                         制作事例一覧
                     </h1>
                     <p className="text-white/60 leading-relaxed max-w-2xl mx-auto">
