@@ -2,6 +2,7 @@
 
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { Check } from "lucide-react";
+import Link from "next/link";
 
 const plans = [
     {
@@ -68,9 +69,12 @@ export default function Pricing() {
                                         </li>
                                     ))}
                                 </ul>
-                                <button className={`w-full py-4 rounded-full font-bold text-sm tracking-widest uppercase transition-all ${plan.popular ? 'bg-white text-black hover:bg-pop-secondary hover:text-white' : 'border border-white/20 text-white hover:bg-white hover:text-black'}`}>
+                                <Link
+                                    href={`/contact?plan=${plan.name}`}
+                                    className={`block w-full py-4 rounded-full font-bold text-sm tracking-widest uppercase transition-all text-center ${plan.popular ? 'bg-white text-black hover:bg-pop-secondary hover:text-white' : 'border border-white/20 text-white hover:bg-white hover:text-black'}`}
+                                >
                                     Select Plan
-                                </button>
+                                </Link>
                             </div>
                         </ScrollReveal>
                     ))}
