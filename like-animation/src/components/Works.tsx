@@ -5,6 +5,7 @@ import { Play, ExternalLink, X } from "lucide-react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
 import { FEATURED_WORKS, WorkData } from "@/data/works-data";
+import Link from "next/link";
 
 export function WorkCard({ work, index, onOpen }: { work: WorkData; index: number; onOpen: () => void }) {
     const cardRef = useRef<HTMLDivElement>(null);
@@ -94,13 +95,13 @@ export default function Works() {
 
                 {/* View more CTA */}
                 <ScrollReveal className="text-center">
-                    <a
+                    <Link
                         href="/works"
                         className="minimal-button-outline inline-flex items-center gap-3 group text-white border-white/20 hover:bg-white hover:text-black"
                     >
                         すべての制作事例を見る
                         <ExternalLink className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-                    </a>
+                    </Link>
                 </ScrollReveal>
             </div>
 

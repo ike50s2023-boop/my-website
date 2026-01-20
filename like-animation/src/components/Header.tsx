@@ -5,6 +5,7 @@ import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 const NAV_ITEMS = [
   { label: "制作事例", href: "#works" },
@@ -28,12 +29,9 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-6 py-5">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <motion.a
+          <Link
             href="/"
             className="flex items-center gap-3"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 2.2 }}
           >
             <div className="relative group">
               <div className="absolute inset-0 rainbow-glow opacity-0 group-hover:opacity-100 transition-opacity blur-xl" />
@@ -42,7 +40,7 @@ export default function Header() {
             <div className="hidden sm:block">
               <span className="text-lg font-bold tracking-tight rainbow-text">Like Animation</span>
             </div>
-          </motion.a>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-10">
@@ -58,15 +56,12 @@ export default function Header() {
                 {item.label}
               </motion.a>
             ))}
-            <motion.a
+            <Link
               href={getLink("#contact")}
               className="px-6 py-2 bg-white text-black text-xs font-bold rounded-sm hover:bg-white/90 transition-colors uppercase tracking-widest"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 2.6 }}
             >
               Contact
-            </motion.a>
+            </Link>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -95,13 +90,13 @@ export default function Header() {
                 {item.label}
               </a>
             ))}
-            <a
+            <Link
               href={getLink("#contact")}
               className="bg-white text-black text-center py-3 rounded-sm font-bold text-sm uppercase tracking-widest mt-2"
               onClick={() => setIsMenuOpen(false)}
             >
               Contact
-            </a>
+            </Link>
           </motion.nav>
         )}
       </div>

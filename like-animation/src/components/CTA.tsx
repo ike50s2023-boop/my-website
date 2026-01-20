@@ -1,7 +1,6 @@
-"use client";
-
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { ArrowRight, Mail } from "lucide-react";
+import Link from "next/link";
 
 export default function CTA() {
     return (
@@ -20,13 +19,13 @@ export default function CTA() {
                         具体的な映像イメージがなくても構いません。<br />
                         目的達成のための最適なプランをご提案します。
                     </p>
-                    <a
+                    <Link
                         href="/contact"
                         className="pop-button inline-flex items-center gap-3 group"
                     >
                         無料相談を予約する
                         <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-                    </a>
+                    </Link>
                 </ScrollReveal>
             </div>
         </section>

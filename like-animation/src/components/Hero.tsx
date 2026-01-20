@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowDownRight, Sparkles } from "lucide-react";
+import { ArrowDownRight } from "lucide-react";
 import Image from "next/image";
 import { useRef } from "react";
 
@@ -35,22 +35,18 @@ export default function Hero() {
             <div className="absolute inset-0 z-0">
                 <div className="absolute top-[20%] left-[10%] w-[500px] h-[500px] bg-pop-primary/20 rounded-full blur-[120px] animate-pulse" />
                 <div className="absolute bottom-[20%] right-[10%] w-[600px] h-[600px] bg-pop-secondary/20 rounded-full blur-[100px] animate-[pulse_6s_ease-in-out_infinite]" />
-
-                {/* Unframed accent lines in Hero background */}
-                <div className="absolute top-1/4 -left-20 w-[120%] h-px bg-white/5 -rotate-6" />
-                <div className="absolute top-1/2 -left-20 w-[120%] h-px bg-white/5 rotate-3" />
             </div>
 
             <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
                 {/* Floating Elements removed per user request */}
-                {/* Logo & Badge Area - Stacked Vertically */}
+                {/* Logo & Brand Block - Responsive Layout */}
                 <motion.div
-                    className="flex flex-col items-center justify-center gap-6 mb-8"
+                    className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8 mb-8"
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.8, delay: 2.8 }}
                 >
-                    {/* Logo - Larger, Vertical Placement */}
+                    {/* Logo */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -60,7 +56,7 @@ export default function Hero() {
                             type: "spring",
                             stiffness: 100
                         }}
-                        className="w-40 h-40 relative"
+                        className="w-40 h-40 flex-shrink-0"
                     >
                         <Image
                             src="/logo-new.png"
@@ -71,24 +67,31 @@ export default function Hero() {
                         />
                     </motion.div>
 
-                    {/* Text Badge - No Frame, Just Text */}
-                    <motion.div
-                        className="flex items-center gap-3"
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{
-                            opacity: 1,
-                            x: 0,
-                        }}
-                        transition={{
-                            duration: 0.8,
-                            delay: 3.4
-                        }}
-                    >
-                        <Sparkles className="w-5 h-5 text-pop-secondary animate-pulse" />
-                        <span className="text-white text-base md:text-lg font-bold tracking-[0.2em] uppercase">
-                            {HERO_CONTENT.tagline}
-                        </span>
-                    </motion.div>
+                    {/* Text Block - Like Animation & Tagline */}
+                    <div className="flex flex-col items-center md:items-start gap-1 md:gap-0.5 md:mt-14">
+                        {/* Like Animation - Company Name */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 3.2 }}
+                        >
+                            <span className="text-2xl md:text-3xl font-bold tracking-tight rainbow-text">Like Animation</span>
+                        </motion.div>
+
+                        {/* Tagline - Motion & Creativity Unframed */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{
+                                duration: 0.8,
+                                delay: 3.4
+                            }}
+                        >
+                            <span className="text-white/70 text-xs md:text-sm font-medium tracking-[0.2em] uppercase">
+                                {HERO_CONTENT.tagline}
+                            </span>
+                        </motion.div>
+                    </div>
                 </motion.div>
 
                 {/* Main Headline - Resized to fit, PALT for kerning */}

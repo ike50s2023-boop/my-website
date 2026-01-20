@@ -4,6 +4,7 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 import { Mail, Twitter, Instagram, Youtube, Facebook } from "lucide-react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 const CONTACT_INFO = {
     email: "contact@like-animation.com",
@@ -53,12 +54,12 @@ export default function Footer() {
                         <ul className="space-y-3">
                             {QUICK_LINKS.map((link) => (
                                 <li key={link.label}>
-                                    <a
+                                    <Link
                                         href={getLink(link.href)}
                                         className="text-white/60 hover:text-white text-xs transition-colors"
                                     >
                                         {link.label}
-                                    </a>
+                                    </Link>
                                 </li>
                             ))}
                         </ul>
@@ -98,12 +99,12 @@ export default function Footer() {
                         © 2026 Like Animation.
                     </p>
                     <div className="flex gap-8">
-                        <a href="/privacy" className="text-white/10 hover:text-white/30 text-[10px] font-medium uppercase tracking-widest transition-colors">
+                        <Link href="/privacy" className="text-white/10 hover:text-white/30 text-[10px] font-medium uppercase tracking-widest transition-colors">
                             Privacy Policy
-                        </a>
-                        <a href="/terms" className="text-white/10 hover:text-white/30 text-[10px] font-medium uppercase tracking-widest transition-colors">
+                        </Link>
+                        <Link href="/terms" className="text-white/10 hover:text-white/30 text-[10px] font-medium uppercase tracking-widest transition-colors">
                             Terms of Service
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>
