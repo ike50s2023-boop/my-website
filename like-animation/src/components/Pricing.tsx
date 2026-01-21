@@ -8,22 +8,26 @@ const plans = [
     {
         name: "Light",
         price: "5",
-        description: "素材支給でコストを抑えたい方へ。",
-        features: ["ヒアリング", "構成作成(簡易)", "アニメーション編集", "修正1回"],
+        duration: "15〜30秒",
+        description: "素材支給でコストを抑え、SNSやサイネージで短期間にインパクトを残すプラン。",
+        features: ["尺：15〜30秒（SNS・広告用）", "素材支給・テンプレートベース", "構成作成（簡易）", "Vコンテなし（スピード重視）", "修正：各工程 1回まで"],
         popular: false
     },
     {
         name: "Standard",
         price: "15",
-        description: "標準的なアニメーション制作。",
-        features: ["詳細ヒアリング", "企画・構成・絵コンテ", "オリジナルイラスト", "ナレーション・BGM", "修正2回"],
-        popular: true
+        duration: "60秒前後",
+        description: "企画・構成からナレーションまで丸投げOK。Webサイト掲載や営業ツールに最適な定番プラン。",
+        features: ["尺：60秒前後（サービス紹介等）", "企画・構成・絵コンテ作成", "簡易Vコンテ（動きの全体確認）", "ナレーション・BGM込み", "修正：各工程 2回まで"],
+        popular: true,
+        recommended: true
     },
     {
         name: "Premium",
-        price: "25",
-        description: "リッチな演出と長期運用。",
-        features: ["戦略的企画・コンサル", "ハイエンドアニメーション", "複数パターン制作", "広告運用サポート", "修正無制限"],
+        price: "30",
+        duration: "目安120秒",
+        description: "リッチな演出とマルチ展開で訴求力を最大化。失敗できない大型プロジェクトに。",
+        features: ["尺：目安120秒（完全オーダー）", "詳細Vコンテ（完成イメージ試写）", "ハイエンド演出・イラスト", "マルチサイズ納品（縦・横など）", "修正：各工程 3回まで"],
         popular: false
     }
 ];
@@ -45,33 +49,47 @@ export default function Pricing() {
                 <div className="grid md:grid-cols-3 gap-8">
                     {plans.map((plan, index) => (
                         <ScrollReveal key={plan.name} delay={index * 0.1}>
-                            <div className={`relative p-10 rounded-3xl h-full transition-all duration-300 ${plan.popular ? 'bg-white/10 border-white/20 shadow-[0_0_50px_rgba(255,255,255,0.1)] scale-105 z-10' : 'bg-white/5 border-white/10 hover:bg-white/10 scale-100'}`}>
+                            <div className={`relative p-10 rounded-3xl h-full transition-all duration-300 ${plan.popular ? 'bg-white/10 border-2 border-pop-secondary/50 shadow-[0_0_50px_rgba(8,217,214,0.1)] scale-105 z-10' : 'bg-white/5 border border-white/10 hover:bg-white/10 scale-100'}`}>
                                 {plan.popular && (
-                                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white text-black px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase shadow-lg">
-                                        Popular
+                                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-pop-secondary text-black px-6 py-1.5 rounded-full text-sm font-black tracking-widest uppercase shadow-lg whitespace-nowrap">
+                                        Recommended
                                     </div>
                                 )}
 
                                 <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
-                                <div className="flex items-end gap-1 mb-6">
+                                <div className="flex items-end gap-1 mb-2">
                                     <span className="text-sm text-white/50">目安</span>
                                     <span className="text-4xl font-bold text-white tracking-tighter">{plan.price}</span>
                                     <span className="text-sm text-white/50">万円〜</span>
                                 </div>
-                                <p className="text-white/60 text-sm mb-8 pb-8 border-b border-white/10">
+                                <div className="mb-6 inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full text-xs font-bold text-white/80">
+                                    <span className="text-pop-secondary">⏱</span>
+                                    {plan.duration}
+                                </div>
+                                <p className="text-white/60 text-sm mb-8 pb-8 border-b border-white/10 leading-relaxed min-h-[4.5em]">
                                     {plan.description}
                                 </p>
                                 <ul className="space-y-4 mb-10">
                                     {plan.features.map((feature) => (
-                                        <li key={feature} className="flex items-center gap-3 text-sm text-white/80">
-                                            <Check className="w-4 h-4 text-pop-secondary" />
-                                            {feature}
+                                        <li key={feature} className="flex items-start gap-3 text-sm text-white/80">
+                                            <Check className="w-4 h-4 text-pop-secondary mt-0.5 flex-shrink-0" />
+                                            <span>
+                                                {feature.includes("各工程") ? (
+                                                    <>
+                                                        {feature.split("各工程")[0]}
+                                                        <span className="font-bold text-pop-secondary underline decoration-pop-secondary/50 underline-offset-4">各工程</span>
+                                                        {feature.split("各工程")[1]}
+                                                    </>
+                                                ) : (
+                                                    feature
+                                                )}
+                                            </span>
                                         </li>
                                     ))}
                                 </ul>
                                 <Link
                                     href={`/contact?plan=${plan.name}`}
-                                    className={`block w-full py-4 rounded-full font-bold text-sm tracking-widest uppercase transition-all text-center ${plan.popular ? 'bg-white text-black hover:bg-pop-secondary hover:text-white' : 'border border-white/20 text-white hover:bg-white hover:text-black'}`}
+                                    className={`block w-full py-4 rounded-full font-bold text-sm tracking-widest uppercase transition-all text-center ${plan.popular ? 'bg-pop-secondary text-black hover:bg-white hover:text-black shadow-[0_0_20px_rgba(8,217,214,0.3)]' : 'border border-white/20 text-white hover:bg-white hover:text-black'}`}
                                 >
                                     Select Plan
                                 </Link>
@@ -97,42 +115,33 @@ export default function Pricing() {
                             <div className="p-6 bg-white/5 rounded-xl border border-white/10">
                                 <h4 className="text-lg font-bold text-white mb-3 flex items-center gap-2">
                                     <span className="w-1.5 h-1.5 rounded-full bg-pop-primary"></span>
-                                    ディレクション費について
+                                    修正回数（各工程）について
                                 </h4>
                                 <p className="text-white/60 text-sm leading-relaxed">
-                                    企画・構成、打ち合わせ、映像全体の演出・監修など、制作全般のディレクション費用を含みます。
+                                    「構成」「絵コンテ」「アニメーション編集」の<strong className="text-white">各段階ごとに</strong>規定回数の修正が可能です。<br />
+                                    <span className="text-white/40 text-xs mt-1 block">※工程を遡っての修正（例：動画完成後に構成から変更など）は別途追加費用が発生する場合があります。</span>
                                 </p>
                             </div>
 
                             <div className="p-6 bg-white/5 rounded-xl border border-white/10">
                                 <h4 className="text-lg font-bold text-white mb-3 flex items-center gap-2">
                                     <span className="w-1.5 h-1.5 rounded-full bg-pop-secondary"></span>
-                                    BGMについて
+                                    BGM・ナレーションについて
                                 </h4>
                                 <p className="text-white/60 text-sm leading-relaxed">
-                                    商用利用および編集が可能なフリー音楽素材サイトから、映像の雰囲気や構成に合わせて選定・編集いたします。<br />
-                                    <span className="text-white/40 text-xs">※特定の楽曲をご希望の場合は、ライセンス取得など別途ご対応が必要です。</span>
+                                    商用利用可能な素材サイトから、映像の雰囲気に合わせて選定いたします。ナレーションはプロのナレーターを手配可能です。<br />
+                                    <span className="text-white/40 text-xs">※特定の楽曲・ナレーター指定は別途ご相談ください。</span>
                                 </p>
                             </div>
 
                             <div className="p-6 bg-white/5 rounded-xl border border-white/10 md:col-span-2">
                                 <h4 className="text-lg font-bold text-white mb-3 flex items-center gap-2">
                                     <span className="w-1.5 h-1.5 rounded-full bg-pop-accent"></span>
-                                    実写映像・写真とアニメーションの融合制作について
+                                    ディレクション費・その他
                                 </h4>
                                 <p className="text-white/60 text-sm leading-relaxed">
-                                    実写映像・写真とアニメーションを組み合わせた制作は可能ですが、当方では撮影業務は承っておりません。<br />
-                                    お客様にて事前にご用意いただいた映像・写真データをもとに制作いたします。データ形式・解像度等については別途ご相談ください。
-                                </p>
-                            </div>
-
-                            <div className="p-6 bg-white/5 rounded-xl border border-white/10 md:col-span-2">
-                                <h4 className="text-lg font-bold text-white mb-3 flex items-center gap-2">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-white/40"></span>
-                                    料金について
-                                </h4>
-                                <p className="text-white/60 text-sm leading-relaxed">
-                                    本料金は、諸事情により予告なく変更される場合があります。あらかじめご了承ください。
+                                    表記金額には、企画・構成、進行管理などのディレクション費用が含まれています。<br />
+                                    実写撮影が必要な場合や、3DCGなどの特殊な演出が必要な場合は別途お見積もりとなります。
                                 </p>
                             </div>
                         </div>
