@@ -38,7 +38,8 @@ export default function Features() {
                         独自の強み
                     </h2>
                     <p className="text-white/50 text-lg font-light max-w-2xl mx-auto">
-                        「伝わらない」損失をゼロにする、<br />ビジネス直結型アニメーション。
+                        売上アップ・業務効率化に特化。企画・制作丸投げOK。<br />
+                        御社の営業・採用課題を「伝わる動画」で解決します。
                     </p>
                 </ScrollReveal>
 

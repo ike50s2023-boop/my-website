@@ -3,13 +3,14 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDownRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useRef } from "react";
 
 const HERO_CONTENT = {
     tagline: "Motion & Creativity Unframed",
     headline: "「ただ作るだけ」の動画はもう終わり",
     headlineAccent: "”伝わる”動画制作",
-    description: "売上アップ・業務効率化に特化。\n企画・制作から運用まで丸投げOK。\n御社の営業・採用課題を「伝わる動画」で解決します。",
+    description: "売上アップ・業務効率化に特化。\n企画・制作丸投げOK。\n御社の営業・採用課題を「伝わる動画」で解決します。",
     ctaPrimary: "無料相談はこちら",
     ctaSecondary: "View Works",
     unframedText: ["MOTION", "CREATIVITY", "VISION", "STRATEGY"]
@@ -134,10 +135,10 @@ export default function Hero() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 3.6 }}
                 >
-                    <a href="#contact" className="pop-button group flex items-center gap-2 text-base">
+                    <Link href="/contact" className="pop-button group flex items-center gap-2 text-base">
                         {HERO_CONTENT.ctaPrimary}
                         <ArrowDownRight className="transition-transform group-hover:rotate-[-45deg]" />
-                    </a>
+                    </Link>
                     <a href="#works" className="minimal-button-outline text-white hover:bg-white hover:text-black transition-colors flex items-center gap-2">
                         {HERO_CONTENT.ctaSecondary}
                     </a>
@@ -146,7 +147,7 @@ export default function Hero() {
 
             {/* Unframed Background Text */}
             <div className="absolute inset-0 z-0 flex items-center justify-center opacity-[0.02] pointer-events-none select-none">
-                <div className="text-[20vw] font-black tracking-tighter flex flex-col items-center">
+                <div className="text-[15vw] md:text-[13vw] leading-[0.9] font-black tracking-tighter flex flex-col items-center">
                     {HERO_CONTENT.unframedText.map((text, i) => (
                         <motion.span
                             key={text}
