@@ -30,7 +30,7 @@ export default function Hero() {
     const textOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
     return (
-        <section ref={containerRef} className="relative min-h-[110vh] flex flex-col items-center justify-center overflow-hidden pt-20 pb-32">
+        <section ref={containerRef} className="relative min-h-[110vh] flex flex-col items-center justify-center overflow-hidden pt-32 pb-32">
 
             {/* Background Elements */}
             <div className="absolute inset-0 z-0">
