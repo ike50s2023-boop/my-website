@@ -3,12 +3,27 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CTA from "@/components/CTA";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, PlayCircle } from "lucide-react";
 import Link from "next/link";
 import { ALL_WORKS } from "@/data/works-data";
+import { useState, useMemo } from "react";
 
 export default function WorksPage() {
+    const [activeCategory, setActiveCategory] = useState("すべて");
+
+    // 全ての作品からユニークなカテゴリーを抽出
+    const categories = useMemo(() => {
+        const uniqueCategories = Array.from(new Set(ALL_WORKS.map(work => work.category)));
+        return ["すべて", ...uniqueCategories];
+    }, []);
+
+    // カテゴリーでフィルタリング
+    const filteredWorks = useMemo(() => {
+        if (activeCategory === "すべて") return ALL_WORKS;
+        return ALL_WORKS.filter(work => work.category === activeCategory);
+    }, [activeCategory]);
+
     return (
         <main className="min-h-screen bg-black">
             <Header />
@@ -28,10 +43,11 @@ export default function WorksPage() {
 
                 {/* Filter Categories */}
                 <div className="flex flex-wrap justify-center gap-2 mb-16">
-                    {["All", "Service Intro", "Manual / Training", "Branding", "Recruiting"].map((cat, i) => (
+                    {categories.map((cat) => (
                         <button
                             key={cat}
-                            className={`px-4 py-2 rounded-full text-xs font-bold transition-all border ${i === 0
+                            onClick={() => setActiveCategory(cat)}
+                            className={`px-4 py-2 rounded-full text-xs font-bold transition-all border ${activeCategory === cat
                                 ? "bg-slate-900 text-white border-slate-900"
                                 : "bg-white text-slate-500 border-slate-200 hover:border-slate-400 hover:text-slate-700"
                                 }`}
@@ -43,69 +59,73 @@ export default function WorksPage() {
 
                 {/* Works Grid */}
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-                    {ALL_WORKS.map((work, index) => (
-                        <Link
-                            key={work.slug}
-                            href={`/works/${work.slug}`}
-                            className="block"
-                        >
+                    <AnimatePresence mode="popLayout">
+                        {filteredWorks.map((work, index) => (
                             <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.1 }}
-                                className="group cursor-pointer flex flex-col h-full"
+                                layout
+                                key={work.slug}
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.9 }}
+                                transition={{ duration: 0.3 }}
                             >
-                                {/* Thumbnail Area with Video Preview */}
-                                <div className={`relative aspect-video rounded-xl overflow-hidden mb-6 border border-white/10 shadow-sm transition-all duration-300 group-hover:shadow-lg ${work.color} flex items-center justify-center`}>
-                                    <div className="absolute inset-0 bg-white/0 group-hover:bg-white/5 transition-colors z-10" />
+                                <Link
+                                    href={`/works/${work.slug}`}
+                                    className="block h-full"
+                                >
+                                    <div className="group cursor-pointer flex flex-col h-full">
+                                        {/* Thumbnail Area with Video Preview */}
+                                        <div className={`relative aspect-video rounded-xl overflow-hidden mb-6 border border-white/10 shadow-sm transition-all duration-300 group-hover:shadow-lg ${work.color} flex items-center justify-center`}>
+                                            <div className="absolute inset-0 bg-white/0 group-hover:bg-white/5 transition-colors z-10" />
 
-                                    {/* Video Preview */}
-                                    {work.videoSrc ? (
-                                        <video
-                                            src={work.videoSrc}
-                                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                            autoPlay
-                                            muted
-                                            loop
-                                            playsInline
-                                        />
-                                    ) : (
-                                        <div className="p-4 text-center">
-                                            <div className="text-xl font-bold text-slate-300 tracking-widest uppercase">{work.title}</div>
+                                            {/* Video Preview */}
+                                            {work.videoSrc ? (
+                                                <video
+                                                    src={work.videoSrc}
+                                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                                    autoPlay
+                                                    muted
+                                                    loop
+                                                    playsInline
+                                                />
+                                            ) : (
+                                                <div className="p-4 text-center">
+                                                    <div className="text-xl font-bold text-slate-300 tracking-widest uppercase">{work.title}</div>
+                                                </div>
+                                            )}
+
+                                            {/* Play Button Overlay */}
+                                            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-20 transform scale-90 group-hover:scale-100 duration-300 pointer-events-none">
+                                                <div className="w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-accent">
+                                                    <PlayCircle size={24} fill="currentColor" className="text-white fill-accent" />
+                                                </div>
+                                            </div>
                                         </div>
-                                    )}
 
-                                    {/* Play Button Overlay */}
-                                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-20 transform scale-90 group-hover:scale-100 duration-300 pointer-events-none">
-                                        <div className="w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-accent">
-                                            <PlayCircle size={24} fill="currentColor" className="text-white fill-accent" />
+                                        {/* Content Area */}
+                                        <div className="flex-grow flex flex-col">
+                                            <div className="flex flex-wrap gap-2 mb-3">
+                                                {work.tags.slice(0, 2).map((tag) => (
+                                                    <span key={tag} className="text-[10px] font-bold uppercase tracking-wider text-slate-400 border border-slate-200 px-2 py-0.5 rounded-sm">
+                                                        {tag}
+                                                    </span>
+                                                ))}
+                                            </div>
+
+                                            <h3 className="text-lg font-bold text-white mb-1 group-hover:rainbow-text transition-colors flex items-center gap-2">
+                                                {work.title}
+                                                <ArrowUpRight className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-white" />
+                                            </h3>
+                                            <div className="text-xs font-bold text-white/40 mb-3">{work.subtitle}</div>
+                                            <p className="text-white/60 leading-relaxed text-sm flex-grow">
+                                                {work.description}
+                                            </p>
                                         </div>
                                     </div>
-                                </div>
-
-                                {/* Content Area */}
-                                <div className="flex-grow flex flex-col">
-                                    <div className="flex flex-wrap gap-2 mb-3">
-                                        {work.tags.slice(0, 2).map((tag) => (
-                                            <span key={tag} className="text-[10px] font-bold uppercase tracking-wider text-slate-400 border border-slate-200 px-2 py-0.5 rounded-sm">
-                                                {tag}
-                                            </span>
-                                        ))}
-                                    </div>
-
-                                    <h3 className="text-lg font-bold text-white mb-1 group-hover:rainbow-text transition-colors flex items-center gap-2">
-                                        {work.title}
-                                        <ArrowUpRight className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-white" />
-                                    </h3>
-                                    <div className="text-xs font-bold text-white/40 mb-3">{work.subtitle}</div>
-                                    <p className="text-white/60 leading-relaxed text-sm flex-grow">
-                                        {work.description}
-                                    </p>
-                                </div>
+                                </Link>
                             </motion.div>
-                        </Link>
-                    ))}
+                        ))}
+                    </AnimatePresence>
                 </div>
             </section>
 
