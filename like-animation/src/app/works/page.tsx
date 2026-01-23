@@ -56,20 +56,31 @@ export default function WorksPage() {
                                 transition={{ delay: index * 0.1 }}
                                 className="group cursor-pointer flex flex-col h-full"
                             >
-                                {/* Thumbnail Area */}
+                                {/* Thumbnail Area with Video Preview */}
                                 <div className={`relative aspect-video rounded-xl overflow-hidden mb-6 border border-white/10 shadow-sm transition-all duration-300 group-hover:shadow-lg ${work.color} flex items-center justify-center`}>
                                     <div className="absolute inset-0 bg-white/0 group-hover:bg-white/5 transition-colors z-10" />
 
+                                    {/* Video Preview */}
+                                    {work.videoSrc ? (
+                                        <video
+                                            src={work.videoSrc}
+                                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                            autoPlay
+                                            muted
+                                            loop
+                                            playsInline
+                                        />
+                                    ) : (
+                                        <div className="p-4 text-center">
+                                            <div className="text-xl font-bold text-slate-300 tracking-widest uppercase">{work.title}</div>
+                                        </div>
+                                    )}
+
                                     {/* Play Button Overlay */}
-                                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-20 transform scale-90 group-hover:scale-100 duration-300">
+                                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-20 transform scale-90 group-hover:scale-100 duration-300 pointer-events-none">
                                         <div className="w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-accent">
                                             <PlayCircle size={24} fill="currentColor" className="text-white fill-accent" />
                                         </div>
-                                    </div>
-
-                                    {/* Placeholder */}
-                                    <div className="p-4 text-center">
-                                        <div className="text-xl font-bold text-slate-300 tracking-widest uppercase">{work.title}</div>
                                     </div>
                                 </div>
 
