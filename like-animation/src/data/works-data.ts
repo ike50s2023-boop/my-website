@@ -64,7 +64,7 @@ export const ALL_WORKS: WorkData[] = [
             "複雑な思考プロセスをインフォグラフィックで可視化",
             "各章ごとに実践的な演習問題を組み込み、理解を深める構成に"
         ],
-        technologies: ["After Effects", "Illustrator", "Character Animator"],
+        technologies: ["After Effects", "Illustrator"],
         results: [
             "理解度テストの平均点が20点向上",
             "受講完了率が従来の60%から92%に改善",
@@ -93,7 +93,7 @@ export const ALL_WORKS: WorkData[] = [
             "オフィスの雰囲気や開発環境をリアルに映像化",
             "企業理念と日々の業務のつながりをストーリーで表現"
         ],
-        technologies: ["Premiere Pro", "DaVinci Resolve", "After Effects"],
+        technologies: ["After Effects", "Illustrator"],
         results: [
             "採用サイトの滞在時間が平均3分増加",
             "応募数が前年比180%増加",
@@ -122,7 +122,7 @@ export const ALL_WORKS: WorkData[] = [
             "導入前後の業務フローを比較し、改善効果を可視化",
             "実際の導入事例を交えて具体的なメリットを提示"
         ],
-        technologies: ["After Effects", "Illustrator", "Cinema 4D"],
+        technologies: ["After Effects", "Illustrator"],
         results: [
             "営業商談での資料理解度が大幅に向上",
             "問い合わせ数が前月比220%増加",
@@ -151,7 +151,7 @@ export const ALL_WORKS: WorkData[] = [
             "実写映像で正しい作業手順を段階的に解説",
             "NG例とOK例を対比させ、注意点を明確化"
         ],
-        technologies: ["Cinema 4D", "Premiere Pro", "After Effects"],
+        technologies: ["After Effects", "Illustrator"],
         results: [
             "新人教育時間が平均30%短縮",
             "安全教育の理解度テストで平均点が25点向上",
@@ -180,12 +180,58 @@ export const ALL_WORKS: WorkData[] = [
             "社員インタビューと実際のプロジェクト映像を織り交ぜた演出",
             "企業カラーを活かした洗練されたビジュアルデザイン"
         ],
-        technologies: ["Premiere Pro", "After Effects", "DaVinci Resolve", "Cinema 4D"],
+        technologies: ["After Effects", "Illustrator"],
         results: [
             "社内イベントで上映し、社員満足度調査で高評価",
             "企業サイトのトップページに掲載し、滞在時間が2倍に",
             "採用説明会での使用により、企業理解度が向上"
         ]
+    },
+    {
+        slug: "morning-quest",
+        title: "モーニングクエスト",
+        category: "サービス紹介動画",
+        subtitle: "コンセプトムービー",
+        description: "朝の時間をクリエイティブに。ブランドの象徴的なビジュアルと心地よい編集で、サービスの価値を伝えます。",
+        tags: ["Branding", "Promotion", "Concept"],
+        color: "bg-amber-50",
+        videoSrc: "/videos/morning-quest.mp4",
+        client: "自主製作",
+        duration: "4週間",
+        overview: "「モーニングクエスト」のブランドコンセプトを伝えるプロモーション動画を制作。視聴者の感性に訴えかけるエモーショナルな演出で、ブランドイメージの向上を図りました。",
+        challenges: [
+            "ブランドの世界観を感性的に伝えたい",
+            "視聴者のライフスタイルに寄り添う映像表現が必要",
+            "ターゲット層の共感を得られるストーリーライン"
+        ],
+        solutions: [
+            "コンセプトに合わせた柔らかなライティングとシネマティックな編集",
+            "日常の美しさを切り取ったビジュアル構成",
+            "ブランドメッセージを深く届けるための緻密なサウンドデザイン"
+        ],
+        technologies: ["After Effects", "Illustrator"]
+    },
+    {
+        slug: "energy-smart",
+        title: "EnergySmart",
+        category: "サービス紹介動画",
+        subtitle: "賢いエネルギー管理を！",
+        description: "EnergySmartで、誰でも簡単に賢くエネルギー管理。15秒で伝わるサービスの魅力。",
+        tags: ["Service Introduction", "Energy", "Short Movie"],
+        color: "bg-emerald-50",
+        videoSrc: "/videos/energy-smart.mp4",
+        client: "Halさんコーチング様",
+        duration: "1週間",
+        overview: "「EnergySmart」のサービス紹介動画。短時間でサービスのメリットと世界観を伝えることを目指しました。",
+        challenges: [
+            "15秒という短時間でサービスの魅力を伝える必要がある",
+            "親しみやすさと信頼感を両立させたい"
+        ],
+        solutions: [
+            "テンポの良いアニメーションで視聴者の興味を惹きつける",
+            "グリーンを基調とした安心感のある配色"
+        ],
+        technologies: ["After Effects", "Illustrator"]
     }
 ];
 
