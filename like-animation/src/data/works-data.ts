@@ -24,7 +24,7 @@ export const ALL_WORKS: WorkData[] = [
         category: "サービス紹介動画",
         subtitle: "CtoC プラットフォーム紹介動画",
         description: "複雑なアプリの利用フローを、1分18秒で「疑似体験」させる。ユーザー同士をつなぐマッチングサービスの仕組みを、UIアニメーションで直感的に表現。",
-        tags: ["Service Introduction", "UI Animation", "CVR Up"],
+        tags: ["サービス紹介", "UIアニメーション"],
         color: "bg-blue-50",
         videoSrc: "/videos/skill-connect.mp4",
         client: "自主製作",
@@ -48,7 +48,7 @@ export const ALL_WORKS: WorkData[] = [
         category: "研修・eラーニング",
         subtitle: "社内研修・eラーニング教材",
         description: "「やらされる研修」を「見たくなるコンテンツ」へ。抽象的なビジネススキルを、共感を生むストーリーと図解で解説。",
-        tags: ["Internal Training", "Educational", "Understanding Up"],
+        tags: ["研修動画", "解説動画"],
         color: "bg-slate-50",
         videoSrc: "/videos/logical-thinking.mp4",
         client: "大手IT企業様",
@@ -71,129 +71,14 @@ export const ALL_WORKS: WorkData[] = [
             "受講者アンケートで「分かりやすい」評価が95%"
         ]
     },
-    {
-        slug: "recruiting-branding",
-        title: "採用ブランディング",
-        category: "採用動画",
-        subtitle: "インタビュー動画",
-        description: "社員の熱意を伝えるドキュメンタリータッチの映像。働く人の「リアル」を届け、ミスマッチを防ぎます。",
-        tags: ["Recruiting", "Branding", "Interview"],
-        color: "bg-indigo-50",
-        videoSrc: "/videos/recruiting.mp4",
-        client: "株式会社テックイノベーション様",
-        duration: "4週間",
-        overview: "エンジニア採用を強化するための採用ブランディング動画を制作。社員インタビューを中心に、企業文化と働く魅力を伝えました。",
-        challenges: [
-            "求人サイトだけでは企業の魅力が伝わりにくい",
-            "入社後のミスマッチを減らしたい",
-            "競合他社との差別化が必要"
-        ],
-        solutions: [
-            "現場で働く社員の生の声をドキュメンタリータッチで撮影",
-            "オフィスの雰囲気や開発環境をリアルに映像化",
-            "企業理念と日々の業務のつながりをストーリーで表現"
-        ],
-        technologies: ["After Effects", "Illustrator"],
-        results: [
-            "採用サイトの滞在時間が平均3分増加",
-            "応募数が前年比180%増加",
-            "内定承諾率が75%から90%に向上"
-        ]
-    },
-    {
-        slug: "dx-solution",
-        title: "DXソリューション紹介",
-        category: "サービス紹介動画",
-        subtitle: "サービス解説アニメーション",
-        description: "目に見えないクラウドサービスの価値を、インフォグラフィックで可視化。導入メリットを直感的に伝えます。",
-        tags: ["SaaS", "Infographic", "Sales Support"],
-        color: "bg-slate-100",
-        videoSrc: "/videos/dx-solution.mp4",
-        client: "クラウドソリューション株式会社様",
-        duration: "3週間",
-        overview: "BtoB向けDXソリューションのサービス紹介動画を制作。複雑なシステムの仕組みと導入効果を分かりやすく可視化しました。",
-        challenges: [
-            "目に見えないクラウドサービスの価値を伝えにくい",
-            "技術的な説明が専門的すぎて理解されにくい",
-            "営業資料だけでは導入イメージが湧かない"
-        ],
-        solutions: [
-            "システムの仕組みをインフォグラフィックで分かりやすく図解",
-            "導入前後の業務フローを比較し、改善効果を可視化",
-            "実際の導入事例を交えて具体的なメリットを提示"
-        ],
-        technologies: ["After Effects", "Illustrator"],
-        results: [
-            "営業商談での資料理解度が大幅に向上",
-            "問い合わせ数が前月比220%増加",
-            "商談成約率が35%から52%に改善"
-        ]
-    },
-    {
-        slug: "safety-education",
-        title: "製造業 安全教育ビデオ",
-        category: "マニュアル動画",
-        subtitle: "マニュアル動画",
-        description: "紙のマニュアルでは伝わりにくい作業手順を、3DCGと実写を組み合わせて解説。事故リスクを低減。",
-        tags: ["Manual", "Safety", "Industrial"],
-        color: "bg-orange-50",
-        videoSrc: "/videos/safety.mp4",
-        client: "大手製造業様",
-        duration: "5週間",
-        overview: "製造現場の安全教育用マニュアル動画を制作。3DCGと実写を組み合わせ、危険箇所と正しい作業手順を分かりやすく解説しました。",
-        challenges: [
-            "紙のマニュアルでは作業手順が伝わりにくい",
-            "新人教育に時間がかかり、現場の負担が大きい",
-            "安全意識の向上と事故防止が急務"
-        ],
-        solutions: [
-            "3DCGで機械の内部構造や危険箇所を可視化",
-            "実写映像で正しい作業手順を段階的に解説",
-            "NG例とOK例を対比させ、注意点を明確化"
-        ],
-        technologies: ["After Effects", "Illustrator"],
-        results: [
-            "新人教育時間が平均30%短縮",
-            "安全教育の理解度テストで平均点が25点向上",
-            "労働災害件数が前年比60%減少"
-        ]
-    },
-    {
-        slug: "corporate-vision",
-        title: "コーポレートビジョン",
-        category: "ブランドムービー",
-        subtitle: "ブランドムービー",
-        description: "企業の長期ビジョンを、エモーショナルなストーリー展開で映像化。インナーブランディングにも活用。",
-        tags: ["Branding", "Corporate", "Vision"],
-        color: "bg-blue-50",
-        videoSrc: "/videos/corporate.mp4",
-        client: "株式会社フューチャービジョン様",
-        duration: "6週間",
-        overview: "企業の10年ビジョンを映像化したブランドムービーを制作。社員のインナーブランディングと対外的な企業イメージ向上に貢献しました。",
-        challenges: [
-            "抽象的な企業ビジョンを具体的に表現したい",
-            "社員の一体感を醸成し、モチベーションを高めたい",
-            "対外的な企業イメージを刷新したい"
-        ],
-        solutions: [
-            "企業の歴史と未来をストーリーで繋ぐ感動的な構成",
-            "社員インタビューと実際のプロジェクト映像を織り交ぜた演出",
-            "企業カラーを活かした洗練されたビジュアルデザイン"
-        ],
-        technologies: ["After Effects", "Illustrator"],
-        results: [
-            "社内イベントで上映し、社員満足度調査で高評価",
-            "企業サイトのトップページに掲載し、滞在時間が2倍に",
-            "採用説明会での使用により、企業理解度が向上"
-        ]
-    },
+
     {
         slug: "morning-quest",
         title: "モーニングクエスト",
         category: "サービス紹介動画",
         subtitle: "コンセプトムービー",
         description: "朝の時間をクリエイティブに。ブランドの象徴的なビジュアルと心地よい編集で、サービスの価値を伝えます。",
-        tags: ["Branding", "Promotion", "Concept"],
+        tags: ["プロモーション", "コンセプトムービー"],
         color: "bg-amber-50",
         videoSrc: "/videos/morning-quest.mp4",
         client: "自主製作",
@@ -217,7 +102,7 @@ export const ALL_WORKS: WorkData[] = [
         category: "サービス紹介動画",
         subtitle: "賢いエネルギー管理を！",
         description: "EnergySmartで、誰でも簡単に賢くエネルギー管理。15秒で伝わるサービスの魅力。",
-        tags: ["Service Introduction", "Energy", "Short Movie"],
+        tags: ["サービス紹介", "ショート動画"],
         color: "bg-emerald-50",
         videoSrc: "/videos/energy-smart.mp4",
         client: "Halさんコーチング様",
@@ -230,6 +115,50 @@ export const ALL_WORKS: WorkData[] = [
         solutions: [
             "テンポの良いアニメーションで視聴者の興味を惹きつける",
             "グリーンを基調とした安心感のある配色"
+        ],
+        technologies: ["After Effects", "Illustrator"]
+    },
+    {
+        slug: "trivia-short",
+        title: "雑学ショートムービー",
+        category: "SNS・Web広告動画",
+        subtitle: "15秒で賢くなれるかも？",
+        description: "スキマ時間で楽しめる、ちょっとした雑学をアニメーションで紹介。親しみやすいデザインと動きで、知識への興味を惹きつけます。",
+        tags: ["ショート動画", "モーショングラフィックス"],
+        color: "bg-purple-50",
+        videoSrc: "/videos/trivia-short.mp4",
+        client: "自主製作",
+        duration: "3週間",
+        overview: "「雑学ショートムービー」として、短時間で楽しめるコンテンツを制作。SNSでの拡散も意識し、冒頭のインパクトとテンポの良さにこだわりました。",
+        challenges: [
+            "短い時間内で情報を分かりやすく伝える",
+            "視聴者の興味を持続させる工夫"
+        ],
+        solutions: [
+            "イラストとモーショングラフィックスを効果的に組み合わせる",
+            "リズム感のある編集で心地よい視聴体験を提供"
+        ],
+        technologies: ["After Effects", "Illustrator"]
+    },
+    {
+        slug: "new-year-2026",
+        title: "2026モーション年賀",
+        category: "イベント・季節の動画",
+        subtitle: "新年のご挨拶",
+        description: "2026年の幕開けを彩る、ポップで楽しい年賀アニメーション。新しい年への期待感を動きで表現しました。",
+        tags: ["モーショングラフィックス", "アニメーション"],
+        color: "bg-red-50",
+        videoSrc: "/videos/new-year-2026.mp4",
+        client: "自主製作",
+        duration: "1週間",
+        overview: "2026年の年賀状として制作したモーショングラフィックス。干支や新年のモチーフを楽しく動かし、見ていて明るい気持ちになるような作品を目指しました。",
+        challenges: [
+            "新年の祝賀ムードを演出する",
+            "オリジナリティのある表現"
+        ],
+        solutions: [
+            "華やかな色使いと躍動感のあるアニメーション",
+            "伝統的なモチーフをモダンにアレンジ"
         ],
         technologies: ["After Effects", "Illustrator"]
     }
