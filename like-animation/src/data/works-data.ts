@@ -27,9 +27,9 @@ export const ALL_WORKS: WorkData[] = [
         tags: ["Service Introduction", "UI Animation", "CVR Up"],
         color: "bg-blue-50",
         videoSrc: "/videos/skill-connect.mp4",
-        client: "株式会社スキルコネクト様",
-        duration: "2週間",
-        overview: "スキルシェアリングプラットフォーム「Skill Connect」のサービス紹介動画を制作。複雑なマッチングフローを1分18秒の動画で直感的に伝え、ユーザー獲得を支援しました。",
+        client: "自主製作",
+        duration: "3週間",
+        overview: "スキルシェアリングプラットフォーム「Skill Connect」のサービス紹介動画を制作。複雑なマッチングフローを1分18秒の動画で直感的に伝え、ユーザー獲得を意識して制作しました。",
         challenges: [
             "複雑なアプリの利用フローを短時間で理解してもらう必要がある",
             "テキストだけでは伝わりにくいマッチングの仕組みを可視化したい",
@@ -40,12 +40,7 @@ export const ALL_WORKS: WorkData[] = [
             "ユーザーとスキル提供者の両視点からストーリーを展開",
             "モダンでポップなデザインとテンポの良い編集で視聴維持率を向上"
         ],
-        technologies: ["After Effects", "Illustrator", "Premiere Pro"],
-        results: [
-            "動画公開後、アプリダウンロード数が前月比150%増加",
-            "SNS広告のCVRが2.3倍に改善",
-            "視聴完了率85%を達成"
-        ]
+        technologies: ["After Effects", "Illustrator"]
     },
     {
         slug: "logical-thinking",
