@@ -13,7 +13,7 @@ const HERO_CONTENT = {
     description: "売上アップ・業務効率化に特化。\n企画・制作丸投げOK。\n御社の営業・採用課題を「伝わる動画」で解決します。",
     ctaPrimary: "無料相談はこちら",
     ctaSecondary: "View Works",
-    unframedText: ["MOTION", "CREATIVITY", "VISION", "STRATEGY"]
+    unframedText: ["Motion", "Creativity", "Vision", "Strategy"]
 };
 
 export default function Hero() {
