@@ -4,10 +4,10 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CTA from "@/components/CTA";
 import ScrollReveal from "@/components/ui/ScrollReveal";
-import { motion } from "framer-motion";
-import { Lightbulb, Target, Layout, PenTool, Sparkles, User, MessageCircle, Youtube } from "lucide-react";
+import { Target, Layout, PenTool, Sparkles, User, ChevronDown } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const PRINCIPLES = [
     {
@@ -33,51 +33,107 @@ const PRINCIPLES = [
 const CASE_STUDIES = [
     {
         id: "morning-quest",
-        title: "制作事例 1：『モーニングクエスト』",
-        subtitle: "面倒な早起きを、楽しい冒険に変える",
-        youtube: "https://youtu.be/gnvmyrNAyRw",
-        points: [
+        title: "モーニングクエスト",
+        service: "早起き支援アプリ",
+        description: "「退屈な朝を、楽しい冒険に変える」早起き支援アプリ。AIによる最適な起床サポートや、早朝の活動がポイントになるゲーム要素で、利用者の生活習慣改善を後押しします。",
+        videoUrl: "https://www.youtube.com/embed/gnvmyrNAyRw",
+        details: [
             {
-                label: "世界観の構築",
-                text: "「退屈な朝を冒険に変える」コンセプト。コイン獲得やレベルアップ演出でワクワク感を創出。",
-                image: "/assets/notion/chrome-capture-2025-6-27.gif"
+                title: "こだわり１：世界観の構築",
+                challenge: "「早起き」という義務的で面倒なイメージを、ポジティブなものに変えたい。",
+                solution: "「退屈な朝を、楽しい冒険に変える」というコンセプトを設計。歩くとコインが貯まったり、レベルアップしたりといったゲーム風の演出を加え、ワクワクする世界観を構築しました。",
+                gif: "/assets/notion/chrome-capture-2025-6-27.gif"
             },
             {
-                label: "情報の視覚化",
-                text: "AI機能をキャラクター化。生活改善効果をグラフアニメーションで見える化。",
-                image: "/assets/notion/chrome-capture-2025-6-30.gif"
+                title: "こだわり２：情報の視覚化",
+                challenge: "「AIが眠りの浅いタイミングで起こす」という、目に見えない機能を分かりやすく伝えたい。",
+                solution: "マスコットが杖から「AI」を召喚するアニメーションで、機能をキャラクター化。活用記録グラフのアニメーションにより、利用後のメリットを具体的にイメージできるよう工夫しました。",
+                gif: "/assets/notion/chrome-capture-2025-6-30.gif"
             },
             {
-                label: "飽きさせない構成",
-                text: "目覚まし時計がキャラに変身する「意外性」で一気に引き込み、集中を維持。",
-                image: "/assets/notion/chrome-capture-2025-6-27_(2).gif"
+                title: "こだわり３：飽きさせない構成",
+                challenge: "単調な機能説明の羅列になり、途中で離脱されるのを防ぎたい。",
+                solution: "主人公が二度寝する共感シーンの直後、目覚まし時計がキャラクターに変身するという「意外性」で一気に視聴者を引き込み、最後まで物語への期待感を維持させました。",
+                gif: "/assets/notion/chrome-capture-2025-6-27_(2).gif"
             }
         ]
     },
     {
         id: "skill-connect",
-        title: "制作事例 2：『Skill Connect』",
-        subtitle: "「教えたい」と「学びたい」を接続するプラットフォーム",
-        youtube: "https://youtu.be/_Kj83XnVRG8",
-        points: [
+        title: "Skill Connect",
+        service: "スキルシェアPF",
+        description: "「教えたい人」と「学びたい人」をつなぐ、オンライン・スキルシェア・プラットフォーム。学びたい人の「時間・場所・費用」の悩みと、教えたい人の「スキル活用の機会」の悩みを同時に解決します。",
+        videoUrl: "https://www.youtube.com/embed/_Kj83XnVRG8",
+        details: [
             {
-                label: "ビジュアル化の力",
-                text: "地球を挟んだ宇宙の対比で、抽象的な「分断」と「接続」を一目で表現。",
-                image: "/assets/notion/chrome-capture-2025-8-24.gif"
+                title: "こだわり１：世界観の構築",
+                challenge: "「学びたい人」と「教えたい人」の、まだ出会えていない\"もどかしい距離感\"をどう視覚的に表現するか。",
+                solution: "地球を挟んで男女が宇宙に浮かんでいるというシンボリックなシーンから開始。物理的な距離や機会の損失といった抽象的な課題を、一目で理解できる視覚言語に翻訳しました。",
+                gif: "/assets/notion/chrome-capture-2025-8-24.gif"
             },
             {
-                label: "UI擬似体験",
-                text: "スマホUIが動く様子を見せることで、利用時の具体的なイメージを醸成。",
-                image: "/assets/notion/chrome-capture-2025-8-24_(1).gif"
+                title: "こだわり２：情報の視覚化",
+                challenge: "ユーザーが抱える複数の悩みや、サービスの多機能さを、混乱させずに分かりやすく伝えること。",
+                solution: "悩みをアイコン付きのキーワードとしてキャラクターの周りに浮かべるインフォグラフィックで表現。また、スマホやPCのUIが実際に動く様子を見せることで、利用の具体的イメージを掴めるようにしました。",
+                gif: "/assets/notion/chrome-capture-2025-8-24_(1).gif"
             },
             {
-                label: "理想の未来",
-                text: "「スキルが収入に変わる」期待感を、ストーリー仕立ての構成で最大化。",
-                image: "/assets/notion/chrome-capture-2025-8-24_(3).gif"
+                title: "こだわり３：飽きさせない構成",
+                challenge: "サービス紹介にありがちな、単調な機能説明の羅列を避けたい。",
+                solution: "「課題提起 → 解決策の提示 → 具体的な利用フロー → 未来の展望」という王道のストーリー構成を採用。「教えたい/学びたい」両者の視点から期待感を醸成しました。",
+                gif: "/assets/notion/chrome-capture-2025-8-24_(3).gif"
             }
         ]
     }
 ];
+
+function CaseStudyDetail({ detail }: { detail: any }) {
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+        <div className="border border-white/10 rounded-2xl overflow-hidden glass-card mb-4">
+            <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="w-full p-6 flex items-center justify-between text-left hover:bg-white/5 transition-colors"
+            >
+                <div>
+                    <h4 className="text-white font-bold text-lg">{detail.title}</h4>
+                </div>
+                <motion.div animate={{ rotate: isOpen ? 180 : 0 }}>
+                    <ChevronDown className="text-white/40" />
+                </motion.div>
+            </button>
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="overflow-hidden"
+                    >
+                        <div className="p-6 pt-0 border-t border-white/5">
+                            <div className="grid md:grid-cols-2 gap-8 mt-4">
+                                <div className="space-y-4">
+                                    <div>
+                                        <p className="text-pop-secondary text-xs font-bold uppercase tracking-widest mb-1">Challenge</p>
+                                        <p className="text-white/80 text-sm">{detail.challenge}</p>
+                                    </div>
+                                    <div>
+                                        <p className="text-pop-primary text-xs font-bold uppercase tracking-widest mb-1">Solution</p>
+                                        <p className="text-white/60 text-sm leading-relaxed">{detail.solution}</p>
+                                    </div>
+                                </div>
+                                <div className="rounded-xl overflow-hidden border border-white/10 shadow-2xl relative aspect-video">
+                                    <Image src={detail.gif} alt={detail.title} fill className="object-cover" unoptimized />
+                                </div>
+                            </div>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </div>
+    );
+}
 
 export default function AboutPage() {
     return (
@@ -124,8 +180,8 @@ export default function AboutPage() {
                     <div className="grid md:grid-cols-3 gap-8">
                         {PRINCIPLES.map((principle, idx) => (
                             <ScrollReveal key={idx} delay={idx * 0.2}>
-                                <div className={`h-full p-8 rounded-3xl bg-gradient-to-br ${principle.color} to-white/5 border border-white/10 glass-card`}>
-                                    <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center mb-6">
+                                <div className={`h-full p-8 rounded-2xl bg-gradient-to-br ${principle.color} to-white/5 border border-white/10 glass-card`}>
+                                    <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mb-6">
                                         <principle.icon className="text-white w-6 h-6" />
                                     </div>
                                     <h3 className="text-xl font-bold text-white mb-4">{principle.title}</h3>
@@ -138,7 +194,7 @@ export default function AboutPage() {
             </section>
 
             {/* Process Section */}
-            <section className="py-24 bg-black/50">
+            <section className="py-24 bg-black/50 overflow-hidden">
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="grid md:grid-cols-2 gap-16 items-center">
                         <ScrollReveal xOffset={-50}>
@@ -148,19 +204,19 @@ export default function AboutPage() {
                             <p className="text-white/60 leading-relaxed mb-8">
                                 良い映像は、良い設計図から生まれます。本格的なアニメーション制作の前に、ラフコンテと絵コンテを通じて、完成イメージを完璧に共有します。
                             </p>
-                            <div className="space-y-6">
-                                <div className="flex gap-4">
-                                    <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white font-bold flex-shrink-0">1</div>
+                            <div className="space-y-4">
+                                <div className="flex gap-4 items-start">
+                                    <div className="w-8 h-8 rounded-full bg-pop-primary/20 flex items-center justify-center flex-shrink-0 text-white font-bold text-xs ring-1 ring-pop-primary/40">1</div>
                                     <div>
-                                        <h4 className="text-white font-bold mb-1">ラフコンテ：アイデアの骨子づくり</h4>
-                                        <p className="text-white/40 text-sm">物語のテンポや構造を固める初期段階。</p>
+                                        <h4 className="text-white font-bold mb-1">ラフコンテ</h4>
+                                        <p className="text-white/40 text-sm">全体の流れ、構造、テンポを最優先で固めます。</p>
                                     </div>
                                 </div>
-                                <div className="flex gap-4">
-                                    <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white font-bold flex-shrink-0">2</div>
+                                <div className="flex gap-4 items-start">
+                                    <div className="w-8 h-8 rounded-full bg-pop-secondary/20 flex items-center justify-center flex-shrink-0 text-white font-bold text-xs ring-1 ring-pop-secondary/40">2</div>
                                     <div>
-                                        <h4 className="text-white font-bold mb-1">絵コンテ：完成形の設計図</h4>
-                                        <p className="text-white/40 text-sm">Illustratorで表情やカメラワークまで詳細に指定。</p>
+                                        <h4 className="text-white font-bold mb-1">絵コンテ</h4>
+                                        <p className="text-white/40 text-sm">表情、配色、カメラワークまで詳細に設計し、品質を保証します。</p>
                                     </div>
                                 </div>
                             </div>
@@ -168,23 +224,25 @@ export default function AboutPage() {
                         <ScrollReveal xOffset={50}>
                             <div className="grid grid-cols-2 gap-4">
                                 <div className="space-y-4">
-                                    <div className="rounded-2xl overflow-hidden border border-white/10 h-64 relative">
-                                        <Image src="/assets/notion/2025-06-27_06h36_19.png" alt="Rough Storyboard" fill className="object-cover" />
-                                        <div className="absolute bottom-2 left-2 px-2 py-1 bg-black/60 backdrop-blur-md rounded text-[10px] text-white">ROUGH</div>
+                                    <div className="rounded-2xl overflow-hidden border border-white/10 h-64 relative group">
+                                        <Image src="/assets/notion/2025-06-27_06h36_19.png" alt="Rough Storyboard" fill className="object-cover transition-transform group-hover:scale-105" />
+                                        <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black to-transparent">
+                                            <span className="text-[10px] font-bold text-white/50 uppercase tracking-widest">Step 01 / Rough</span>
+                                        </div>
                                     </div>
-                                    <div className="rounded-2xl overflow-hidden border border-white/10 h-40 relative">
-                                        <div className="absolute inset-0 bg-pop-primary/10" />
-                                        <PenTool className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white/20 w-12 h-12" />
+                                    <div className="rounded-2xl overflow-hidden border border-white/10 h-40 relative flex items-center justify-center bg-pop-primary/10">
+                                        <PenTool className="text-white/20 w-12 h-12" />
                                     </div>
                                 </div>
                                 <div className="pt-12 space-y-4">
-                                    <div className="rounded-2xl overflow-hidden border border-white/10 h-40 relative">
-                                        <div className="absolute inset-0 bg-pop-secondary/10" />
-                                        <Sparkles className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white/20 w-12 h-12" />
+                                    <div className="rounded-2xl overflow-hidden border border-white/10 h-40 relative flex items-center justify-center bg-pop-secondary/10">
+                                        <Sparkles className="text-white/20 w-12 h-12" />
                                     </div>
-                                    <div className="rounded-2xl overflow-hidden border border-white/10 h-64 relative">
-                                        <Image src="/assets/notion/2025-06-27_06h37_01.png" alt="Detailed Storyboard" fill className="object-cover" />
-                                        <div className="absolute bottom-2 left-2 px-2 py-1 bg-black/60 backdrop-blur-md rounded text-[10px] text-white">DETAILED</div>
+                                    <div className="rounded-2xl overflow-hidden border border-white/10 h-64 relative group">
+                                        <Image src="/assets/notion/2025-06-27_06h37_01.png" alt="Detailed Storyboard" fill className="object-cover transition-transform group-hover:scale-105" />
+                                        <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black to-transparent">
+                                            <span className="text-[10px] font-bold text-white/50 uppercase tracking-widest">Step 02 / Detailed</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -194,52 +252,57 @@ export default function AboutPage() {
             </section>
 
             {/* Case Studies Deep Dive */}
-            {CASE_STUDIES.map((study, idx) => (
-                <section key={study.id} className={`py-40 ${idx % 2 === 0 ? 'bg-black' : 'bg-slate-900/20'}`}>
-                    <div className="max-w-7xl mx-auto px-6">
-                        <ScrollReveal className="mb-20">
-                            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">{study.title}</h2>
-                            <p className="text-pop-secondary font-medium tracking-widest uppercase text-sm mb-12">{study.subtitle}</p>
+            <section className="py-32 bg-black">
+                <div className="max-w-7xl mx-auto px-6">
+                    <ScrollReveal className="text-center mb-24">
+                        <span className="pro-badge mb-4">Deep Dive</span>
+                        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">制作における「３つの工夫」</h2>
+                        <p className="text-white/40 max-w-2xl mx-auto">制作プロセスの裏側。課題に対する具体的な「解決策」と「こだわり」をご紹介します。</p>
+                    </ScrollReveal>
 
-                            <div className="aspect-video rounded-3xl overflow-hidden border border-white/10 relative group">
-                                <Link href={study.youtube} target="_blank" className="absolute inset-0 z-10 flex items-center justify-center">
-                                    <div className="w-20 h-20 bg-white/10 backdrop-blur-xl rounded-full flex items-center justify-center border border-white/20 group-hover:scale-110 transition-transform duration-500">
-                                        <Youtube className="text-white w-10 h-10" />
-                                    </div>
-                                </Link>
-                                <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60" />
-                                <div className="flex h-full items-center justify-center bg-zinc-900 text-white/20 text-xl italic font-serif">
-                                    {study.title} Preview
-                                </div>
-                            </div>
-                        </ScrollReveal>
-
-                        <div className="grid md:grid-cols-3 gap-8 mt-24">
-                            {study.points.map((point, pIdx) => (
-                                <ScrollReveal key={pIdx} delay={pIdx * 0.1}>
-                                    <div className="rounded-2xl overflow-hidden bg-white/5 border border-white/5 hover:border-white/20 transition-all flex flex-col h-full">
-                                        <div className="aspect-video relative overflow-hidden">
-                                            <Image src={point.image} alt={point.label} fill className="object-cover transition-transform duration-700 hover:scale-110" />
+                    <div className="space-y-32">
+                        {CASE_STUDIES.map((study, idx) => (
+                            <div key={study.id} className={`grid lg:grid-cols-2 gap-16 items-start ${idx % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}>
+                                <ScrollReveal xOffset={idx % 2 === 0 ? -50 : 50} className={idx % 2 !== 0 ? 'lg:order-2' : ''}>
+                                    <div className="space-y-8">
+                                        <div>
+                                            <div className="flex items-center gap-3 mb-4">
+                                                <span className="px-3 py-1 bg-white/10 border border-white/10 rounded-full text-[10px] font-bold text-pop-secondary uppercase tracking-widest">Case {idx + 1}</span>
+                                                <h3 className="text-2xl md:text-3xl font-bold text-white">{study.title}</h3>
+                                            </div>
+                                            <p className="text-white/60 leading-relaxed mb-6">{study.description}</p>
                                         </div>
-                                        <div className="p-6">
-                                            <h4 className="text-pop-primary text-[10px] font-black uppercase tracking-[0.3em] mb-4">Point {pIdx + 1}: {point.label}</h4>
-                                            <p className="text-white/70 text-sm leading-relaxed">{point.text}</p>
+
+                                        <div className="aspect-video rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
+                                            <iframe
+                                                src={study.videoUrl}
+                                                title={study.title}
+                                                className="w-full h-full"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowFullScreen
+                                            ></iframe>
                                         </div>
                                     </div>
                                 </ScrollReveal>
-                            ))}
-                        </div>
+
+                                <ScrollReveal xOffset={idx % 2 === 0 ? 50 : -50} className={idx % 2 !== 0 ? 'lg:order-1' : ''}>
+                                    <div className="pt-4 lg:pt-12">
+                                        {study.details.map((detail, dIdx) => (
+                                            <CaseStudyDetail key={dIdx} detail={detail} />
+                                        ))}
+                                    </div>
+                                </ScrollReveal>
+                            </div>
+                        ))}
                     </div>
-                </section>
-            ))}
+                </div>
+            </section>
 
             {/* Profile Section */}
             <section className="py-32 bg-black relative">
                 <div className="max-w-4xl mx-auto px-6">
                     <ScrollReveal>
                         <div className="p-12 rounded-[40px] bg-gradient-to-br from-white/10 to-transparent border border-white/10 glass-card relative overflow-hidden">
-                            <div className="absolute top-0 right-0 w-64 h-64 bg-pop-primary/10 rounded-full blur-[100px] -mr-32 -mt-32" />
-
                             <div className="flex flex-col md:flex-row gap-12 items-center relative z-10">
                                 <div className="w-32 h-32 rounded-full overflow-hidden border-2 border-white/20 relative flex-shrink-0">
                                     <div className="absolute inset-0 bg-zinc-800 flex items-center justify-center">
@@ -252,14 +315,14 @@ export default function AboutPage() {
 
                                     <div className="space-y-6 text-white/60 leading-relaxed italic border-l-2 border-white/10 pl-6">
                                         <p>
-                                            2023年4月に動画制作の世界へ。2024年7月、ある映像作品に心を奪われ、After Effectsが持つ表現の無限の可能性に魅了されました。以来、自らの手で心動かす映像を創り出すことに情熱を注いでいます。
+                                            2023年4月に動画制作の世界へ。<br />
+                                            2024年7月、ある映像作品に心を奪われ、After Effectsが持つ表現の無限の可能性に魅了されました。以来、自らの手で心動かす映像を創り出すことに情熱を注いでいます。
                                         </p>
-                                        <p className="font-bold text-white not-italic">
-                                            「創造の旅とは、終わりなき学びの連続である」
-                                        </p>
-                                        <p className="text-xs">
-                                            好きなこと：After Effects / アニメ鑑賞 / ギター演奏
-                                        </p>
+                                        <div className="pt-4 not-italic">
+                                            <p className="text-xs text-white/40 font-bold uppercase tracking-widest mb-2">好きな言葉</p>
+                                            <p className="text-white text-lg font-medium">「創造の旅とは、終わりなき学びの連続である」</p>
+                                            <p className="text-sm text-white/40 mt-2">学び続ける限り、表現の限界は存在しないと信じています。昨日よりも今日、今日よりも明日、より良いクリエイティブを追求し続けます。</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

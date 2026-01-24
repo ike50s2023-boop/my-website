@@ -25,10 +25,7 @@ export function WorkCard({ work, index, onOpen }: { work: WorkData; index: numbe
             style={{ x, opacity, y }}
             onClick={onOpen}
         >
-            <div ref={cardRef} className="relative aspect-video w-full overflow-hidden rounded-lg mb-6 transition-colors border border-white/5 bg-white/5 group-hover:border-white/20">
-                {/* Rainbow hover border highlight */}
-                <div className="absolute inset-0 rainbow-glow opacity-0 group-hover:opacity-10 transition-opacity pointer-events-none" />
-
+            <div ref={cardRef} className="relative aspect-video w-full overflow-hidden rounded-lg mb-6 transition-colors border border-white/5 bg-white/5 group-hover:border-white/20 glass-card">
                 <motion.div style={{ scale }} className="w-full h-full relative">
                     <video
                         src={work.videoSrc}
@@ -44,21 +41,16 @@ export function WorkCard({ work, index, onOpen }: { work: WorkData; index: numbe
                     </div>
                 </motion.div>
 
-                {/* Overlay */}
-                <div className="absolute inset-0 transition-colors duration-500 bg-black/20 group-hover:bg-black/0" />
-
-                {/* Badge */}
                 <div className="absolute top-4 left-4 px-3 py-1 backdrop-blur-md rounded-sm text-[10px] font-bold uppercase tracking-widest bg-black/50 border border-white/10 text-white">
                     {work.category}
                 </div>
             </div>
 
-            {/* Content */}
             <div className="space-y-2">
                 <h3 className="text-xl font-bold transition-colors text-white group-hover:rainbow-text">
                     {work.title}
                 </h3>
-                <p className="text-sm font-light leading-relaxed text-white/60">{work.description}</p>
+                <p className="text-sm font-light leading-relaxed text-white/50">{work.description}</p>
             </div>
         </motion.div>
     );
@@ -70,18 +62,15 @@ export default function Works() {
     return (
         <section id="works" className="py-40 bg-black relative">
             <div className="max-w-7xl mx-auto px-6">
-                {/* Section header */}
                 <ScrollReveal className="mb-24" xOffset={-100} duration={1.2}>
                     <span className="text-white/30 text-xs font-medium tracking-[0.3em] uppercase block mb-4">
                         Portfolio
                     </span>
-                    {/* Fix 4: Rainbow Header */}
                     <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight rainbow-text inline-block">
                         制作事例
                     </h2>
                 </ScrollReveal>
 
-                {/* Works grid */}
                 <div className="grid md:grid-cols-2 gap-x-12 gap-y-16 mb-20">
                     {FEATURED_WORKS.map((work, index) => (
                         <WorkCard
@@ -93,7 +82,6 @@ export default function Works() {
                     ))}
                 </div>
 
-                {/* View more CTA */}
                 <ScrollReveal className="text-center">
                     <Link
                         href="/works"
@@ -105,7 +93,6 @@ export default function Works() {
                 </ScrollReveal>
             </div>
 
-            {/* Video Modal */}
             <AnimatePresence>
                 {activeVideo && (
                     <motion.div

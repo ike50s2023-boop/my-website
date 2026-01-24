@@ -1,7 +1,7 @@
 "use client";
 
 import ScrollReveal from "@/components/ui/ScrollReveal";
-import { Zap, Heart, Layout, Sparkles } from "lucide-react";
+import { Zap, Heart, Layout } from "lucide-react";
 
 export default function Features() {
     const features = [
@@ -33,12 +33,11 @@ export default function Features() {
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 <ScrollReveal className="text-center mb-20" yOffset={100} duration={1.2}>
-                    {/* Fix 4: Rainbow Header */}
                     <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight rainbow-text inline-block mb-6">
                         独自の強み
                     </h2>
                     <p className="text-white/50 text-lg font-light max-w-2xl mx-auto">
-                        売上アップ・業務効率化に特化。企画・制作丸投げOK。<br />
+                        売上アップ・業務効率化に特化. 企画・制作丸投げOK。<br />
                         御社の営業・採用課題を「伝わる動画」で解決します。
                     </p>
                 </ScrollReveal>
@@ -67,4 +66,3 @@ export default function Features() {
         </section>
     );
 }
-

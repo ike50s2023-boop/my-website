@@ -7,22 +7,12 @@
 
   /* Modern Pop Palette */
   --color-pop-primary: #FF2E63;
-  /* Vivid Pink */
   --color-pop-secondary: #08D9D6;
-  /* Cyan */
   --color-pop-accent: #EAEAEA;
-  /* Off White */
   --color-pop-dark: #252A34;
-  /* Gunmetal */
   --color-pop-orange: #FF9A00;
-  /* Orange */
 
-  /* Define font family - matching layout font variable if needed, or fallback */
   --font-outfit: "Outfit", sans-serif;
-
-  /* Animations */
-  --animate-float: float 6s ease-in-out infinite;
-  --animate-rainbow-flow: rainbow-flow 8s linear infinite;
 
   @keyframes float {
 
@@ -76,20 +66,25 @@ html {
   scroll-behavior: auto;
 }
 
-/* Custom Utilities */
+/* Base Glass Card (Stable Version) */
 .glass-card {
-  @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl transition-all duration-300;
+  @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl transition-all duration-300 shadow-xl;
 }
 
 .glass-card:hover {
-  @apply border-white/20 bg-white/10;
+  @apply border-white/40 bg-white/20 -translate-y-1;
+}
+
+/* Pro Badge Utility */
+.pro-badge {
+  @apply inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[10px] font-black tracking-[0.2em] uppercase bg-white/5 border border-white/10 text-white/60 backdrop-blur-md;
 }
 
 .rainbow-text {
   background: linear-gradient(to right, #93C5FD 0%, #5EEAD4 15%, #BEF264 30%, #FEF08A 45%, #FCD34D 60%, #FCA5A5 80%, #93C5FD 100%);
   background-size: 200% auto;
-  @apply bg-clip-text text-transparent animate-rainbow-flow;
-  animation-duration: 12s;
+  @apply bg-clip-text text-transparent;
+  animation: rainbow-flow 12s linear infinite;
 }
 
 .animate-float-slow {
@@ -140,5 +135,5 @@ html {
 
 /* Mascot float utility if used directly */
 .float-mascot {
-  @apply animate-float;
+  animation: float 6s ease-in-out infinite;
 }
