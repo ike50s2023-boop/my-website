@@ -77,7 +77,7 @@ export default function Works() {
                     </span>
                     {/* Fix 4: Rainbow Header */}
                     <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight rainbow-text inline-block">
-                        導入実績
+                        制作事例
                     </h2>
                 </ScrollReveal>
 

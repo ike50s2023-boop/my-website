@@ -22,6 +22,7 @@ const QUICK_LINKS = [
     { label: "サービスの特徴", href: "#features" },
     { label: "料金プラン", href: "#pricing" },
     { label: "制作の流れ", href: "#process" },
+    { label: "よくあるご質問", href: "/faq" },
 ];
 
 export default function Footer() {
@@ -29,8 +30,10 @@ export default function Footer() {
     const isHome = pathname === "/";
 
     const getLink = (href: string) => {
-        if (isHome) return href;
-        return `/${href}`;
+        if (href.startsWith("#")) {
+            return isHome ? href : `/${href}`;
+        }
+        return href;
     };
 
     return (

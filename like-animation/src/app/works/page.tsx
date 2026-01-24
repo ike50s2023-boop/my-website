@@ -95,9 +95,9 @@ export default function WorksPage() {
                                             )}
 
                                             {/* Play Button Overlay */}
-                                            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-20 transform scale-90 group-hover:scale-100 duration-300 pointer-events-none">
-                                                <div className="w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-accent">
-                                                    <PlayCircle size={24} fill="currentColor" className="text-white fill-accent" />
+                                            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-20 pointer-events-none">
+                                                <div className="p-4 rounded-full bg-black/20 backdrop-blur-sm border border-white/10 group-hover:scale-110 transition-transform duration-300">
+                                                    <PlayCircle size={48} className="text-white/80" />
                                                 </div>
                                             </div>
                                         </div>

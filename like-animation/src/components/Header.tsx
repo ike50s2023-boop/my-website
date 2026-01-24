@@ -20,8 +20,10 @@ export default function Header() {
   const isHome = pathname === "/";
 
   const getLink = (href: string) => {
-    if (isHome) return href;
-    return `/${href}`;
+    if (href.startsWith("#")) {
+      return isHome ? href : `/${href}`;
+    }
+    return href;
   };
 
   return (
@@ -45,16 +47,19 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-10">
             {NAV_ITEMS.map((item, index) => (
-              <motion.a
+              <motion.div
                 key={item.label}
-                href={getLink(item.href)}
-                className="text-white/60 hover:text-white transition-colors text-xs font-medium tracking-widest uppercase"
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 2.2 + (index * 0.1) }}
               >
-                {item.label}
-              </motion.a>
+                <Link
+                  href={getLink(item.href)}
+                  className="text-white/60 hover:text-white transition-colors text-xs font-medium tracking-widest uppercase"
+                >
+                  {item.label}
+                </Link>
+              </motion.div>
             ))}
             <Link
               href={getLink("#contact")}
@@ -81,14 +86,14 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
           >
             {NAV_ITEMS.map((item) => (
-              <a
+              <Link
                 key={item.label}
                 href={getLink(item.href)}
                 className="text-white/70 hover:text-white font-medium py-2 text-sm uppercase tracking-widest"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
             <Link
               href={getLink("#contact")}
