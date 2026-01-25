@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CTA from "@/components/CTA";
 import ScrollReveal from "@/components/ui/ScrollReveal";
-import { Target, Layout, PenTool, Sparkles, User, ChevronDown } from "lucide-react";
+import { Target, Layout, Sparkles, User, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -36,7 +36,7 @@ const CASE_STUDIES = [
         title: "モーニングクエスト",
         service: "早起き支援アプリ",
         description: "「退屈な朝を、楽しい冒険に変える」早起き支援アプリ。AIによる最適な起床サポートや、早朝の活動がポイントになるゲーム要素で、利用者の生活習慣改善を後押しします。",
-        videoUrl: "https://www.youtube.com/embed/gnvmyrNAyRw",
+        videoSrc: "/videos/morning-quest.mp4",
         details: [
             {
                 title: "こだわり１：世界観の構築",
@@ -63,7 +63,7 @@ const CASE_STUDIES = [
         title: "Skill Connect",
         service: "スキルシェアPF",
         description: "「教えたい人」と「学びたい人」をつなぐ、オンライン・スキルシェア・プラットフォーム。学びたい人の「時間・場所・費用」の悩みと、教えたい人の「スキル活用の機会」の悩みを同時に解決します。",
-        videoUrl: "https://www.youtube.com/embed/_Kj83XnVRG8",
+        videoSrc: "/videos/skill-connect.mp4",
         details: [
             {
                 title: "こだわり１：世界観の構築",
@@ -194,55 +194,77 @@ export default function AboutPage() {
             </section>
 
             {/* Process Section */}
-            <section className="py-24 bg-black/50 overflow-hidden">
-                <div className="max-w-7xl mx-auto px-6">
-                    <div className="grid md:grid-cols-2 gap-16 items-center">
-                        <ScrollReveal xOffset={-50}>
-                            <h2 className="text-3xl md:text-5xl font-bold text-white mb-8">
-                                企画をカタチにする<br />丁寧な設計プロセス
-                            </h2>
-                            <p className="text-white/60 leading-relaxed mb-8">
-                                良い映像は、良い設計図から生まれます。本格的なアニメーション制作の前に、ラフコンテと絵コンテを通じて、完成イメージを完璧に共有します。
-                            </p>
-                            <div className="space-y-4">
-                                <div className="flex gap-4 items-start">
-                                    <div className="w-8 h-8 rounded-full bg-pop-primary/20 flex items-center justify-center flex-shrink-0 text-white font-bold text-xs ring-1 ring-pop-primary/40">1</div>
-                                    <div>
-                                        <h4 className="text-white font-bold mb-1">ラフコンテ</h4>
-                                        <p className="text-white/40 text-sm">全体の流れ、構造、テンポを最優先で固めます。</p>
+            <section className="py-32 bg-zinc-950/50 relative overflow-hidden">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.03)_0,transparent_100%)] pointer-events-none" />
+
+                <div className="max-w-7xl mx-auto px-6 relative z-10">
+                    <ScrollReveal className="text-center mb-24">
+                        <span className="pro-badge mb-6">Execution & Precision</span>
+                        <h2 className="text-4xl md:text-6xl font-bold text-white mb-8 tracking-tighter">
+                            企画をカタチにする<br className="md:hidden" />丁寧な設計プロセス
+                        </h2>
+                        <p className="text-white/40 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+                            良い映像は、良い設計図から生まれます。本格的なアニメーション制作の前に、<br className="hidden md:block" />
+                            内容を完璧に共有するための「設計図」を精緻に描き上げます。
+                        </p>
+                    </ScrollReveal>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                        {/* Step 01 */}
+                        <ScrollReveal delay={0.1} yOffset={30}>
+                            <div className="group relative">
+                                <div className="absolute -inset-1 bg-gradient-to-b from-pop-primary/20 to-transparent rounded-[32px] blur opacity-25 group-hover:opacity-40 transition duration-1000" />
+                                <div className="relative bg-black/40 border border-white/5 rounded-[32px] p-8 md:p-12 backdrop-blur-xl">
+                                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
+                                        <div>
+                                            <div className="flex items-center gap-3 mb-4">
+                                                <span className="text-[10px] font-black text-pop-primary uppercase tracking-[0.4em]">Step 01</span>
+                                                <div className="w-12 h-[1px] bg-pop-primary/20" />
+                                            </div>
+                                            <h3 className="text-3xl font-bold text-white">ラフコンテ</h3>
+                                        </div>
+                                        <p className="text-white/40 text-sm md:text-right max-w-[200px] leading-relaxed">
+                                            全体の流れ、構造、テンポを最優先で固めます。
+                                        </p>
                                     </div>
-                                </div>
-                                <div className="flex gap-4 items-start">
-                                    <div className="w-8 h-8 rounded-full bg-pop-secondary/20 flex items-center justify-center flex-shrink-0 text-white font-bold text-xs ring-1 ring-pop-secondary/40">2</div>
-                                    <div>
-                                        <h4 className="text-white font-bold mb-1">絵コンテ</h4>
-                                        <p className="text-white/40 text-sm">表情、配色、カメラワークまで詳細に設計し、品質を保証します。</p>
+
+                                    <div className="h-[400px] md:h-[650px] relative rounded-2xl overflow-hidden bg-zinc-900/30 ring-1 ring-white/5">
+                                        <Image
+                                            src="/assets/notion/2025-06-27_06h36_19.png"
+                                            alt="Rough Storyboard"
+                                            fill
+                                            className="object-contain p-4 md:p-8"
+                                        />
                                     </div>
                                 </div>
                             </div>
                         </ScrollReveal>
-                        <ScrollReveal xOffset={50}>
-                            <div className="grid grid-cols-2 gap-4">
-                                <div className="space-y-4">
-                                    <div className="rounded-2xl overflow-hidden border border-white/10 h-64 relative group">
-                                        <Image src="/assets/notion/2025-06-27_06h36_19.png" alt="Rough Storyboard" fill className="object-cover transition-transform group-hover:scale-105" />
-                                        <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black to-transparent">
-                                            <span className="text-[10px] font-bold text-white/50 uppercase tracking-widest">Step 01 / Rough</span>
+
+                        {/* Step 02 */}
+                        <ScrollReveal delay={0.2} yOffset={30}>
+                            <div className="group relative">
+                                <div className="absolute -inset-1 bg-gradient-to-b from-pop-secondary/20 to-transparent rounded-[32px] blur opacity-25 group-hover:opacity-40 transition duration-1000" />
+                                <div className="relative bg-black/40 border border-white/5 rounded-[32px] p-8 md:p-12 backdrop-blur-xl">
+                                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
+                                        <div>
+                                            <div className="flex items-center gap-3 mb-4">
+                                                <span className="text-[10px] font-black text-pop-secondary uppercase tracking-[0.4em]">Step 02</span>
+                                                <div className="w-12 h-[1px] bg-pop-secondary/20" />
+                                            </div>
+                                            <h3 className="text-3xl font-bold text-white">絵コンテ</h3>
                                         </div>
+                                        <p className="text-white/40 text-sm md:text-right max-w-[220px] leading-relaxed">
+                                            表情、配色、カメラワークまで詳細に設計し、品質を保証します。
+                                        </p>
                                     </div>
-                                    <div className="rounded-2xl overflow-hidden border border-white/10 h-40 relative flex items-center justify-center bg-pop-primary/10">
-                                        <PenTool className="text-white/20 w-12 h-12" />
-                                    </div>
-                                </div>
-                                <div className="pt-12 space-y-4">
-                                    <div className="rounded-2xl overflow-hidden border border-white/10 h-40 relative flex items-center justify-center bg-pop-secondary/10">
-                                        <Sparkles className="text-white/20 w-12 h-12" />
-                                    </div>
-                                    <div className="rounded-2xl overflow-hidden border border-white/10 h-64 relative group">
-                                        <Image src="/assets/notion/2025-06-27_06h37_01.png" alt="Detailed Storyboard" fill className="object-cover transition-transform group-hover:scale-105" />
-                                        <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black to-transparent">
-                                            <span className="text-[10px] font-bold text-white/50 uppercase tracking-widest">Step 02 / Detailed</span>
-                                        </div>
+
+                                    <div className="h-[400px] md:h-[650px] relative rounded-2xl overflow-hidden bg-zinc-900/30 ring-1 ring-white/5">
+                                        <Image
+                                            src="/assets/notion/2025-06-27_06h37_01.png"
+                                            alt="Detailed Storyboard"
+                                            fill
+                                            className="object-contain p-4 md:p-8"
+                                        />
                                     </div>
                                 </div>
                             </div>
@@ -273,14 +295,13 @@ export default function AboutPage() {
                                             <p className="text-white/60 leading-relaxed mb-6">{study.description}</p>
                                         </div>
 
-                                        <div className="aspect-video rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
-                                            <iframe
-                                                src={study.videoUrl}
-                                                title={study.title}
-                                                className="w-full h-full"
-                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                                allowFullScreen
-                                            ></iframe>
+                                        <div className="aspect-video rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-black relative">
+                                            <video
+                                                src={study.videoSrc}
+                                                controls
+                                                playsInline
+                                                className="w-full h-full object-cover"
+                                            />
                                         </div>
                                     </div>
                                 </ScrollReveal>
