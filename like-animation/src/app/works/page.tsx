@@ -75,29 +75,30 @@ export default function WorksPage() {
                                 >
                                     <div className="group cursor-pointer flex flex-col h-full">
                                         {/* Thumbnail Area with Video Preview */}
-                                        <div className={`relative aspect-video rounded-xl overflow-hidden mb-6 border border-white/10 shadow-sm transition-all duration-300 group-hover:shadow-lg ${work.color} flex items-center justify-center`}>
-                                            <div className="absolute inset-0 bg-white/0 group-hover:bg-white/5 transition-colors z-10" />
+                                        <div className={`relative aspect-video rounded-2xl overflow-hidden mb-8 transition-all duration-500 group-hover:-translate-y-2 flex items-center justify-center ${index % 3 === 0 ? 'card-glow-teal' : index % 3 === 1 ? 'card-glow-red' : 'card-glow-amber'
+                                            }`}>
+                                            <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10" />
 
                                             {/* Video Preview */}
                                             {work.videoSrc ? (
                                                 <video
                                                     src={work.videoSrc}
-                                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                                     autoPlay
                                                     muted
                                                     loop
                                                     playsInline
                                                 />
                                             ) : (
-                                                <div className="p-4 text-center">
-                                                    <div className="text-xl font-bold text-slate-300 tracking-widest uppercase">{work.title}</div>
+                                                <div className="p-4 text-center h-full flex items-center justify-center bg-zinc-900">
+                                                    <div className="text-xl font-bold text-white/20 tracking-widest uppercase">{work.title}</div>
                                                 </div>
                                             )}
 
                                             {/* Play Button Overlay */}
                                             <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-20 pointer-events-none">
-                                                <div className="p-4 rounded-full bg-black/20 backdrop-blur-sm border border-white/10 group-hover:scale-110 transition-transform duration-300">
-                                                    <PlayCircle size={48} className="text-white/80" />
+                                                <div className="p-4 rounded-full bg-black/40 backdrop-blur-md border border-white/20 group-hover:scale-110 transition-transform duration-300">
+                                                    <PlayCircle size={48} className="text-white" />
                                                 </div>
                                             </div>
                                         </div>

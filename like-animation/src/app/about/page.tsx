@@ -178,17 +178,20 @@ export default function AboutPage() {
                     </ScrollReveal>
 
                     <div className="grid md:grid-cols-3 gap-8">
-                        {PRINCIPLES.map((principle, idx) => (
-                            <ScrollReveal key={idx} delay={idx * 0.2}>
-                                <div className={`h-full p-8 rounded-2xl bg-gradient-to-br ${principle.color} to-white/5 border border-white/10 glass-card`}>
-                                    <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mb-6">
-                                        <principle.icon className="text-white w-6 h-6" />
+                        {PRINCIPLES.map((principle, idx) => {
+                            const vibrantClass = idx === 0 ? 'vibrant-card-red' : idx === 1 ? 'vibrant-card-teal' : 'vibrant-card-amber';
+                            return (
+                                <ScrollReveal key={idx} delay={idx * 0.2}>
+                                    <div className={`h-full p-10 ${vibrantClass}`}>
+                                        <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center mb-8 border border-white/10 ring-1 ring-white/5 shadow-inner">
+                                            <principle.icon className="text-white w-7 h-7" />
+                                        </div>
+                                        <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">{principle.title}</h3>
+                                        <p className="text-white/50 leading-relaxed font-medium">{principle.description}</p>
                                     </div>
-                                    <h3 className="text-xl font-bold text-white mb-4">{principle.title}</h3>
-                                    <p className="text-white/60 leading-relaxed text-sm">{principle.description}</p>
-                                </div>
-                            </ScrollReveal>
-                        ))}
+                                </ScrollReveal>
+                            );
+                        })}
                     </div>
                 </div>
             </section>

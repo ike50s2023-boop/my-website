@@ -45,16 +45,17 @@ export default function Features() {
                 <div className="grid md:grid-cols-3 gap-8">
                     {features.map((feature, index) => {
                         const Icon = feature.icon;
+                        const vibrantClass = index === 0 ? 'vibrant-card-teal' : index === 1 ? 'vibrant-card-red' : 'vibrant-card-amber';
                         return (
                             <ScrollReveal key={feature.title} delay={index * 0.1}>
-                                <div className="glass-card p-8 h-full hover:bg-white/10 transition-colors group">
-                                    <div className={`mb-6 ${feature.color}`}>
-                                        <Icon className="w-10 h-10" />
+                                <div className={`${vibrantClass} p-10 h-full`}>
+                                    <div className={`mb-8 w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 ring-1 ring-white/5`}>
+                                        <Icon className={`w-7 h-7 ${feature.color}`} />
                                     </div>
-                                    <h3 className="text-xl font-bold text-white mb-4 group-hover:text-pop-secondary transition-colors">
+                                    <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-pop-secondary transition-colors tracking-tight">
                                         {feature.title}
                                     </h3>
-                                    <p className="text-white/50 text-sm leading-relaxed">
+                                    <p className="text-white/50 text-sm leading-relaxed font-medium">
                                         {feature.description}
                                     </p>
                                 </div>

@@ -12,6 +12,7 @@ const NAV_ITEMS = [
   { label: "サービスの特徴", href: "#features" },
   { label: "料金プラン", href: "#pricing" },
   { label: "制作の流れ", href: "#process" },
+  { label: "制作のこだわり", href: "/about" },
 ];
 
 export default function Header() {

@@ -19,7 +19,7 @@ const SOCIAL_LINKS = [
 
 const QUICK_LINKS = [
     { label: "制作事例", href: "#works" },
-    { label: "映像へのこだわり", href: "/about" },
+    { label: "制作のこだわり", href: "/about" },
     { label: "サービスの特徴", href: "#features" },
     { label: "料金プラン", href: "#pricing" },
     { label: "制作の流れ", href: "#process" },

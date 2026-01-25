@@ -45,45 +45,51 @@ export default function Pricing() {
 
             <div className="max-w-7xl mx-auto px-6">
                 <div className="grid md:grid-cols-3 gap-8">
-                    {plans.map((plan, index) => (
-                        <ScrollReveal key={plan.name} delay={index * 0.1}>
-                            <div className={`relative p-10 rounded-3xl h-full transition-all duration-300 glass-card ${plan.popular ? 'bg-white/10 border border-pop-secondary/50 scale-105 z-10' : ''}`}>
-                                {plan.popular && (
-                                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-pop-secondary text-black px-6 py-1.5 rounded-full text-xs font-black tracking-widest uppercase shadow-lg whitespace-nowrap">
-                                        Recommended
-                                    </div>
-                                )}
+                    {plans.map((plan, index) => {
+                        const vibrantClass = plan.popular
+                            ? 'vibrant-card-teal border-pop-secondary/40 shadow-[0_0_50px_-12px_rgba(8,217,214,0.3)]'
+                            : (index === 0 ? 'vibrant-card-red' : 'vibrant-card-amber');
 
-                                <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
-                                <div className="flex items-end gap-1 mb-2">
-                                    <span className="text-sm text-white/50">目安</span>
-                                    <span className="text-4xl font-bold text-white tracking-tighter">{plan.price}</span>
-                                    <span className="text-sm text-white/50">万円〜</span>
+                        return (
+                            <ScrollReveal key={plan.name} delay={index * 0.1}>
+                                <div className={`relative p-10 h-full ${vibrantClass} ${plan.popular ? 'scale-105 z-10' : ''}`}>
+                                    {plan.popular && (
+                                        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-pop-secondary text-black px-6 py-1.5 rounded-full text-xs font-black tracking-widest uppercase shadow-lg whitespace-nowrap">
+                                            Recommended
+                                        </div>
+                                    )}
+
+                                    <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
+                                    <div className="flex items-end gap-1 mb-2">
+                                        <span className="text-sm text-white/50">目安</span>
+                                        <span className="text-4xl font-bold text-white tracking-tighter">{plan.price}</span>
+                                        <span className="text-sm text-white/50">万円〜</span>
+                                    </div>
+                                    <div className="mb-6 inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full text-[10px] font-bold text-white/80">
+                                        <span className="text-pop-secondary">⏱</span>
+                                        {plan.duration}
+                                    </div>
+                                    <p className="text-white/60 font-medium text-sm mb-8 pb-8 border-b border-white/10 leading-relaxed min-h-[4.5em]">
+                                        {plan.description}
+                                    </p>
+                                    <ul className="space-y-4 mb-10">
+                                        {plan.features.map((feature) => (
+                                            <li key={feature} className="flex items-start gap-3 text-sm text-white/80">
+                                                <Check className="w-4 h-4 text-pop-secondary mt-0.5 flex-shrink-0" />
+                                                <span className="font-medium">{feature}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                    <Link
+                                        href={`/contact?plan=${plan.name}`}
+                                        className={`block w-full py-4 rounded-full font-bold text-sm tracking-widest uppercase transition-all text-center ${plan.popular ? 'bg-pop-secondary text-black hover:bg-white hover:text-black shadow-lg' : 'border border-white/20 text-white hover:bg-white hover:text-black'}`}
+                                    >
+                                        Select Plan
+                                    </Link>
                                 </div>
-                                <div className="mb-6 inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full text-[10px] font-bold text-white/80">
-                                    <span className="text-pop-secondary">⏱</span>
-                                    {plan.duration}
-                                </div>
-                                <p className="text-white/60 text-sm mb-8 pb-8 border-b border-white/10 leading-relaxed min-h-[4.5em]">
-                                    {plan.description}
-                                </p>
-                                <ul className="space-y-4 mb-10">
-                                    {plan.features.map((feature) => (
-                                        <li key={feature} className="flex items-start gap-3 text-sm text-white/80">
-                                            <Check className="w-4 h-4 text-pop-secondary mt-0.5 flex-shrink-0" />
-                                            <span>{feature}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                                <Link
-                                    href={`/contact?plan=${plan.name}`}
-                                    className={`block w-full py-4 rounded-full font-bold text-sm tracking-widest uppercase transition-all text-center ${plan.popular ? 'bg-pop-secondary text-black hover:bg-white hover:text-black shadow-lg' : 'border border-white/20 text-white hover:bg-white hover:text-black'}`}
-                                >
-                                    Select Plan
-                                </Link>
-                            </div>
-                        </ScrollReveal>
-                    ))}
+                            </ScrollReveal>
+                        );
+                    })}
                 </div>
             </div>
         </section>
