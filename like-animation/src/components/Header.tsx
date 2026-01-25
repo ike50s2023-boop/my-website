@@ -40,8 +40,9 @@ export default function Header() {
               <div className="absolute inset-0 rainbow-glow opacity-0 group-hover:opacity-100 transition-opacity blur-xl" />
               <Image src="/logo.png" alt="Like Animation" width={40} height={40} className="w-10 h-10 relative z-10" />
             </div>
-            <div className="hidden sm:block">
-              <span className="text-lg font-bold tracking-tight rainbow-text">Like Animation</span>
+            <div className="hidden sm:flex flex-col">
+              <span className="text-lg font-bold tracking-tight rainbow-text leading-none">Like Animation</span>
+              <span className="text-[0.6rem] font-bold text-white/50 tracking-[0.2em] leading-none mt-1 normal-case">Motion & Creativity Unframed</span>
             </div>
           </Link>
 

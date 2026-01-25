@@ -88,7 +88,7 @@ export default function Hero() {
                                 delay: 3.4
                             }}
                         >
-                            <span className="text-white/70 text-xs md:text-sm font-medium tracking-[0.2em] uppercase">
+                            <span className="text-white/70 text-xs md:text-sm font-medium tracking-[0.2em]">
                                 {HERO_CONTENT.tagline}
                             </span>
                         </motion.div>

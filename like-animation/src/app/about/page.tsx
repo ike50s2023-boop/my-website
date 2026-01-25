@@ -174,7 +174,6 @@ export default function AboutPage() {
                         <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
                             制作で最も大切にする３つのこと
                         </h2>
-                        <div className="w-20 h-1 bg-pop-primary mx-auto" />
                     </ScrollReveal>
 
                     <div className="grid md:grid-cols-3 gap-8">

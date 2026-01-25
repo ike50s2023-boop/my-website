@@ -50,7 +50,7 @@ function ContactForm() {
     }
 
     return (
-        <ScrollReveal delay={0.2} className="relative p-8 md:p-12 bg-white/5 rounded-[32px] border border-white/10">
+        <ScrollReveal delay={0.2} className="relative p-8 md:p-12 vibrant-card-teal">
             <form onSubmit={handleSubmit} className="space-y-8">
                 {/* Name */}
                 <div className="space-y-3">
