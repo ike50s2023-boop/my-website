@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CTA from "@/components/CTA";
 import ScrollReveal from "@/components/ui/ScrollReveal";
-import { Target, Layout, Sparkles, User, ChevronDown } from "lucide-react";
+import { Lightbulb, Clapperboard, Sparkles, User, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -17,13 +17,13 @@ const PRINCIPLES = [
         color: "from-pop-primary/20"
     },
     {
-        icon: Target,
+        icon: Lightbulb,
         title: "直感的に「伝わる」情報の視覚化",
         description: "複雑な情報も、アニメーションやインフォグラフィックを用いて直感的に理解できる形に変換。整理された視覚情報で訴求力を高めます。",
         color: "from-pop-secondary/20"
     },
     {
-        icon: Layout,
+        icon: Clapperboard,
         title: "視聴者を「飽きさせない」構成",
         description: "冒頭の引き込みから意外性のある演出まで。計算された緩急で視聴者の集中力を最後まで維持する「物語」として設計します。",
         color: "from-pop-orange/20"
@@ -328,12 +328,15 @@ export default function AboutPage() {
                         <div className="p-12 rounded-[40px] bg-gradient-to-br from-white/10 to-transparent border border-white/10 glass-card relative overflow-hidden">
                             <div className="flex flex-col md:flex-row gap-12 items-center relative z-10">
                                 <div className="w-32 h-32 rounded-full overflow-hidden border-2 border-white/20 relative flex-shrink-0">
-                                    <div className="absolute inset-0 bg-zinc-800 flex items-center justify-center">
-                                        <User className="text-white/20 w-16 h-16" />
-                                    </div>
+                                    <Image
+                                        src="/profile-icon.jpg"
+                                        alt="高木 明(ike)"
+                                        fill
+                                        className="object-cover"
+                                    />
                                 </div>
                                 <div>
-                                    <h2 className="text-3xl font-bold text-white mb-2">高木 明 <span className="text-sm font-light text-white/40 ml-2">Akira Takagi</span></h2>
+                                    <h2 className="text-3xl font-bold text-white mb-2">高木 明 (ike)</h2>
                                     <p className="text-pop-secondary text-sm font-black uppercase tracking-widest mb-6">Video Creator / Motion Designer</p>
 
                                     <div className="space-y-6 text-white/60 leading-relaxed italic border-l-2 border-white/10 pl-6">

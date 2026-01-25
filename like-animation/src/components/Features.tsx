@@ -1,24 +1,24 @@
 "use client";
 
 import ScrollReveal from "@/components/ui/ScrollReveal";
-import { Zap, Heart, Layout } from "lucide-react";
+import { Eye, Layers, Share2 } from "lucide-react";
 
 export default function Features() {
     const features = [
         {
-            icon: Zap,
+            icon: Eye,
             title: "「見えないもの」を可視化",
             description: "システム構造、抽象的な概念、膨大なデータ。言葉だけでは伝わりにくい情報を、直感的なアニメーションと図解で「一目でわかる」形に変換します。",
             color: "text-amber-400"
         },
         {
-            icon: Heart,
+            icon: Layers,
             title: "ビジネスの変化に対応する「資産性」",
             description: "実写動画と異なり、撮影し直す必要がありません。UIの変更やサービスのアップデートに合わせて、部分的な修正だけで長く使い続けられる「資産」としての動画を制作します。",
             color: "text-pop-primary"
         },
         {
-            icon: Layout,
+            icon: Share2,
             title: "営業・教育をワンストップで",
             description: "制作したアセット（イラストやキャラクター）は、営業資料やWebサイト、社内マニュアルにも流用可能。ブランドイメージを統一しながら、トータルコストを抑えます。",
             color: "text-pop-secondary"
