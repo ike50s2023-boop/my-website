@@ -159,7 +159,7 @@ export default function AboutPage() {
                             視聴者の心を動かす<br className="hidden md:block" />映像制作のご提案
                         </h1>
                         <p className="text-white/60 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
-                            初めまして！動画クリエイターの<strong className="text-white">高木 明</strong>です。<br />
+                            初めまして！動画クリエイターの<strong className="text-white">高木 明(ike)</strong>です。<br />
                             単に「動く説明書」を作るのではなく、クライアントの課題を解決し、<br className="hidden md:block" />
                             視聴者がファンになるような「記憶に残る映像体験」をデザインします。
                         </p>
@@ -336,7 +336,7 @@ export default function AboutPage() {
                                     />
                                 </div>
                                 <div>
-                                    <h2 className="text-3xl font-bold text-white mb-2">高木 明 (ike)</h2>
+                                    <h2 className="text-3xl font-bold text-white mb-2">高木 明(ike)</h2>
                                     <p className="text-pop-secondary text-sm font-black uppercase tracking-widest mb-6">Video Creator / Motion Designer</p>
 
                                     <div className="space-y-6 text-white/60 leading-relaxed italic border-l-2 border-white/10 pl-6">

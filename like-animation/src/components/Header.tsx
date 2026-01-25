@@ -13,6 +13,7 @@ const NAV_ITEMS = [
   { label: "料金プラン", href: "#pricing" },
   { label: "制作の流れ", href: "#process" },
   { label: "制作のこだわり", href: "/about" },
+  { label: "よくあるご質問", href: "/faq" },
 ];
 
 export default function Header() {
@@ -57,7 +58,11 @@ export default function Header() {
               >
                 <Link
                   href={getLink(item.href)}
-                  className="text-white/60 hover:text-white transition-colors text-xs font-medium tracking-widest uppercase"
+                  className={
+                    item.href.startsWith("/")
+                      ? "text-white/60 hover:text-white transition-colors text-xs font-medium tracking-widest uppercase underline underline-offset-4"
+                      : "text-white/60 hover:text-white transition-colors text-xs font-medium tracking-widest uppercase"
+                  }
                 >
                   {item.label}
                 </Link>

@@ -11,10 +11,10 @@ const CONTACT_INFO = {
 };
 
 const SOCIAL_LINKS = [
-    { icon: Twitter, href: "#", label: "Twitter" },
+    { icon: Twitter, href: "https://x.com/ike50s_movie", label: "X" },
     { icon: Instagram, href: "#", label: "Instagram" },
-    { icon: Youtube, href: "#", label: "YouTube" },
-    { icon: Facebook, href: "#", label: "Facebook" },
+    { icon: Youtube, href: "https://www.youtube.com/channel/UCAh4zr6DZ_TarXs9DXL36JQ", label: "YouTube" },
+    { icon: Facebook, href: "https://www.facebook.com/like.animation/", label: "Facebook" },
 ];
 
 const QUICK_LINKS = [
