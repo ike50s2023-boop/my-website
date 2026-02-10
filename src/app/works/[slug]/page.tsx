@@ -1,13 +1,23 @@
 "use client";
 
+import { use } from "react";
+import { notFound } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import CTA from "@/components/CTA";
 import ScrollReveal from "@/components/ui/ScrollReveal";
+import { ALL_WORKS } from "@/data/works-data";
 import { CheckCircle2, Lightbulb, Wrench, TrendingUp } from "lucide-react";
 import Link from "next/link";
-import { WorkData } from "@/data/works-data";
 
-export default function WorkDetailPageContent({ work }: { work: WorkData }) {
+export default function WorkDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = use(params);
+    const work = ALL_WORKS.find((w) => w.slug === slug);
+
+    if (!work) {
+        notFound();
+    }
+
     return (
         <main className="min-h-screen bg-black">
             <Header />

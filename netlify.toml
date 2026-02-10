@@ -1,5 +1,4 @@
 [build]
-  base = "like-animation"
   command = "npm run build"
   publish = ".next"
 
