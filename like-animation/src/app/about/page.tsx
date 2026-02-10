@@ -216,7 +216,7 @@ export default function AboutPage() {
                         <ScrollReveal delay={0.1} yOffset={30}>
                             <div className="group relative">
                                 <div className="absolute -inset-1 bg-gradient-to-b from-pop-primary/20 to-transparent rounded-[32px] blur opacity-25 group-hover:opacity-40 transition duration-1000" />
-                                <div className="relative bg-black/40 border border-white/5 rounded-[32px] p-8 md:p-12 backdrop-blur-xl">
+                                <div className="relative bg-zinc-900/90 border border-white/5 rounded-[32px] p-8 md:p-12 backdrop-blur-xl">
                                     <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
                                         <div>
                                             <div className="flex items-center gap-3 mb-4">
@@ -230,7 +230,7 @@ export default function AboutPage() {
                                         </p>
                                     </div>
 
-                                    <div className="h-[400px] md:h-[650px] relative rounded-2xl overflow-hidden bg-zinc-900/30">
+                                    <div className="h-[400px] md:h-[650px] relative rounded-2xl overflow-hidden">
                                         <Image
                                             src="/assets/notion/2025-06-27_06h36_19.png"
                                             alt="Rough Storyboard"
