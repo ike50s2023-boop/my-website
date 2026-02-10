@@ -1,162 +1,92 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowDownRight } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import { useRef } from "react";
-
-const HERO_CONTENT = {
-    tagline: "Motion & Creativity Unframed",
-    headline: "「ただ作るだけ」の動画はもう終わり",
-    headlineAccent: "”伝わる”動画制作",
-    description: "売上アップ・業務効率化に特化。\n企画・制作丸投げOK。\n御社の営業・採用課題を「伝わる動画」で解決します。",
-    ctaPrimary: "無料相談はこちら",
-    ctaSecondary: "View Works",
-    unframedText: ["Motion", "Creativity", "Vision", "Strategy"]
-};
+import { motion } from "framer-motion";
+import { Sparkles, BarChart3, Zap } from "lucide-react";
 
 export default function Hero() {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ["start start", "end start"],
-    });
-
-    const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
-    // Fix 3: Avoid masking/clipping by just fading/moving slightly without overflow hidden on parent if possible, or adjusting effect.
-    // Changing effect to slide out to right and fade, instead of being masked by a container.
-    const textX = useTransform(scrollYProgress, [0, 0.5], [0, 100]);
-    const textOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-
     return (
-        <section ref={containerRef} className="relative min-h-[110vh] flex flex-col items-center justify-center overflow-hidden pt-32 pb-32">
+        <section className="relative min-h-screen flex flex-col justify-center items-center pt-20 overflow-hidden">
+            {/* Background Glows */}
+            <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-viz-primary/10 rounded-full blur-[120px] -z-10 animate-pulse" />
+            <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-viz-secondary/10 rounded-full blur-[100px] -z-10 animate-pulse delay-700" />
 
-            {/* Background Elements */}
-            <div className="absolute inset-0 z-0">
-                <div className="absolute top-[20%] left-[10%] w-[500px] h-[500px] bg-pop-primary/20 rounded-full blur-[120px] animate-pulse" />
-                <div className="absolute bottom-[20%] right-[10%] w-[600px] h-[600px] bg-pop-secondary/20 rounded-full blur-[100px] animate-[pulse_6s_ease-in-out_infinite]" />
-            </div>
-
-            <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-                {/* Floating Elements removed per user request */}
-                {/* Logo & Brand Block - Responsive Layout */}
+            <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                {/* Left Content */}
                 <motion.div
-                    className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8 mb-8"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.8, delay: 2.8 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                    className="text-center lg:text-left space-y-8"
                 >
-                    {/* Logo */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{
-                            duration: 0.8,
-                            delay: 3.0,
-                            type: "spring",
-                            stiffness: 100
-                        }}
-                        className="w-40 h-40 flex-shrink-0"
-                    >
-                        <Image
-                            src="/logo-new.png"
-                            width={160}
-                            height={160}
-                            alt="Like Animation"
-                            className="w-full h-full object-contain drop-shadow-[0_0_20px_rgba(255,255,255,0.2)]"
-                        />
-                    </motion.div>
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-viz-primary/10 border border-viz-primary/20 backdrop-blur-sm">
+                        <Sparkles className="w-4 h-4 text-viz-primary" />
+                        <span className="text-xs font-bold uppercase tracking-widest text-viz-primary/80">Next-Gen Data Visualization</span>
+                    </div>
 
-                    {/* Text Block - Like Animation & Tagline */}
-                    <div className="flex flex-col items-center md:items-start gap-1 md:gap-0.5 md:mt-14">
-                        {/* Like Animation - Company Name */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 3.2 }}
-                        >
-                            <span className="text-2xl md:text-3xl font-bold tracking-tight rainbow-text">Like Animation</span>
-                        </motion.div>
+                    <h1 className="text-5xl md:text-7xl font-space-grotesk font-black text-white leading-[1.1]">
+                        Data to Insight, <br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-viz-primary via-viz-secondary to-viz-primary bg-[length:200%_auto] animate-gradient-flow">
+                            In Seconds.
+                        </span>
+                    </h1>
 
-                        {/* Tagline - Motion & Creativity Unframed */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{
-                                duration: 0.8,
-                                delay: 3.4
-                            }}
-                        >
-                            <span className="text-white/70 text-xs md:text-sm font-medium tracking-[0.2em]">
-                                {HERO_CONTENT.tagline}
-                            </span>
-                        </motion.div>
+                    <p className="text-xl text-white/60 max-w-xl mx-auto lg:mx-0 font-medium">
+                        Turn your complex CSV and Excel data into stunning, interactive visualizations with the power of generative AI. No design skills required.
+                    </p>
+
+                    <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4">
+                        <button className="px-8 py-4 bg-viz-primary text-white font-bold rounded-full hover:scale-105 active:scale-95 transition-all shadow-[0_0_30px_rgba(99,102,241,0.4)]">
+                            Start Building Now
+                        </button>
+                        <button className="px-8 py-4 bg-white/5 text-white font-bold rounded-full border border-white/10 hover:bg-white/10 transition-all">
+                            Watch Demo
+                        </button>
+                    </div>
+
+                    <div className="flex items-center justify-center lg:justify-start gap-8 pt-8 border-t border-white/5">
+                        <div className="flex items-center gap-2">
+                            <Zap className="w-5 h-5 text-viz-secondary" />
+                            <span className="text-sm font-bold text-white/50">Lightning Fast</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <BarChart3 className="w-5 h-5 text-viz-secondary" />
+                            <span className="text-sm font-bold text-white/50">Pixel Perfect</span>
+                        </div>
                     </div>
                 </motion.div>
 
-                {/* Main Headline - Resized to fit, PALT for kerning */}
-                <h1
-                    className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-8 leading-tight"
-                    style={{ fontFeatureSettings: '"palt"' }}
-                >
-                    <span className="inline-block overflow-hidden">
-                        <motion.span
-                            initial={{ y: "100%" }}
-                            animate={{ y: 0 }}
-                            transition={{ duration: 0.8, delay: 3.0, ease: [0.16, 1, 0.3, 1] }}
-                            className="block"
-                        >
-                            {HERO_CONTENT.headline}
-                        </motion.span>
-                    </span>
-                    <br />
-                    <motion.div
-                        style={{ x: textX, opacity: textOpacity }}
-                        className="inline-block rainbow-text mt-2 md:mt-4"
-                    >
-                        {HERO_CONTENT.headlineAccent}
-                    </motion.div>
-                </h1>
-                {/* Description */}
-                <motion.p
-                    className="text-white/60 text-lg md:text-xl font-medium mb-16 max-w-2xl mx-auto leading-relaxed"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.8, delay: 3.4 }}
-                >
-                    {HERO_CONTENT.description}
-                </motion.p>
-
-                {/* CTAs */}
+                {/* Right Content: The "Stage" for User's Animation */}
                 <motion.div
-                    className="flex flex-col sm:flex-row gap-6 justify-center items-center"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 3.6 }}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1, delay: 0.2 }}
+                    className="relative aspect-square lg:aspect-auto h-[500px] w-full"
                 >
-                    <Link href="/contact" className="pop-button group flex items-center gap-2 text-base">
-                        {HERO_CONTENT.ctaPrimary}
-                        <ArrowDownRight className="transition-transform group-hover:rotate-[-45deg]" />
-                    </Link>
-                    <a href="#works" className="minimal-button-outline text-white hover:bg-white hover:text-black transition-colors flex items-center gap-2">
-                        {HERO_CONTENT.ctaSecondary}
-                    </a>
-                </motion.div>
-            </div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-viz-primary/20 to-viz-secondary/20 rounded-[40px] blur-2xl -z-10" />
+                    <div className="w-full h-full rounded-[40px] border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden flex items-center justify-center relative group">
 
-            {/* Unframed Background Text */}
-            <div className="absolute inset-0 z-0 flex items-center justify-center opacity-[0.02] pointer-events-none select-none">
-                <div className="text-[15vw] md:text-[13vw] leading-[0.9] font-black tracking-tighter flex flex-col items-center">
-                    {HERO_CONTENT.unframedText.map((text, i) => (
-                        <motion.span
-                            key={text}
-                            style={{ x: i % 2 === 0 ? textX : useTransform(scrollYProgress, [0, 1], [0, -200]) }}
-                        >
-                            {text}
-                        </motion.span>
-                    ))}
-                </div>
+                        {/* THIS IS WHERE THE USER'S LOTTIE/RIVE WILL GO */}
+                        <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-12">
+                            <div className="w-32 h-32 mb-6 rounded-full border-4 border-dashed border-viz-primary/40 animate-spin-slow flex items-center justify-center">
+                                <BarChart3 className="w-12 h-12 text-viz-primary animate-pulse" />
+                            </div>
+                            <h3 className="text-2xl font-space-grotesk font-bold text-white mb-2">
+                                User Animation Stage
+                            </h3>
+                            <p className="text-white/40 text-sm max-w-xs">
+                                Waiting for your After Effects "Hero" animation. <br /> Place your Lottie JSON here to blow their minds.
+                            </p>
+                        </div>
+
+                        {/* Decorative Grid */}
+                        <div className="absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none" />
+                    </div>
+
+                    {/* Floaters */}
+                    <div className="absolute -top-6 -right-6 w-24 h-24 bg-viz-primary/20 backdrop-blur-xl border border-white/10 rounded-2xl flex items-center justify-center animate-bounce-slow">
+                        <Zap className="w-10 h-10 text-viz-primary shadow-glow" />
+                    </div>
+                </motion.div>
             </div>
         </section>
     );

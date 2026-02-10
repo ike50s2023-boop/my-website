@@ -7,6 +7,8 @@ const outfit = Outfit({
   variable: "--font-outfit",
 });
 
+export const runtime = 'edge';
+
 export const metadata: Metadata = {
   title: "Like Animation | アニメーション動画制作",
   description: "Motion & Creativity Unframed - スクリーンの枠を飛び出し、見る人の心に直接届くアニメーション動画制作。確かな技術と遊び心で、想像を超える映像を。",

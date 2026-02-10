@@ -5,14 +5,18 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "cf-pages:build": "npx @cloudflare/next-on-pages",
+    "cf-pages:preview": "npx wrangler pages dev .vercel/output",
     "start": "next start",
     "lint": "eslint",
     "preview": "powershell -ExecutionPolicy Bypass -File ./scripts/preview.ps1"
   },
   "dependencies": {
+    "@rive-app/react-canvas": "^4.26.2",
     "clsx": "^2.1.1",
     "framer-motion": "^12.26.1",
     "lenis": "^1.3.17",
+    "lottie-react": "^2.4.1",
     "lucide-react": "^0.562.0",
     "next": "16.1.1",
     "react": "19.2.3",
@@ -20,6 +24,7 @@
     "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {
+    "@cloudflare/next-on-pages": "^1.13.16",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
@@ -27,6 +32,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.1.1",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "wrangler": "^4.63.0"
   }
 }

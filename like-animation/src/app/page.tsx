@@ -17,15 +17,17 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen bg-background relative selection:bg-viz-primary/30">
       <Header />
       <Hero />
+      {/* 
       <Works />
       <Features />
       <Process />
       <Pricing />
       <CTA />
-      <Footer />
+      <Footer /> 
+      */}
     </main>
   );
 }
