@@ -1,93 +1,90 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Sparkles, BarChart3, Zap } from "lucide-react";
+import { ArrowRight, Play } from "lucide-react";
+import AiCore from "./AiCore";
 
 export default function Hero() {
     return (
-        <section className="relative min-h-screen flex flex-col justify-center items-center pt-20 overflow-hidden">
-            {/* Background Glows */}
-            <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-viz-primary/10 rounded-full blur-[120px] -z-10 animate-pulse" />
-            <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-viz-secondary/10 rounded-full blur-[100px] -z-10 animate-pulse delay-700" />
+        <section className="relative min-h-[95vh] flex flex-col items-center justify-center pt-32 pb-20 px-4 overflow-hidden bg-mesh">
+            {/* Ambient Background Glows */}
+            <div className="absolute top-[20%] left-[10%] w-[400px] h-[400px] bg-primary/20 rounded-full blur-[120px] animate-pulse-slow -z-10" />
+            <div className="absolute bottom-[20%] right-[10%] w-[300px] h-[300px] bg-accent/20 rounded-full blur-[100px] animate-pulse-slow -z-10" />
 
-            <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                {/* Left Content */}
+            <div className="max-w-5xl w-full text-center space-y-10 relative z-10">
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    className="text-center lg:text-left space-y-8"
+                    transition={{ duration: 0.8, ease: "easeOut" }}
                 >
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-viz-primary/10 border border-viz-primary/20 backdrop-blur-sm">
-                        <Sparkles className="w-4 h-4 text-viz-primary" />
-                        <span className="text-xs font-bold uppercase tracking-widest text-viz-primary/80">Next-Gen Data Visualization</span>
-                    </div>
-
-                    <h1 className="text-5xl md:text-7xl font-space-grotesk font-black text-white leading-[1.1]">
-                        Data to Insight, <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-viz-primary via-viz-secondary to-viz-primary bg-[length:200%_auto] animate-gradient-flow">
-                            In Seconds.
+                    <span className="inline-block px-5 py-2 mb-8 text-[10px] font-bold tracking-[0.2em] uppercase rounded-full bg-white/5 text-accent border border-white/10 backdrop-blur-md">
+                        Advanced Interactive Experience
+                    </span>
+                    <h1 className="text-6xl md:text-8xl font-display font-extrabold tracking-tight leading-[1.05] text-glow">
+                        ユーザーを、<br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-accent-secondary">
+                            迷わせない。
                         </span>
                     </h1>
-
-                    <p className="text-xl text-white/60 max-w-xl mx-auto lg:mx-0 font-medium">
-                        Turn your complex CSV and Excel data into stunning, interactive visualizations with the power of generative AI. No design skills required.
-                    </p>
-
-                    <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4">
-                        <button className="px-8 py-4 bg-viz-primary text-white font-bold rounded-full hover:scale-105 active:scale-95 transition-all shadow-[0_0_30px_rgba(99,102,241,0.4)]">
-                            Start Building Now
-                        </button>
-                        <button className="px-8 py-4 bg-white/5 text-white font-bold rounded-full border border-white/10 hover:bg-white/10 transition-all">
-                            Watch Demo
-                        </button>
-                    </div>
-
-                    <div className="flex items-center justify-center lg:justify-start gap-8 pt-8 border-t border-white/5">
-                        <div className="flex items-center gap-2">
-                            <Zap className="w-5 h-5 text-viz-secondary" />
-                            <span className="text-sm font-bold text-white/50">Lightning Fast</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                            <BarChart3 className="w-5 h-5 text-viz-secondary" />
-                            <span className="text-sm font-bold text-white/50">Pixel Perfect</span>
-                        </div>
-                    </div>
                 </motion.div>
 
-                {/* Right Content: The "Stage" for User's Animation */}
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1, delay: 0.2 }}
-                    className="relative aspect-square lg:aspect-auto h-[500px] w-full"
+                <motion.p
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                    className="text-lg md:text-xl text-muted max-w-2xl mx-auto leading-relaxed font-medium"
                 >
-                    <div className="absolute inset-0 bg-gradient-to-br from-viz-primary/20 to-viz-secondary/20 rounded-[40px] blur-2xl -z-10" />
-                    <div className="w-full h-full rounded-[40px] border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden flex items-center justify-center relative group">
+                    「ただの飾り」ではない。ユーザー体験を劇的に進化させ、<br className="hidden md:block" />
+                    ビジネスの成果に直結する次世代のインタラクティブ・プロダクトへ。
+                </motion.p>
 
-                        {/* THIS IS WHERE THE USER'S LOTTIE/RIVE WILL GO */}
-                        <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-12">
-                            <div className="w-32 h-32 mb-6 rounded-full border-4 border-dashed border-viz-primary/40 animate-spin-slow flex items-center justify-center">
-                                <BarChart3 className="w-12 h-12 text-viz-primary animate-pulse" />
-                            </div>
-                            <h3 className="text-2xl font-space-grotesk font-bold text-white mb-2">
-                                User Animation Stage
-                            </h3>
-                            <p className="text-white/40 text-sm max-w-xs">
-                                Waiting for your After Effects "Hero" animation. <br /> Place your Lottie JSON here to blow their minds.
-                            </p>
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+                    className="flex flex-col sm:flex-row items-center justify-center space-y-5 sm:space-y-0 sm:space-x-8"
+                >
+                    <button className="relative flex items-center space-x-3 px-10 py-5 bg-primary text-white font-bold rounded-full overflow-hidden group transition-all hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(99,102,241,0.5)]">
+                        <span className="relative z-10">制作を相談する</span>
+                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform relative z-10" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out" />
+                    </button>
+
+                    <button className="flex items-center space-x-3 px-8 py-4 font-bold text-foreground/80 hover:text-white transition-all group">
+                        <div className="p-3 rounded-full border border-white/10 bg-white/5 group-hover:border-primary/50 group-hover:bg-primary/20 transition-all">
+                            <Play className="w-4 h-4 fill-current text-accent" />
                         </div>
-
-                        {/* Decorative Grid */}
-                        <div className="absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none" />
-                    </div>
-
-                    {/* Floaters */}
-                    <div className="absolute -top-6 -right-6 w-24 h-24 bg-viz-primary/20 backdrop-blur-xl border border-white/10 rounded-2xl flex items-center justify-center animate-bounce-slow">
-                        <Zap className="w-10 h-10 text-viz-primary shadow-glow" />
-                    </div>
+                        <span className="tracking-tight">デモ体験</span>
+                    </button>
                 </motion.div>
             </div>
+
+            {/* Animation Component Slot */}
+            <motion.div
+                initial={{ opacity: 0, scale: 0.8, rotateX: 20 }}
+                animate={{ opacity: 1, scale: 1, rotateX: 0 }}
+                transition={{ duration: 1.2, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                className="mt-24 w-full max-w-4xl aspect-[21/9] glass-panel rounded-[2.5rem] flex items-center justify-center relative group p-1 overflow-hidden"
+                style={{ perspective: "1000px" }}
+            >
+                <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-transparent -z-10" />
+
+                <AiCore />
+
+                {/* Decorative labels */}
+                <div className="absolute top-8 left-8 flex items-center space-x-2">
+                    <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-muted">Core Module Status: Active</span>
+                </div>
+
+                <div className="absolute bottom-8 right-8 text-right hidden md:block">
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-muted mb-1">Interactive Data Visualization</p>
+                    <div className="h-0.5 w-16 bg-gradient-to-r from-transparent to-accent ml-auto" />
+                </div>
+
+                {/* Decorative Grid Mesh */}
+                <div className="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px]" />
+            </motion.div>
         </section>
     );
 }

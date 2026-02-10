@@ -1,28 +1,21 @@
 import type { Metadata } from "next";
-import { Outfit } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const outfit = Outfit({
+const geistSans = Geist({
+  variable: "--font-geist-sans",
   subsets: ["latin"],
-  variable: "--font-outfit",
 });
 
-export const runtime = 'edge';
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
-  title: "Like Animation | アニメーション動画制作",
-  description: "Motion & Creativity Unframed - スクリーンの枠を飛び出し、見る人の心に直接届くアニメーション動画制作。確かな技術と遊び心で、想像を超える映像を。",
-  keywords: ["アニメーション動画", "モーショングラフィックス", "動画制作", "映像制作", "プロモーション動画", "企業VP"],
-  openGraph: {
-    title: "Like Animation | アニメーション動画制作",
-    description: "アイデアを動かす。心を動かす。スクリーンの枠を飛び出すアニメーション動画制作。",
-    type: "website",
-  },
+  title: "Like Animation | 視聴者の心を動かす動画制作",
+  description: "After Effects と Rive を融合させた、次世代のインタラクティブ・アニメーション。ビジネスの課題を「動く体験」で解決します。",
 };
-
-import SmoothScroll from "@/components/ui/SmoothScroll";
-import IntroLoader from "@/components/ui/IntroLoader";
-import FloatingDecor from "@/components/ui/FloatingDecor";
 
 export default function RootLayout({
   children,
@@ -30,17 +23,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja">
+    <html lang="en">
       <body
-        className={`${outfit.className} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="bg-texture" />
-        <div className="vignette-overlay" />
-        <FloatingDecor />
-        <IntroLoader />
-        <SmoothScroll>
-          {children}
-        </SmoothScroll>
+        {children}
       </body>
     </html>
   );
