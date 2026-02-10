@@ -9,6 +9,7 @@
     "cf-pages:preview": "npx wrangler pages dev .vercel/output",
     "start": "next start",
     "lint": "eslint",
+    "export": "next build",
     "preview": "powershell -ExecutionPolicy Bypass -File ./scripts/preview.ps1"
   },
   "dependencies": {

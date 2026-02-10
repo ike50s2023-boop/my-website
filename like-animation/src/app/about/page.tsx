@@ -235,7 +235,7 @@ export default function AboutPage() {
                                             src="/assets/notion/2025-06-27_06h36_19.png"
                                             alt="Rough Storyboard"
                                             fill
-                                            className="object-contain p-4 md:p-8"
+                                            className="object-contain p-4 md:p-8 scale-105"
                                         />
                                     </div>
                                 </div>
@@ -265,7 +265,7 @@ export default function AboutPage() {
                                             src="/assets/notion/2025-06-27_06h37_01.png"
                                             alt="Detailed Storyboard"
                                             fill
-                                            className="object-contain p-4 md:p-8"
+                                            className="object-contain p-4 md:p-8 scale-105"
                                         />
                                     </div>
                                 </div>
