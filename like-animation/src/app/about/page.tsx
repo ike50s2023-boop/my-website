@@ -230,7 +230,7 @@ export default function AboutPage() {
                                         </p>
                                     </div>
 
-                                    <div className="h-[400px] md:h-[650px] relative rounded-2xl overflow-hidden bg-zinc-900/30 ring-1 ring-white/5">
+                                    <div className="h-[400px] md:h-[650px] relative rounded-2xl overflow-hidden bg-zinc-900/30">
                                         <Image
                                             src="/assets/notion/2025-06-27_06h36_19.png"
                                             alt="Rough Storyboard"
@@ -260,7 +260,7 @@ export default function AboutPage() {
                                         </p>
                                     </div>
 
-                                    <div className="h-[400px] md:h-[650px] relative rounded-2xl overflow-hidden bg-zinc-900/30 ring-1 ring-white/5">
+                                    <div className="h-[400px] md:h-[650px] relative rounded-2xl overflow-hidden bg-zinc-900/30">
                                         <Image
                                             src="/assets/notion/2025-06-27_06h37_01.png"
                                             alt="Detailed Storyboard"
