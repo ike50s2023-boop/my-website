@@ -215,9 +215,9 @@ export default function AboutPage() {
                         {/* Step 01 */}
                         <ScrollReveal delay={0.1} yOffset={30}>
                             <div className="group relative">
-                                <div className="absolute -inset-1 bg-gradient-to-b from-pop-primary/20 to-transparent rounded-[32px] blur opacity-25 group-hover:opacity-40 transition duration-1000" />
-                                <div className="relative bg-black/40 border border-white/5 rounded-[32px] p-8 md:p-12 backdrop-blur-xl">
-                                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
+                                <div className="absolute -inset-10 bg-pop-primary/15 rounded-full blur-[120px] opacity-20 group-hover:opacity-40 transition duration-1000" />
+                                <div className="relative bg-transparent rounded-[32px] p-4 md:p-8">
+                                    <div className="flex flex-col md:flex-row justify-start items-start md:items-center gap-6 md:gap-12 mb-12">
                                         <div>
                                             <div className="flex items-center gap-3 mb-4">
                                                 <span className="text-[10px] font-black text-pop-primary uppercase tracking-[0.4em]">Step 01</span>
@@ -225,7 +225,7 @@ export default function AboutPage() {
                                             </div>
                                             <h3 className="text-3xl font-bold text-white">ラフコンテ</h3>
                                         </div>
-                                        <p className="text-white/40 text-sm md:text-right max-w-[200px] leading-relaxed">
+                                        <p className="text-white/40 text-sm max-w-[280px] leading-relaxed">
                                             全体の流れ、構造、テンポを最優先で固めます。
                                         </p>
                                     </div>
@@ -245,9 +245,9 @@ export default function AboutPage() {
                         {/* Step 02 */}
                         <ScrollReveal delay={0.2} yOffset={30}>
                             <div className="group relative">
-                                <div className="absolute -inset-1 bg-gradient-to-b from-pop-secondary/20 to-transparent rounded-[32px] blur opacity-25 group-hover:opacity-40 transition duration-1000" />
-                                <div className="relative bg-black/40 border border-white/5 rounded-[32px] p-8 md:p-12 backdrop-blur-xl">
-                                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
+                                <div className="absolute -inset-10 bg-pop-secondary/15 rounded-full blur-[120px] opacity-20 group-hover:opacity-40 transition duration-1000" />
+                                <div className="relative bg-transparent rounded-[32px] p-4 md:p-8">
+                                    <div className="flex flex-col md:flex-row justify-start items-start md:items-center gap-6 md:gap-12 mb-12">
                                         <div>
                                             <div className="flex items-center gap-3 mb-4">
                                                 <span className="text-[10px] font-black text-pop-secondary uppercase tracking-[0.4em]">Step 02</span>
@@ -255,7 +255,7 @@ export default function AboutPage() {
                                             </div>
                                             <h3 className="text-3xl font-bold text-white">絵コンテ</h3>
                                         </div>
-                                        <p className="text-white/40 text-sm md:text-right max-w-[220px] leading-relaxed">
+                                        <p className="text-white/40 text-sm max-w-[320px] leading-relaxed">
                                             表情、配色、カメラワークまで詳細に設計し、品質を保証します。
                                         </p>
                                     </div>
